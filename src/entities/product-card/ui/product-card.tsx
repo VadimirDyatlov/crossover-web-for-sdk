@@ -24,10 +24,16 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
     <Stack className="z-10" onClick={handleClick}>
       <Stack className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gray-100">
         <img
-          src={card.imageUrl}
+          src="/src/shared/assets/icons/coffee.png"
           alt={card.name}
           className="w-full h-full object-cover"
           loading="lazy"
+          ref={(img) => {
+            if (!img) return;
+            const original = new Image();
+            original.onload = () => (img.src = card.imageUrl);
+            original.src = card.imageUrl;
+          }}
         />
       </Stack>
       <Stack className="p-[8px]">
