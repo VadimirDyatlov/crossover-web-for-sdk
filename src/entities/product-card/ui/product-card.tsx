@@ -1,4 +1,4 @@
-import { useProductDetails } from '@/entities/product-details';
+import { useProductDetails } from '@/entities/product-details'; // TODO: Так нельзя?
 import { useModal } from '@/shared/model';
 import { Stack, Typography } from '@/shared/ui';
 import { MODAL } from '@/shared/lib';
@@ -37,7 +37,7 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
         />
       </Stack>
       <Stack className="p-[8px]">
-        <Typography.Headline4>{card.price + ' ₽'}</Typography.Headline4>
+        <Typography.Headline4>{`${card.price} ₽`}</Typography.Headline4>
         <Typography.Body2Small>{card.name}</Typography.Body2Small>
       </Stack>
     </Stack>

@@ -22,6 +22,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['wouter'],
+          ui: ['lucide-react', 'class-variance-authority'],
+        },
+      },
+    },
   },
   server: {
     port: 5173,

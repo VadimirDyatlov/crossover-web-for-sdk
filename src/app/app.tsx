@@ -1,20 +1,20 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Router, Route, Switch } from 'wouter';
 import { CatalogPage } from '@/pages/catalog-page';
 import { routerPaths } from '@/shared/lib/router-paths';
 
-const router = createBrowserRouter([
-  {
-    path: routerPaths.unknown,
-    element: <div>not-found</div>,
-  },
-  {
-    path: routerPaths.root,
-    element: <CatalogPage />,
-  },
-]);
-
 export const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Router base={routerPaths.root}>
+      <Switch>
+        <Route path={routerPaths.root}>
+          <CatalogPage />
+        </Route>
+        <Route>
+          <div>not-found</div>
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
 
 // TODO: npm run lint ошибка

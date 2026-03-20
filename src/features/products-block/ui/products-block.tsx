@@ -1,18 +1,13 @@
-import { useProductsBlock } from '../model/products-block';
 import { useEffect } from 'react';
+import { useCategory } from '@/entities/category';
+import { useProductsBlock } from '../model/products-block';
 import { ProductCard } from '@/entities/product-card';
 import { Stack } from '@/shared/ui';
-import type { types } from '@/shared/api';
 import type { FC } from 'react';
 
-interface ProductsBlockProps {
-  selectedCategory: types.Category | null;
-}
-
-export const ProductsBlock: FC<ProductsBlockProps> = (props) => {
-  const { selectedCategory } = props;
-
-  const { data, fetchProductList } = useProductsBlock();
+export const ProductsBlock: FC = () => {
+  const { fetchProductList, data } = useProductsBlock();
+  const { selectedCategory } = useCategory();
 
   useEffect(() => {
     if (!selectedCategory) return;

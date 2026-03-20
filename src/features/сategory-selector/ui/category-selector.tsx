@@ -1,16 +1,19 @@
-import { Stack, Typography, Button } from '@/shared/ui';
-import { cn } from '@/shared/lib';
+import { useEffect } from 'react';
+import { useMerchantInfo } from '@/entities/merchant-info';
+import { Category, useCategory } from '@/entities/category';
+import { Stack } from '@/shared/ui';
 import type { FC } from 'react';
-import type { types } from '@/shared/api';
 
-interface CategorySelectorProps {
-  categories: types.Category[];
-  selectedCategory: types.Category | null;
-  onSelect: (category: types.Category) => void;
-}
 
-export const CategorySelector: FC<CategorySelectorProps> = (props) => {
-  const { categories, selectedCategory, onSelect } = props;
+export const CategorySelector: FC = () => {
+  const categories = useMerchantInfo((state) => state.data?.category) || [];
+  const { setSelectedCategory } = useCategory();
+
+  useEffect(() => {
+    if (!categories.length) return;
+
+    setSelectedCategory(categories[0]);
+  }, [categories]);
 
   return (
     <Stack
@@ -19,21 +22,7 @@ export const CategorySelector: FC<CategorySelectorProps> = (props) => {
       className="mt-3.5 mb-3.5 pl-4 overflow-x-auto [scrollbar-width:none]"
     >
       {categories.map((category) => {
-        const { id, name } = category;
-        const isSelected = selectedCategory?.id === id;
-
-        return (
-          <Button
-            key={id}
-            className={cn(
-              'rounded-xl',
-              !isSelected && 'bg-white text-black border border-[rgb(240,240,242)]',
-            )}
-            onClick={() => onSelect(category)}
-          >
-            <Typography.Body2Small>{name}</Typography.Body2Small>
-          </Button>
-        );
+        return <Category category={category} />;
       })}
     </Stack>
   );

@@ -132,35 +132,24 @@
 }
 
 @font-face {
-  font-family: SBSansDisplay;
-  src:
-    url('./shared/fonts/SBSansDisplay-SemiBold.woff2') format('woff2'),
-    url('./shared/fonts/SBSansDisplay-SemiBold.ttf') format('truetype');
+  font-family: SBSans;
+  src: url('./shared/fonts/SBSansText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: SBSans;
-  src:
-    url('./shared/fonts/SBSansText-Regular.woff2') format('woff2'),
-    url('./shared/fonts/SBSansText-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: SBSans;
-  font-style: normal;
+  src: url('./shared/fonts/SBSansText-Semibold.woff2') format('woff2');
   font-weight: 600;
-  src:
-    url('./shared/fonts/SBSansText-Semibold.woff2') format('woff2'),
-    url('./shared/fonts/SBSansText-Semibold.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: SBSans;
-  font-style: normal;
-  font-weight: bold;
-  src:
-    url('./shared/fonts/SBSansText-Bold.woff2') format('woff2'),
-    url('./shared/fonts/SBSansText-Bold.ttf') format('truetype');
+  font-family: SBSansDisplay;
+  src: url('./shared/fonts/SBSansDisplay-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
 }
 
 *,
