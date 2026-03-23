@@ -1,4 +1,4 @@
-import { Router, Route, Switch } from 'wouter';
+import { Route, Router, Switch } from 'wouter';
 import { CatalogPage } from '@/pages/catalog-page';
 import { routerPaths } from '@/shared/lib/router-paths';
 

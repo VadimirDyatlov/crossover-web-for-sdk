@@ -16,10 +16,11 @@ export default antfu({
     'no-console': 'warn',
     'antfu/if-newline': 'off',
     'style/brace-style': ['error', '1tbs'],
-
     'react/prop-types': 'off',
     'react-refresh/only-export-components': 'warn',
     'react/prefer-fragment-shorthand': 'off',
+    'style/semi': 'off',
+    'antfu/top-level-function': 'off',
   },
 }, {
   files: ['**/*.d.ts'],
