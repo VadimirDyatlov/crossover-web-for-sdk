@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { Stack, Typography } from '@/shared/ui';
 import { CloseIcon } from '@/shared/assets/icons';
+import { routerPaths } from '@/shared/lib/router-paths';
 import type { FC } from 'react';
 
 export const Header: FC = () => {
@@ -14,10 +15,9 @@ export const Header: FC = () => {
       >
         <img src={CloseIcon} alt="close-icon" />
       </button>
-      {/* TODO: Новая страница или модалка? */}
       <button
         className="cursor-pointer bg-none border-none"
-        onClick={() => console.log('заказы')}
+        onClick={() => navigate(routerPaths.myOrders)}
       >
         <Typography.Body1>Мои заказы</Typography.Body1>
       </button>
