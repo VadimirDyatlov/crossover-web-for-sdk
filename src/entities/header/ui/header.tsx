@@ -2,6 +2,7 @@ import { useLocation } from 'wouter';
 import { Stack, Typography } from '@/shared/ui';
 import { CloseIcon } from '@/shared/assets/icons';
 import Basket from '../icon/header-basket.svg';
+import { routerPaths } from '@/shared/lib/router-paths';
 import type { FC } from 'react';
 
 export const Header: FC = () => {
@@ -17,7 +18,7 @@ export const Header: FC = () => {
       </button>
       <button
         className="cursor-pointer p-2 flex items-center gap-2 bg-none border-none"
-        onTouchStart={() => console.log('заказы')}
+        onClick={() => navigate(routerPaths.myOrders)}
       >
         <Typography.Body1>Мои заказы</Typography.Body1>
         <img src={Basket} alt="my-orders" />
