@@ -2,6 +2,7 @@ export { Box } from './box/box';
 export { Stack } from './stack/stack';
 export { Button } from './button/button';
 export { Skeleton } from './skeleton/skeleton';
+export { BackButton } from './back-button/back-button'
 
 import { Body1 } from './typography/body1';
 import { Headline2 } from './typography/headline2';

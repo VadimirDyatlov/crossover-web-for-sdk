@@ -1,15 +1,25 @@
+import { useMerchantInfo, useMerchantLazy } from '@/entities/merchant-info';
 import { useProductsBlock } from '@/features/products-block/model/products-block';
 import { BackButton, Box, Stack, Typography } from '@/shared/ui';
 import type { FC } from 'react';
 
-export const MyOrdersPage: FC = () => {
+export const CartPage: FC = () => {
+  useMerchantLazy();
+  const merchantInfo = useMerchantInfo((state) => state.data);
   const { data } = useProductsBlock();
-  
+
   return (
     <Box flexDirection="column">
-      <Stack direction='horizontal' justify='center' align='center' className="ml-2 mr-4">
-        <BackButton className="absolute left-0"  />
-        <Typography.Headline3>Мои заказы</Typography.Headline3>
+      {/* header cart */}
+      <Stack direction='horizontal' justify='between' align='center' className="ml-2 mr-4">
+        <BackButton />
+        <Stack align='center'>
+          <Typography.Headline3>Заказ</Typography.Headline3>
+          <Typography.Body1>{merchantInfo?.address}</Typography.Body1>
+        </Stack>
+        <Stack className="w-9 h-9 rounded-full overflow-hidden">
+          <img src={merchantInfo?.logoUrl} alt="logo" className="w-full h-full object-cove" />
+        </Stack>
       </Stack>
       <Stack className='p-4'>
         <Typography.Body1>Страница находится в разработке</Typography.Body1>
@@ -43,3 +53,24 @@ export const MyOrdersPage: FC = () => {
     </Box>
   );
 };
+
+
+  // const { fetchProductList, data } = useProductsBlock();
+  // const { selectedCategory } = useCategory();
+
+  // useEffect(() => {
+  //   if (!selectedCategory) return;
+
+  //   fetchProductList(selectedCategory.id);
+  // }, [selectedCategory]);
+
+  // return (
+  //   <Stack
+  //     spacing="sm"
+  //     wrap={true}
+  //     className="ml-2 mr-2 grid grid-cols-2 z-10 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+  //   >
+  //     {data.map((product) => {
+  //       return <ProductCard key={product.id} card={product} />;
+  //     })}
+  //   </Stack>

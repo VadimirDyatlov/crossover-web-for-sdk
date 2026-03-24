@@ -167,6 +167,11 @@ body {
   height: 100%;
   height: 100dvh;
   overflow: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -187,4 +192,54 @@ body {
 .no-scroll {
   height: 100vh;
   overflow: hidden;
+}
+
+/* Анимация для перехода назад. */
+.back-transition::view-transition-old(root) {
+  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-right;
+}
+
+.back-transition::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-left;
+}
+
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-to-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Анимация для перехода вперед. */
+.forward-transition::view-transition-old(root) {
+  animation: 0.5s ease-out fade-out;
+}
+
+.forward-transition::view-transition-new(root) {
+  animation: 0.5s ease-out fade-in;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
