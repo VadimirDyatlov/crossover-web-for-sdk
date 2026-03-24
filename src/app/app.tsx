@@ -1,6 +1,7 @@
 import { Router, Route, Switch } from 'wouter';
 import { CatalogPage } from '@/pages/catalog-page';
 import { CartPage } from '@/pages/cart-page';
+import { MyOrdersPage } from '@/pages/my-orders-page';
 import { routerPaths } from '@/shared/lib';
 
 export const App = () => {
@@ -12,6 +13,9 @@ export const App = () => {
         </Route>
         <Route path={routerPaths.cartPage}>
           <CartPage /> 
+        </Route>
+        <Route path={routerPaths.myOrders}>
+          <MyOrdersPage />
         </Route>
         <Route>
           <div>not-found</div>
