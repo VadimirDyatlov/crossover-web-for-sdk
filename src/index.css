@@ -196,11 +196,11 @@ body {
 
 /* Анимация для перехода назад. */
 .back-transition::view-transition-old(root) {
-  animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-right;
+  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-right;
 }
 
 .back-transition::view-transition-new(root) {
-  animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-left;
+  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-left;
 }
 
 @keyframes slide-in-from-left {
@@ -227,11 +227,11 @@ body {
 
 /* Анимация для перехода вперед. */
 .forward-transition::view-transition-old(root) {
-  animation: 0.3s ease-out fade-out;
+  animation: 0.5s ease-out fade-out;
 }
 
 .forward-transition::view-transition-new(root) {
-  animation: 0.3s ease-out fade-in;
+  animation: 0.5s ease-out fade-in;
 }
 
 @keyframes fade-out {
