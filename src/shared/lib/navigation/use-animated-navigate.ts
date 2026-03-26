@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 
+// TODO: Как вариант использовать webviewkit
 export const useAnimatedNavigate = () => {
   const navigate = useLocation()[1];
   const isTransitioning = useRef(false);
