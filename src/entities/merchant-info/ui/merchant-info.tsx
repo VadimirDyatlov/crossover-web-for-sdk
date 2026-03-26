@@ -1,6 +1,6 @@
 import { useMerchantInfo } from '../model/merchant-info';
 import { Chip, Stack, Typography } from '@/shared/ui';
-import Clock from './icon/clock.svg?react';
+import Clock from '../icon/clock.svg?react';
 import type { FC } from 'react';
 
 export const MerchantInfo: FC = () => {
