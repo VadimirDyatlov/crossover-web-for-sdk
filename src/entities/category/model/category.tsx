@@ -1,5 +1,6 @@
-import type { types } from '@/shared/api';
+import { useEffect, useRef } from 'react';
 import { create } from 'zustand';
+import type { types } from '@/shared/api';
 
 interface Store {
   selectedCategory: types.Category | null;
@@ -12,3 +13,20 @@ export const useCategory = create<Store>((set) => ({
     set({ selectedCategory: category });
   },
 }));
+
+export const useScrollToSelected = () => {
+  const activeButtonRef = useRef<HTMLButtonElement>(null);
+  const { selectedCategory } = useCategory();
+
+  useEffect(() => {
+    if (activeButtonRef.current) {
+      activeButtonRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+    }
+  }, [selectedCategory]);
+
+  return activeButtonRef;
+};

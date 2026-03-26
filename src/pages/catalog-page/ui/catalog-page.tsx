@@ -15,7 +15,7 @@ export const CatalogPage: FC = () => {
   const { visibleModalName } = useModal();
 
   return (
-    <Box flexDirection="column">
+    <Box flexDirection="column" className="h-[100svh]">
       <CatalogBar/>
       <ProductsBlock />
       <CartButton />

@@ -9,10 +9,7 @@ export const CatalogBar: FC = () => {
   const { data } = useMerchantInfo();
 
   return (
-    <Box
-      flexDirection="column"
-      className="sticky top-0 z-12 bg-white/80 backdrop-blur-[40px]"
-    >
+    <Box flexDirection="column" className="sticky top-0">
       <Header />
       <MerchantInfo
         name={data?.name}

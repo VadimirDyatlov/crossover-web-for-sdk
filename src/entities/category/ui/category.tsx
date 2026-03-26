@@ -1,23 +1,33 @@
-import { useCategory } from '../model/category';
+import { useCategory, useScrollToSelected } from '../model/category';
 import { Button, Typography } from '@/shared/ui';
 import { cn } from '@/shared/lib';
-import type { FC } from 'react';
+import { type FC } from 'react';
+import type { types } from '@/shared/api';
 
-export const Category: FC<any> = (props) => {
-  const { category } = props;
+interface CategoryProps {
+  category: types.Category;
+  onClick: (category: types.Category) => void;
+}
 
-  const { selectedCategory, setSelectedCategory } = useCategory();
+export const Category: FC<CategoryProps> = (props) => {
+  const { category, onClick } = props;
+
+  const { selectedCategory } = useCategory();
+  const activeButtonRef = useScrollToSelected();
   const isSelected = selectedCategory?.id === category.id;
 
   return (
     <Button
       className={cn(
-        'rounded-xl',
-        !isSelected && 'bg-white text-black border border-[rgb(240,240,242)]',
+        'p-2',
+        'hover:!bg-transparent',
+        'transition-all duration-500',
+        isSelected ? 'bg-transparent text-black' : 'bg-transparent text-black/55',
       )}
-      onClick={() => setSelectedCategory(category)}
+      ref={isSelected ? activeButtonRef : null}
+      onTouchStart={() => onClick(category)}
     >
-      <Typography.Body2Small>{category.name}</Typography.Body2Small>
+      <Typography.Headline4>{category.name}</Typography.Headline4>
     </Button>
   );
 };
