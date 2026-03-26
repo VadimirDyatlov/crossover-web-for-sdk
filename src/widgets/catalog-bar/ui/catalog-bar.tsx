@@ -7,7 +7,7 @@ import type { FC } from 'react';
 export const CatalogBar: FC = () => {
 
   return (
-    <Box flexDirection="column" className="sticky z-12 top-0">
+    <Box flexDirection="column" className="sticky z-12 top-0 bg-white">
       <Header />
       <MerchantInfo />
       <SelectCategory />
