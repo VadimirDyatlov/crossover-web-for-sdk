@@ -8,8 +8,8 @@ interface Store {
   isLoading: boolean;
   error: string | null;
   cache: Record<string, types.Product[]>;
-  scrollPosition: number | null;
-  setScrollPosition: (position: number) => void;
+  scrollPositions: Record<string, number>;
+  setScrollPosition: (key: string, position: number) => void;
   fetchProductList: (id: string) => Promise<void>;
 }
 
@@ -18,7 +18,7 @@ export const useProductsBlock = create<Store>((set, get) => ({
   isLoading: false,
   error: null,
   cache: {},
-  scrollPosition: null,
+  scrollPositions: {},
 
   fetchProductList: async (id: string) => {
     const cached = get().cache[id];
@@ -50,8 +50,13 @@ export const useProductsBlock = create<Store>((set, get) => ({
       });
     }
   },
-  setScrollPosition: (position: number) => {
-    set({ scrollPosition: position });
+  setScrollPosition: (key: string, position: number) => {
+    set((state) => ({
+      scrollPositions: {
+        ...state.scrollPositions,
+        [key]: position,
+      },
+    }));
   },
 }));
 
@@ -69,20 +74,30 @@ export const useProductsByCategory = () => {
 
 export const useProductsScroll = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { setScrollPosition, scrollPosition } = useProductsBlock();
+  const { setScrollPosition, scrollPositions } = useProductsBlock();
+  const { selectedCategory } = useCategory();
+
+  const scrollKey = `products-${selectedCategory?.id}`;
 
   useEffect(() => {
-    if (!scrollRef.current || !scrollPosition) return;
-      scrollRef.current.scrollTop = scrollPosition;
-  }, []);
+    if (!scrollRef.current || !selectedCategory?.id) return;
+
+    const savedPosition = scrollPositions[scrollKey];
+
+    if (savedPosition) {
+      scrollRef.current.scrollTop = savedPosition;
+    } else {
+      scrollRef.current.scrollTop = 0;
+    }
+  }, [scrollKey, scrollPositions]);
 
   useLayoutEffect(() => {
     return () => {
-      if (scrollRef.current) {
-        setScrollPosition(scrollRef.current.scrollTop);
+      if (scrollRef.current && selectedCategory?.id) {
+        setScrollPosition(scrollKey, scrollRef.current.scrollTop);
       }
     };
-  }, [scrollRef, setScrollPosition]);
+  }, [scrollKey, scrollRef, setScrollPosition]);
 
   return scrollRef;
 };
