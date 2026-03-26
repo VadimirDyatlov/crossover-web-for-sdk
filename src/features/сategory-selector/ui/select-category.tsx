@@ -1,10 +1,10 @@
-import { useCategorySelector } from '../model/сategory-selector';
+import { useSelectCategory } from '../model/select-category';
 import { Category } from '@/entities/category';
 import { Stack } from '@/shared/ui';
 import type { FC } from 'react';
 
-export const CategorySelector: FC = () => {
-  const { categories, handleSelect } = useCategorySelector();
+export const SelectCategory: FC = () => {
+  const { categories, handleSelect } = useSelectCategory();
 
   return (
     <Stack

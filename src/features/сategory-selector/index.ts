@@ -1,1 +1,1 @@
-export { CategorySelector } from './ui/category-selector';
+export { SelectCategory } from './ui/select-category';

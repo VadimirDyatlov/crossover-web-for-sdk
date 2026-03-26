@@ -3,7 +3,7 @@ import { useMerchantInfo } from '@/entities/merchant-info';
 import { useCategory } from '@/entities/category';
 import type { types } from '@/shared/api';
 
-export const useCategorySelector = () => {
+export const useSelectCategory = () => {
   const categories = useMerchantInfo((state) => state.data?.category) || [];
   const { selectedCategory, setSelectedCategory } = useCategory();
 

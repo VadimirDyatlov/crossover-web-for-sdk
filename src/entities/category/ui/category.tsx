@@ -25,7 +25,7 @@ export const Category: FC<CategoryProps> = (props) => {
         isSelected ? 'bg-transparent text-black' : 'bg-transparent text-black/55',
       )}
       ref={isSelected ? activeButtonRef : null}
-      onTouchStart={() => onClick(category)}
+      onClick={() => onClick(category)}
     >
       <Typography.Headline4>{category.name}</Typography.Headline4>
     </Button>
