@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { create } from 'zustand';
 import { api, types } from '@/shared/api';
 
@@ -32,3 +33,12 @@ export const useMerchantInfo = create<Store>((set) => ({
     }
   },
 }));
+
+export const useMerchantLazy = () => {
+  const { data, isLoading, fetchMerchant } = useMerchantInfo();
+  
+  useEffect(() => {
+    if (!data && !isLoading) fetchMerchant();
+  }, [data, isLoading, fetchMerchant]);
+};
+
