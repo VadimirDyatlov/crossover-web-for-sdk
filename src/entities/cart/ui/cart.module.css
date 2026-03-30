@@ -1,0 +1,11 @@
+.cartContainer {
+  position: fixed;
+  /* bottom: 'calc(50px + env(safe-area-inset-bottom, 0px))'; */
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  height: 50px;
+}

@@ -9,7 +9,7 @@ interface StackProps {
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   className?: string;
   wrap?: boolean;
-  onClick?: VoidFunction;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export const Stack: FC<StackProps> = (props) => {

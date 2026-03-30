@@ -7,7 +7,7 @@ interface Store {
   setSelectedCategory: (category: types.Category) => void;
 }
 
-export const useCategory = create<Store>((set) => ({
+export const useCategoryStore = create<Store>((set) => ({
   selectedCategory: null,
   setSelectedCategory: (category: types.Category) => {
     set({ selectedCategory: category });
@@ -16,7 +16,7 @@ export const useCategory = create<Store>((set) => ({
 
 export const useScrollToSelected = () => {
   const activeButtonRef = useRef<HTMLButtonElement>(null);
-  const { selectedCategory } = useCategory();
+  const { selectedCategory } = useCategoryStore();
 
   useEffect(() => {
     if (activeButtonRef.current) {

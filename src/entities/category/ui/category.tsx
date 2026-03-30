@@ -1,4 +1,4 @@
-import { useCategory, useScrollToSelected } from '../model/category';
+import { useCategoryStore, useScrollToSelected } from '../model/category';
 import { Button, Typography } from '@/shared/ui';
 import { cn } from '@/shared/lib';
 import { type FC } from 'react';
@@ -12,7 +12,7 @@ interface CategoryProps {
 export const Category: FC<CategoryProps> = (props) => {
   const { category, onClick } = props;
 
-  const { selectedCategory } = useCategory();
+  const { selectedCategory } = useCategoryStore();
   const activeButtonRef = useScrollToSelected();
   const isSelected = selectedCategory?.id === category.id;
 

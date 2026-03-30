@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useMerchantInfo } from '@/entities/merchant-info';
-import { useCategory } from '@/entities/category';
+import { useMerchantStore } from '@/entities/merchant';
+import { useCategoryStore } from '@/entities/category';
 import type { types } from '@/shared/api';
 
 export const useSelectCategory = () => {
-  const categories = useMerchantInfo((state) => state.data?.category) || [];
-  const { selectedCategory, setSelectedCategory } = useCategory();
+  const categories = useMerchantStore((state) => state.data?.category) || [];
+  const { selectedCategory, setSelectedCategory } = useCategoryStore();
 
   useEffect(() => {
     if (!categories.length) return;
