@@ -1,9 +1,9 @@
-import { useProductsBlock } from '@/features/products-block/model/products-block';
+import { useProductListStore } from '@/features/product-list';
 import { BackButton, Box, Stack, Typography } from '@/shared/ui';
 import type { FC } from 'react';
 
 export const MyOrdersPage: FC = () => {
-  const { data } = useProductsBlock();
+  const { data } = useProductListStore();
   
   return (
     <Box flexDirection="column">

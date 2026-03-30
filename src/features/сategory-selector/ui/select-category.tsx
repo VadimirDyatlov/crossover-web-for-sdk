@@ -3,6 +3,7 @@ import { Category } from '@/entities/category';
 import { Stack } from '@/shared/ui';
 import type { FC } from 'react';
 
+// TODO: Это не фича, это виджет.
 export const SelectCategory: FC = () => {
   const { categories, handleSelect } = useSelectCategory();
 

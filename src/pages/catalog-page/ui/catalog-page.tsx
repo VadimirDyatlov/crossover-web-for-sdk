@@ -1,10 +1,10 @@
-import { useMerchantLazy } from '@/entities/merchant-info';
+import { useMerchantLazy } from '@/entities/merchant';
 import { useModal } from '@/shared/model';
 import { CatalogBar } from '@/widgets/catalog-bar';
-import { ProductsBlock } from '@/features/products-block';
+import { ProductBlock } from '@/widgets/product-block';
 import { Modal } from '@/features/modal';
-import { ProductDetails } from '@/entities/product-details';
-import { CartButton } from '@/entities/cart-button';
+import { ProductDetails } from '@/entities/product';
+import { Cart } from '@/entities/cart';
 import { Box } from '@/shared/ui';
 import { MODAL } from '@/shared/lib/constants';
 import type { FC } from 'react';
@@ -17,8 +17,8 @@ export const CatalogPage: FC = () => {
   return (
     <Box flexDirection="column" className="h-[100vh]">
       <CatalogBar/>
-      <ProductsBlock />
-      <CartButton />
+      <ProductBlock />
+      <Cart />
 
       {visibleModalName === MODAL.PRODUCT_DETAILS ? (
         <Modal>

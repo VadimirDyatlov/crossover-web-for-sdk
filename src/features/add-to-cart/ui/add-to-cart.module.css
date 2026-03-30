@@ -1,0 +1,59 @@
+.addToCartButton {
+  position: absolute;
+  bottom: 60px;
+  right: 8px;
+  z-index: 20;
+  width: auto;
+  height: 40px;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: rgb(56, 56, 56) !important;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapsed {
+  width: 40px;
+}
+
+.expanded {
+  width: 100px;
+}
+
+.controlButton {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  transition: background-color 0.2s;
+}
+
+.controlButton:hover,
+.controlButton:active,
+.controlButton:focus {
+  background-color: transparent !important;
+}
+
+.plusIcon {
+  transform: translateY(1px);
+}
+
+.quantity {
+  display: inline-block;
+  min-width: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  animation: fadeInDown 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

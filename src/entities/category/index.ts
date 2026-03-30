@@ -1,2 +1,2 @@
 export { Category } from './ui/category';
-export { useCategory } from './model/category';
+export { useCategoryStore } from './model/category';

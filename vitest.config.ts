@@ -30,4 +30,9 @@ export default defineConfig({
       reportsDirectory: './coverage',
     },
   },
+  css: {
+    modules: {
+      localsConvention: 'camelCase', 
+    },
+  },
 });

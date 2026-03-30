@@ -1,6 +1,6 @@
 import { SelectCategory } from '@/features/сategory-selector/ui/select-category';
 import { Header } from '@/entities/header';
-import { MerchantInfo } from '@/entities/merchant-info';
+import { MerchantInfo } from '@/entities/merchant';
 import { Box } from '@/shared/ui';
 import type { FC } from 'react';
 
