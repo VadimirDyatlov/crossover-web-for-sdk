@@ -1,4 +1,4 @@
-import { SelectCategory } from '@/features/сategory-selector/ui/select-category';
+import { SelectCategory } from '@/features/select-category';
 import { Header } from '@/entities/header';
 import { MerchantInfo } from '@/entities/merchant';
 import { Box } from '@/shared/ui';

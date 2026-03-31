@@ -18,10 +18,12 @@ export const CatalogPage: FC = () => {
     <Box flexDirection="column" className="h-[100vh]">
       <CatalogBar/>
       <ProductBlock />
-      <Cart />
+      {/* TODO: CartButton это widgets или features. */}
+      <Cart /> 
 
       {visibleModalName === MODAL.PRODUCT_DETAILS ? (
         <Modal>
+          {/* TODO: ProductDetails это widgets? */}
           <ProductDetails />
         </Modal>
       ) : null}

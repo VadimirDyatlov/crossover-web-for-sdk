@@ -2,10 +2,11 @@ import { types } from '@/shared/api';
 import { create } from 'zustand';
 
 interface Store {
-  products: Record<string, { product: types.Product; quantity: number }>;
+  productMap: Record<string, { product: types.Product; quantity: number }>;
   totalPrice: number;
   totalQuantity: number;
   
+  getProductList: () => { product: types.Product; quantity: number }[];
   addProduct: (product: types.Product) => void; 
   removeProduct: (id: string) => void;
   removeOneProduct: (id: string) => void;
@@ -13,27 +14,28 @@ interface Store {
 }
 
 export const useCartStore = create<Store>((set, get) => ({
-  products: {},
+  productMap: {},
   totalPrice: 0,
   totalQuantity: 0,
 
+  getProductList: () => Object.values(get().productMap),
   addProduct: (product: types.Product) => {
-    const { products } = get();
-    const existing = products[product.id];
+    const { productMap } = get();
+    const existing = productMap[product.id];
 
-    let newProducts;
+    let newProductMap;
 
     if (existing) {
-      newProducts = {
-        ...products,
+      newProductMap = {
+        ...productMap,
         [product.id]: {
           ...existing,
           quantity: existing.quantity + 1,
         },
       };
     } else {
-      newProducts = {
-        ...products,
+      newProductMap = {
+        ...productMap,
         [product.id]: {
           product,
           quantity: 1,
@@ -41,25 +43,25 @@ export const useCartStore = create<Store>((set, get) => ({
       };
     }
     
-    const items = Object.values(newProducts);
+    const items = Object.values(newProductMap);
     const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
     
-    set({ products: newProducts, totalQuantity, totalPrice });
+    set({ productMap: newProductMap, totalQuantity, totalPrice });
   },
   removeOneProduct: (id: string) => {
-    const { products } = get();
-    const existing = products[id];
+    const { productMap } = get();
+    const existing = productMap[id];
     
     if (!existing) return;
     
     let newProducts;
     if (existing.quantity === 1) {
-      newProducts = { ...products };
+      newProducts = { ...productMap };
       delete newProducts[id];
     } else {
       newProducts = {
-        ...products,
+        ...productMap,
         [id]: {
           ...existing,
           quantity: existing.quantity - 1,
@@ -71,23 +73,23 @@ export const useCartStore = create<Store>((set, get) => ({
     const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
     
-    set({ products: newProducts, totalQuantity, totalPrice });
+    set({ productMap: newProducts, totalQuantity, totalPrice });
   },
   removeProduct: (id: string) => {
-    const { products } = get();
-    const newProducts = { ...products };
-    delete newProducts[id];
+    const { productMap } = get();
+    const newProductMap = { ...productMap };
+    delete newProductMap[id];
 
-    const items = Object.values(newProducts);
+    const items = Object.values(newProductMap);
     const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = items.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
       0,
     );
 
-    set({ products: newProducts, totalQuantity, totalPrice });
+    set({ productMap: newProductMap, totalQuantity, totalPrice });
   },
   clearCart: () => {
-    set({ products: {}, totalPrice: 0, totalQuantity: 0 });
+    set({ productMap: {}, totalPrice: 0, totalQuantity: 0 });
   },
 }));
