@@ -8,7 +8,7 @@ export const ProductBlock: FC = () => {
   return (
     <ProductList
       renderCard={(product: types.Product) => (
-        <ProductCard product={product}>
+        <ProductCard key={product.id} product={product}>
           <AddToCart product={product} />
         </ProductCard>
       )}

@@ -15,7 +15,7 @@ export const BackButton: FC<BackButtonProps> = (props) => {
   return (
     <button 
       className={cn('flex items-center justify-center p-2.5 cursor-pointer bg-none border-none', className)}
-      onTouchStart={handleBack}
+      onClick={handleBack}
     >
       <img src={BackArrow}/>
     </button>

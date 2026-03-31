@@ -1,23 +1,23 @@
 import { useCartStore } from '../model/cart';
 import { Box, Button, Typography } from '@/shared/ui';
 import { routerPaths, useAnimatedNavigate } from '@/shared/lib';
-import Basket from '../icon/basket.svg';
+import Basket from '../icon/basket.svg?react';
 import styles from './cart.module.css';
 import type { FC } from 'react';
 
 export const Cart: FC = () => {
   const navigate = useAnimatedNavigate();
-  const { totalPrice, totalQuantity } = useCartStore()
+  const { totalPrice, totalQuantity } = useCartStore();
 
   if (totalQuantity === 0) return null;
 
   return (
     <Box className={styles.cartContainer}>
       <Button 
-        className="h-[60px] rounded-[24px]"
-        onTouchStart={() => navigate(routerPaths.cartPage)}
-      >
-        <img src={Basket} alt="basket" />
+        className={styles.cartButton}
+        onClick={() => navigate(routerPaths.cartPage)}
+        >
+        <Basket />
         <Typography.Headline4>{`${totalPrice} ₽`}</Typography.Headline4>
       </Button>
     </Box>
