@@ -1,7 +1,4 @@
 .addToCartButton {
-  position: absolute;
-  bottom: 60px;
-  right: 8px;
   z-index: 20;
   width: auto;
   height: 40px;

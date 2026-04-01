@@ -1,5 +1,5 @@
 import { useProductDetailsStore } from '../model/product';
-import { Skeleton, Stack, Typography } from '@/shared/ui';
+import { Skeleton, SmartImage, Stack, Typography } from '@/shared/ui';
 import type { FC } from 'react';
 
 export const ProductDetails: FC = () => {
@@ -18,14 +18,12 @@ export const ProductDetails: FC = () => {
 
   return (
     <Stack>
-      <Stack className="relative w-full aspect-square rounded-t-2xl overflow-hidden bg-gray-100">
-        <img
-          src={data?.imageUrl}
-          alt={data?.name}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      </Stack>
+      <SmartImage
+        src={data?.imageUrl}
+        alt={data?.name}
+        className="relative w-full aspect-square rounded-t-2xl overflow-hidden bg-gray-100"
+        imgClassName="object-cover"
+      />
       <Stack spacing="md" className="pt-8 pr-4 pb-4 pl-4">
         <Typography.Headline3>{data?.name}</Typography.Headline3>
         <Typography.Body1>{data?.description}</Typography.Body1>
