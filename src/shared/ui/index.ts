@@ -4,6 +4,7 @@ export { Button } from './button/button';
 export { Skeleton } from './skeleton/skeleton';
 export { BackButton } from './back-button/back-button'
 export { Chip } from './chip/chip';
+export { SmartImage } from './smart-image/smart-image';
 
 import { Body1 } from './typography/body1';
 import { Headline2 } from './typography/headline2';

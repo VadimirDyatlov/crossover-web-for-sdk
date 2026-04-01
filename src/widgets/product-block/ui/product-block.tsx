@@ -9,7 +9,7 @@ export const ProductBlock: FC = () => {
     <ProductList
       renderCard={(product: types.Product) => (
         <ProductCard key={product.id} product={product}>
-          <AddToCart product={product} />
+          <AddToCart product={product} className="absolute bottom-2 right-2" />
         </ProductCard>
       )}
     />

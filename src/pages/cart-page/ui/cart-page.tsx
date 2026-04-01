@@ -51,14 +51,11 @@ export const CartPage: FC = () => {
       <Stack className="gap-0.5 p-0 m-[0_16px]">
         {productList.map(({ product }) => (
           <CartProductCard key={product.id} product={product}>
-            <AddToCart
-              product={product}
-              className="!static"
-            />
+            <AddToCart product={product} />
           </CartProductCard>
         ))}
       </Stack>
-
+      
       <AddOrderComment />
 
       <PayButton />
