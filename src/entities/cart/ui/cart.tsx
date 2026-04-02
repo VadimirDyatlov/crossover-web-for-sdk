@@ -13,11 +13,13 @@ export const Cart: FC = () => {
 
   return (
     <Box className={styles.cartContainer}>
+      {/* TODO: Button это фича */}
       <Button 
         className={styles.cartButton}
         onClick={() => navigate(routerPaths.cartPage)}
         >
-        <Basket />
+        {/* TODO: Это сущность */}
+        <Basket /> 
         <Typography.Headline4>{`${totalPrice} ₽`}</Typography.Headline4>
       </Button>
     </Box>

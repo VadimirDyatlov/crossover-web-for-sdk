@@ -14,6 +14,7 @@ interface ProductListProps {
 export const ProductList: FC<ProductListProps> = (props) => {
   const { renderCard } = props;
   const { data } = useProductListStore();
+  // TODO: scrollRef это фича иди shared lib
   const scrollRef = useProductsScroll();
   useProductsByCategory();
 
@@ -23,7 +24,7 @@ export const ProductList: FC<ProductListProps> = (props) => {
       className={`
         ml-4 mr-4 grid grid-cols-2 gap-1 
         flex-wrap z-10 overflow-y-auto 
-        [&::-webkit-scrollbar]:hidden
+        pb-[120px]
       `}
     >
       {data.map((product) => renderCard(product))}

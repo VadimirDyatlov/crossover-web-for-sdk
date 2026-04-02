@@ -9,6 +9,7 @@ export const PayButton: FC = () => {
   return (
     <Box className={styles.payButtonContainer}>
       <Button className={styles.payButton}>
+        {/* TODO: PriceInfo это сущность */}
         <Typography.Headline4>{`К оплате ${totalPrice} ₽`}</Typography.Headline4>
       </Button>
     </Box>

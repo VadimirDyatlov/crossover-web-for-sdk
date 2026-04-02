@@ -15,7 +15,7 @@ export const CatalogPage: FC = () => {
   const { visibleModalName } = useModal();
 
   return (
-    <Box flexDirection="column" className="h-[100vh]">
+    <Box flexDirection="column" className="h-[100svh]">
       <CatalogBar/>
       <ProductBlock />
       {/* TODO: CartButton это widgets или features. */}

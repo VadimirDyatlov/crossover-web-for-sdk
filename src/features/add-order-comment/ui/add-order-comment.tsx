@@ -18,7 +18,7 @@ export const AddOrderComment: FC<AddOrderCommentProps> = ({ className }) => {
       className={cn(
         'rounded-[4px_16px_16px_16px]',
         'py-[18px] px-[16px]',
-        'm-[24px]',
+        'm-[24px] mb-[140px]',
         'border border-[rgb(180,180,180)]',
         'bg-white focus-within:border-black transition-colors',
         className,
