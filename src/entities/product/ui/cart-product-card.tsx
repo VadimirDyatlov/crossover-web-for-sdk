@@ -26,7 +26,8 @@ export const CartProductCard: FC<CartProductCardProps> = (props) => {
         src={product.imageUrl}
         alt={product.name}
         className={styles.imageContainer}
-        placeholderClassName={styles.placeholderClassName}
+        imgClassName={styles.image}
+        placeholderClassName={styles.placeholder}
       />
       <Stack className="relative w-[100%]">
         <Stack className="mt-[4px]">
