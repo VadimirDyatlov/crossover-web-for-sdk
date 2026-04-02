@@ -20,12 +20,9 @@
   height: 80px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #f9fafb;
   flex-shrink: 0;
 }
 
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.placeholderClassName {
+  background-color: #e9e9e9;
 }

@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@/shared/ui";
+import { SmartImage, Stack, Typography } from "@/shared/ui";
 import styles from './cart-product-card.module.css';
 import type { types } from "@/shared/api";
 import type { FC, ReactNode } from "react";
@@ -22,13 +22,12 @@ export const CartProductCard: FC<CartProductCardProps> = (props) => {
       spacing="md"
       className={styles.cardContainer}
     >
-      <div className={styles.imageContainer}>
-        <img
-          src={product.imageUrl}
-          alt={product.name}
-          className={styles.image}
-        />
-      </div>
+      <SmartImage
+        src={product.imageUrl}
+        alt={product.name}
+        className={styles.imageContainer}
+        placeholderClassName={styles.placeholderClassName}
+      />
       <Stack className="relative w-[100%]">
         <Stack className="mt-[4px]">
           <Typography.Body2Small>{name}</Typography.Body2Small>

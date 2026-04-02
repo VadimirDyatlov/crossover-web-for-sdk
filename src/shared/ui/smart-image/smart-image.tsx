@@ -9,12 +9,13 @@ interface SmartImageProps {
   alt?: string;
   className?: string;     
   imgClassName?: string; 
+  placeholderClassName?: string;
 }
 
 const imageCache = new Set<string>();
 
 export const SmartImage: FC<SmartImageProps> = (props) => {
-  const { src, alt, className, imgClassName } = props;
+  const { src, alt, className, imgClassName, placeholderClassName } = props;
 
   const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>(() => {
     if (!src) return 'error';
@@ -57,12 +58,22 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
       )}
     >
       {status === 'loading' && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+        <div
+          className={cn(
+            'absolute inset-0 flex items-center justify-center bg-gray-100 z-10',
+            placeholderClassName,
+          )}
+        >
           <PlaceholderSvg className="w-1/2 h-1/2  opacity-30" />
         </div>
       )}
       {status === 'error' && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+        <div
+          className={cn(
+            'absolute inset-0 flex items-center justify-center bg-gray-100 z-10',
+            placeholderClassName,
+          )}
+        >
           <ErrorSvg className="w-1/2 h-1/2 opacity-30" />
         </div>
       )}
@@ -70,9 +81,9 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
         src={src}
         alt={alt}
         className={cn(
-          "w-full h-full transition-all duration-500",
+          'w-full h-full transition-all duration-500',
           imgClassName,
-          status === 'loaded' ? "opacity-100" : "opacity-0"
+          status === 'loaded' ? 'opacity-100' : 'opacity-0',
         )}
       />
     </div>

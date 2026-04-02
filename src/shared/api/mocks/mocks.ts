@@ -182,56 +182,64 @@ export const mockProducts3: Product[] = [
     name: 'Чизкейк Нью-Йорк 180г',
     price: 390,
     imageUrl:
-      'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/pn/food-cake-chocolate-slni.jpeg?auto=compress&fit=resize&h=335&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440013',
     name: 'Морковный торт 150г',
     price: 370,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/iw/food-produce-baking-dessert.jpeg?auto=compress&fit=resize&h=667&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440014',
     name: 'Брауни 120г',
     price: 320,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/nf/food-strawberries-cake.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440015',
     name: 'Тирамису 160г',
     price: 420,
     imageUrl:
-      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440016',
     name: 'Эклер ванильный 90г',
     price: 280,
     imageUrl:
-      'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ww/food-strawberries-ice-cream.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440017',
     name: 'Маффин шоколадный 110г',
     price: 250,
     imageUrl:
-      'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/wi/berry-sweet-food-produce.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440014-2',
     name: 'Картошка 130г',
     price: 120,
     imageUrl:
-      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      'https://avatars.mds.yandex.net/get-entity_search/4789399/1254336384/S600xU_2x',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440015-2',
     name: 'Наполеон 150г',
     price: 220,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/nz/pirozhnoe-shokoladnoe-orehi.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img2.fonwall.ru',
   },
 ];
 
@@ -242,58 +250,64 @@ export const mockProducts4: Product[] = [
     name: 'Круассан с ветчиной и сыром 200г',
     price: 350,
     imageUrl:
-      'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/uv/cold-wheat-grain-restaurant.jpeg?auto=compress&fit=resize&h=375&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440019',
     name: 'Сэндвич с курицей 250г',
     price: 380,
     imageUrl:
-      'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/cb/sandwich-salad-fast-food-food.jpeg?auto=compress&fit=resize&h=324&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440020',
     name: 'Овсяная каша с ягодами 300г',
     price: 290,
     imageUrl:
-      'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/er/fruit-berry-sweet-bowl.jpeg?auto=compress&fit=resize&h=333&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440021',
     name: 'Сырники со сметаной 220г',
     price: 310,
     imageUrl:
-      'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/rj/ete-cheesecakes-chay.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440022',
     name: 'Яичница с беконом 180г',
     price: 340,
     imageUrl:
-      'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ax/anime-food-delicious-sausages-egg.jpeg?auto=compress&fit=resize&h=352&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440023',
     name: 'Блинчики с творогом 250г',
     price: 300,
     imageUrl:
-      'https://images.unsplash.com/photo-1575853121743-60c24f0a7502?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1575853121743-60c24f0a7502?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/wr/salmon-caviar-wallpaper-pancakes-food.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440024',
-
     name: 'Пицца Маргарита 35см',
     price: 590,
     imageUrl:
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ah/food-tomatoes-pizza-pineapples.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img1.fonwall.ru',
   },
   {
     id: '660e8400-e29b-41d4-a716-446655440025',
-
     name: 'Бургер Чизбургер 500гр',
     price: 420,
     imageUrl:
-      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/fk/hamburger-vegetables-buns.jpeg?auto=compress&fit=resize&h=401&w=500&display=thumb&domain=img3.fonwall.ru',
   },
 ];
 
@@ -490,7 +504,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Чизкейк Нью-Йорк 180г',
     price: 390,
     imageUrl:
-      'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/pn/food-cake-chocolate-slni.jpeg?auto=compress&fit=resize&h=335&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Классический нью-йоркский чизкейк',
     specifications:
       'В 100г продукта:\n Ккал: 321\n Белки: 5.5г\n Жиры: 22г\n Углеводы: 26г',
@@ -500,7 +515,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Морковный торт 150г',
     price: 370,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/iw/food-produce-baking-dessert.jpeg?auto=compress&fit=resize&h=667&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Нежный морковный торт с крем-чизом',
     specifications:
       'В 100г продукта:\n Ккал: 298\n Белки: 4.2г\n Жиры: 15г\n Углеводы: 38г',
@@ -510,7 +526,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Брауни 120г',
     price: 320,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/nf/food-strawberries-cake.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Шоколадное брауни с орехами',
     specifications:
       'В 100г продукта:\n Ккал: 450\n Белки: 6г\n Жиры: 25г\n Углеводы: 52г',
@@ -520,7 +537,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Тирамису 160г',
     price: 420,
     imageUrl:
-      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Итальянский десерт с маскарпоне и кофе',
     specifications:
       'В 100г продукта:\n Ккал: 380\n Белки: 6.5г\n Жиры: 22г\n Углеводы: 40г',
@@ -530,7 +548,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Эклер ванильный 90г',
     price: 280,
     imageUrl:
-      'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ww/food-strawberries-ice-cream.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Заварной эклер с ванильным кремом',
     specifications:
       'В 100г продукта:\n Ккал: 290\n Белки: 5г\n Жиры: 12г\n Углеводы: 42г',
@@ -540,7 +559,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Маффин шоколадный 110г',
     price: 250,
     imageUrl:
-      'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/wi/berry-sweet-food-produce.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Шоколадный маффин с жидкой начинкой',
     specifications:
       'В 100г продукта:\n Ккал: 410\n Белки: 6.5г\n Жиры: 20г\n Углеводы: 52г',
@@ -550,7 +570,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Картошка 130г',
     price: 120,
     imageUrl:
-      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
+      'https://avatars.mds.yandex.net/get-entity_search/4789399/1254336384/S600xU_2x',
     description: 'Пирожное "Картошка" из песочной крошки',
     specifications:
       'В 100г продукта:\n Ккал: 380\n Белки: 4.5г\n Жиры: 18г\n Углеводы: 52г',
@@ -560,7 +581,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Наполеон 150г',
     price: 220,
     imageUrl:
-      'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/nz/pirozhnoe-shokoladnoe-orehi.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img2.fonwall.ru',
     description: 'Классический торт Наполеон',
     specifications:
       'В 100г продукта:\n Ккал: 420\n Белки: 5.5г\n Жиры: 22г\n Углеводы: 52г',
@@ -572,7 +594,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Круассан с ветчиной и сыром 200г',
     price: 350,
     imageUrl:
-      'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/uv/cold-wheat-grain-restaurant.jpeg?auto=compress&fit=resize&h=375&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Свежий круассан с ветчиной и сыром',
     specifications:
       'В 100г продукта:\n Ккал: 320\n Белки: 12г\n Жиры: 18г\n Углеводы: 30г',
@@ -582,7 +605,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Сэндвич с курицей 250г',
     price: 380,
     imageUrl:
-      'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/cb/sandwich-salad-fast-food-food.jpeg?auto=compress&fit=resize&h=324&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Сэндвич с курицей и свежими овощами',
     specifications:
       'В 100г продукта:\n Ккал: 180\n Белки: 14г\n Жиры: 8г\n Углеводы: 15г',
@@ -592,7 +616,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Овсяная каша с ягодами 300г',
     price: 290,
     imageUrl:
-      'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/er/fruit-berry-sweet-bowl.jpeg?auto=compress&fit=resize&h=333&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Овсяная каша с сезонными ягодами',
     specifications:
       'В 100г продукта:\n Ккал: 110\n Белки: 3.5г\n Жиры: 2.5г\n Углеводы: 20г',
@@ -602,7 +627,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Сырники со сметаной 220г',
     price: 310,
     imageUrl:
-      'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/rj/ete-cheesecakes-chay.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Домашние сырники со сметаной',
     specifications:
       'В 100г продукта:\n Ккал: 210\n Белки: 12г\n Жиры: 10г\n Углеводы: 20г',
@@ -612,7 +638,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Яичница с беконом 180г',
     price: 340,
     imageUrl:
-      'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ax/anime-food-delicious-sausages-egg.jpeg?auto=compress&fit=resize&h=352&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Яичница из двух яиц с хрустящим беконом',
     specifications:
       'В 100г продукта:\n Ккал: 220\n Белки: 14г\n Жиры: 18г\n Углеводы: 2г',
@@ -622,7 +649,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Блинчики с творогом 250г',
     price: 300,
     imageUrl:
-      'https://images.unsplash.com/photo-1575853121743-60c24f0a7502?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1575853121743-60c24f0a7502?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/wr/salmon-caviar-wallpaper-pancakes-food.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Блинчики с нежным творогом',
     specifications:
       'В 100г продукта:\n Ккал: 190\n Белки: 9г\n Жиры: 6г\n Углеводы: 28г',
@@ -632,7 +660,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Пицца Маргарита 35см',
     price: 590,
     imageUrl:
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/ah/food-tomatoes-pizza-pineapples.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img1.fonwall.ru',
     description: 'Классическая пицца Маргарита с томатным соусом и моцареллой',
     specifications:
       'В 100г продукта:\n Ккал: 260\n Белки: 11г\n Жиры: 9г\n Углеводы: 35г',
@@ -642,7 +671,8 @@ export const mockProductDetails: ProductDetail[] = [
     name: 'Бургер Чизбургер 500гр',
     price: 420,
     imageUrl:
-      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&auto=format',
+      // 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&auto=format',
+      'https://image.fonwall.ru/o/fk/hamburger-vegetables-buns.jpeg?auto=compress&fit=resize&h=401&w=500&display=thumb&domain=img3.fonwall.ru',
     description: 'Чизбургер с говяжьей котлетой и сыром чеддер',
     specifications:
       'В 100г продукта:\n Ккал: 250\n Белки: 13г\n Жиры: 14г\n Углеводы: 20г',
