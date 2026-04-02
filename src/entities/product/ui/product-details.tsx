@@ -1,5 +1,6 @@
 import { useProductDetailsStore } from '../model/product';
 import { Skeleton, SmartImage, Stack, Typography } from '@/shared/ui';
+import styles from './product-details.module.css';
 import type { FC } from 'react';
 
 export const ProductDetails: FC = () => {
@@ -7,7 +8,7 @@ export const ProductDetails: FC = () => {
 
   if (isLoading) {
     return (
-      <Stack spacing='xs'>
+      <Stack spacing='xs'  className={styles.container}>
         <Skeleton height="350px" width='350px' />
         <Skeleton height="50px" width='350px' />
         <Skeleton height="50px" width='350px' />
@@ -17,7 +18,7 @@ export const ProductDetails: FC = () => {
   }
 
   return (
-    <Stack>
+    <Stack className={styles.container}>
       <SmartImage
         src={data?.imageUrl}
         alt={data?.name}

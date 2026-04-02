@@ -27,9 +27,9 @@ export const CartPage: FC = () => {
       handleBack();
     }
   }, [productList])
-
+//  border border-red-500
   return (
-    <Box flexDirection="column" className="overflow-y-auto border border-red-500">
+    <Box flexDirection="column" className="overflow-y-auto">
       {/* widgets/cart-header*/}
       <Stack
         direction="horizontal"

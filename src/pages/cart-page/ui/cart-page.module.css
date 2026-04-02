@@ -5,4 +5,5 @@
 .cartList {
   /* padding-top: calc(60px + env(safe-area-inset-top)); */
   margin-top: calc(60px + env(safe-area-inset-top));
+  /* overflow: hidden; */
 }
