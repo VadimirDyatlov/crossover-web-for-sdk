@@ -1,4 +1,4 @@
-import type { Product, ProductDetail } from '../types';
+import type { Order, OrderDetailResponse, Product, ProductDetail } from '../types';
 
 export const mockMerchant = {
   pointId: '12341234-1234-1234-1234-123412341234',
@@ -678,3 +678,402 @@ export const mockProductDetails: ProductDetail[] = [
       'В 100г продукта:\n Ккал: 250\n Белки: 13г\n Жиры: 14г\n Углеводы: 20г',
   },
 ];
+
+
+// export const mockOrderList: Order[] = import { Order } from '@/entities/order/model/types';
+
+export const mockOrderList: Order[] = [
+  {
+    orderId: 'ORD-100',
+    orderTime: '2024-04-05T12:00:00Z',
+    merchantInfo: {
+      pointId: 'PNT-01',
+      name: 'Coffee House Center',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=0c2bbb0ca950723656535c1d526cc9fb-5084300-images-thumbs&n=13',
+      address: 'ул. Ленина, д. 10, Москва',
+    },
+    verificationCode: '7742',
+    status: 'Готов к выдаче',
+    totalItems: 4,
+    totalAmount: 1340,
+    discription: 'Будет готов к 10:00',
+    localSessionId: 'sess-100',
+  },
+  {
+    orderId: 'ORD-099',
+    orderTime: '2024-04-04T18:45:00Z',
+    merchantInfo: {
+      pointId: 'PNT-02',
+      name: 'Express Coffee',
+      logoUrl: 'https://designs.bobcares.com/wp-content/uploads/2018/01/Coffee-Express_new.png',
+      address: 'пр-т Мира, д. 45, Москва',
+    },
+    verificationCode: '1205',
+    status: 'Создан',
+    totalItems: 1,
+    totalAmount: 420,
+    discription: 'Будет готов к 21:00',
+    localSessionId: 'sess-099',
+  },
+  {
+    orderId: 'ORD-098',
+    orderTime: '2024-03-25T09:15:00Z',
+    merchantInfo: {
+      pointId: 'PNT-01',
+      name: 'Coffee House Center',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=0c2bbb0ca950723656535c1d526cc9fb-5084300-images-thumbs&n=13',
+      address: 'ул. Ленина, д. 10, Москва',
+    },
+    verificationCode: '9930',
+    status: 'Выполнен',
+    totalItems: 2,
+    totalAmount: 610,
+    discription: 'Не будет готов к 21:00',
+    localSessionId: 'sess-098',
+  },
+  {
+    orderId: 'ORD-097',
+    orderTime: '2024-03-24T14:30:00Z',
+    merchantInfo: {
+      pointId: 'PNT-01',
+      name: 'Coffee House Center',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=0c2bbb0ca950723656535c1d526cc9fb-5084300-images-thumbs&n=13',
+      address: 'ул. Ленина, д. 10, Москва',
+    },
+    verificationCode: '4821',
+    status: 'В работе',
+    totalItems: 3,
+    totalAmount: 1120,
+    discription: 'Будет готов к 16:20',
+    localSessionId: 'sess-097',
+  },
+  {
+    orderId: 'ORD-096',
+    orderTime: '2024-03-23T11:00:00Z',
+    merchantInfo: {
+      pointId: 'PNT-03',
+      name: 'SberCoffee Office',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=c65e14a5110763f4f4245a4ce33b4a7212a04447-5016167-images-thumbs&n=13',
+      address: 'Кутузовский пр-т, д. 32',
+    },
+    verificationCode: '5561',
+    status: 'Выполнен',
+    totalItems: 2,
+    totalAmount: 540,
+    discription: 'Будет отменен в 21:00',
+    localSessionId: 'sess-096',
+  },
+  {
+    orderId: 'ORD-095',
+    orderTime: '2024-03-22T16:20:00Z',
+    merchantInfo: {
+      pointId: 'PNT-02',
+      name: 'Express Coffee',
+      logoUrl: 'https://designs.bobcares.com/wp-content/uploads/2018/01/Coffee-Express_new.png',
+      address: 'пр-т Мира, д. 45, Москва',
+    },
+    verificationCode: '3002',
+    status: 'Отменен',
+    totalItems: 2,
+    totalAmount: 640,
+    discription: 'Будет готов к 09:00',
+    localSessionId: 'sess-095',
+  },
+  {
+    orderId: 'ORD-094',
+    orderTime: '2024-03-21T08:30:00Z',
+    merchantInfo: {
+      pointId: 'PNT-01',
+      name: 'Coffee House Center',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=0c2bbb0ca950723656535c1d526cc9fb-5084300-images-thumbs&n=13',
+      address: 'ул. Ленина, д. 10, Москва',
+    },
+    verificationCode: '1188',
+    status: 'Отказ получателя',
+    totalItems: 2,
+    totalAmount: 540,
+    discription: 'Будет готов?',
+    localSessionId: 'sess-094',
+  },
+  {
+    orderId: 'ORD-093',
+    orderTime: '2024-03-20T20:10:00Z',
+    merchantInfo: {
+      pointId: 'PNT-03',
+      name: 'SberCoffee Office',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=c65e14a5110763f4f4245a4ce33b4a7212a04447-5016167-images-thumbs&n=13',
+      address: 'Кутузовский пр-т, д. 32',
+    },
+    verificationCode: '0043',
+    status: 'Создан',
+    totalItems: 1,
+    totalAmount: 270,
+    discription: 'Будет?',
+    localSessionId: 'sess-093',
+  },
+  {
+    orderId: 'ORD-092',
+    orderTime: '2024-03-19T13:45:00Z',
+    merchantInfo: {
+      pointId: 'PNT-02',
+      name: 'Express Coffee',
+      logoUrl: 'https://designs.bobcares.com/wp-content/uploads/2018/01/Coffee-Express_new.png',
+      address: 'пр-т Мира, д. 45, Москва',
+    },
+    verificationCode: '8229',
+    status: 'Отменен',
+    totalItems: 3,
+    totalAmount: 1250,
+    discription: 'Готов?',
+    localSessionId: 'sess-092',
+  },
+  {
+    orderId: 'ORD-091',
+    orderTime: '2024-03-18T10:00:00Z',
+    merchantInfo: {
+      pointId: 'PNT-01',
+      name: 'Coffee House Center',
+      logoUrl: 'https://avatars.mds.yandex.net/i?id=0c2bbb0ca950723656535c1d526cc9fb-5084300-images-thumbs&n=13',
+      address: 'ул. Ленина, д. 10, Москва',
+    },
+    verificationCode: '4040',
+    status: 'Выполнен',
+    totalItems: 2,
+    totalAmount: 800,
+    discription: 'Будет готов к 11:11?',
+    localSessionId: 'sess-091',
+  }
+];
+
+export const mockOrderDetails: Record<string, OrderDetailResponse> = {
+  'ORD-100': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440002',
+          name: 'Фраппе 400мл',
+          price: 250,
+          imageUrl: 'https://image.fonwall.ru/o/nw/snow-winter-flower-petal.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440003',
+          name: 'Колд Брю 350мл',
+          price: 290,
+          imageUrl: 'https://image.fonwall.ru/o/cd/cat-kitty-cute.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440014',
+          name: 'Брауни 120г',
+          price: 320,
+          imageUrl: 'https://image.fonwall.ru/o/nf/food-strawberries-cake.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440022',
+          name: 'Яичница с беконом 180г',
+          price: 340,
+          imageUrl: 'https://image.fonwall.ru/o/ax/anime-food-delicious-sausages-egg.jpeg?auto=compress&fit=resize&h=352&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-099': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440015',
+          name: 'Тирамису 160г',
+          price: 420,
+          imageUrl: 'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-098': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440007',
+          name: 'Латте 300мл',
+          price: 300,
+          imageUrl: 'https://image.fonwall.ru/o/vk/coffee-shop-coffee-tea-morning.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img1.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440021',
+          name: 'Сырники со сметаной 220г',
+          price: 310,
+          imageUrl: 'https://image.fonwall.ru/o/rj/ete-cheesecakes-chay.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-097': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440000',
+          name: 'Айс Латте 350мл',
+          price: 450,
+          imageUrl: 'https://image.fonwall.ru/o/lf/cafe-coffee-restaurant-aroma.jpeg?auto=compress&fit=resize&w=1200&h=800&display=large&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440006',
+          name: 'Капучино 300мл',
+          price: 290,
+          imageUrl: 'https://image.fonwall.ru/o/uq/coffee-morning-foam-cup.jpeg?auto=compress&fit=resize&h=325&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440019',
+          name: 'Сэндвич с курицей 250г',
+          price: 380,
+          imageUrl: 'https://image.fonwall.ru/o/cb/sandwich-salad-fast-food-food.jpeg?auto=compress&fit=resize&h=324&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-096': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440009',
+          name: 'Американо 250мл',
+          price: 250,
+          imageUrl: 'https://image.fonwall.ru/o/lf/cafe-coffee-restaurant-aroma.jpeg?auto=compress&fit=resize&w=1200&h=800&display=large&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440020',
+          name: 'Овсяная каша с ягодами 300г',
+          price: 290,
+          imageUrl: 'https://image.fonwall.ru/o/er/fruit-berry-sweet-bowl.jpeg?auto=compress&fit=resize&h=333&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-095': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440005',
+          name: 'Айс Мокко 380мл',
+          price: 360,
+          imageUrl: 'https://image.fonwall.ru/o/rd/snow-winter-warm-sweet.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img1.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440016',
+          name: 'Эклер ванильный 90г',
+          price: 280,
+          imageUrl: 'https://image.fonwall.ru/o/ww/food-strawberries-ice-cream.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-094': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440008',
+          name: 'Раф 300мл',
+          price: 340,
+          imageUrl: 'https://image.fonwall.ru/o/ze/cafe-coffee-tea-morning-oxgc.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440010',
+          name: 'Эспрессо 60мл',
+          price: 200,
+          imageUrl: 'https://image.fonwall.ru/o/gn/coffee-dish-meal-food-ovbt.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-093': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440004',
+          name: 'Айс Американо 300мл',
+          price: 270,
+          imageUrl: 'https://image.fonwall.ru/o/cb/liquid-cafe-coffee-dark-rjfd.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-092': {
+    products: [
+      {
+        quantity: 2,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440000-2',
+          name: 'Айс Латте 550мл',
+          price: 650,
+          imageUrl: 'https://image.fonwall.ru/o/og/drink-a-cup-deer.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440015',
+          name: 'Тирамису 160г',
+          price: 420,
+          imageUrl: 'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+  'ORD-091': {
+    products: [
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440001-2',
+          name: 'Айс Капучино 550мл',
+          price: 470,
+          imageUrl: 'https://image.fonwall.ru/o/yg/drinks-glass-ice-cream-wallpaper-hot-cocoa.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440014',
+          name: 'Брауни 120г',
+          price: 320,
+          imageUrl: 'https://image.fonwall.ru/o/nf/food-strawberries-cake.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+    ],
+  },
+};
+

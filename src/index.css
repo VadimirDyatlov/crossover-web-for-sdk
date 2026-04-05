@@ -200,6 +200,9 @@ body {
   display: flex;
   flex-grow: 1;
   justify-content: center;
+
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
 }
 
 .no-scroll {

@@ -16,6 +16,7 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
   const { fetchProductDetails } = useProductDetailsStore();
   const { showModal } = useModal();
 
+  // TODO: Открытие модалки это фича
   const handleClick = () => {
     fetchProductDetails(product.id);
     showModal(MODAL.PRODUCT_DETAILS);

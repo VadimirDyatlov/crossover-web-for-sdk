@@ -12,6 +12,7 @@ import { Headline3 } from './typography/headline3';
 import { Headline4 } from './typography/headline4';
 import { Headline5 } from './typography/headline5';
 import { Body2Small } from './typography/body2-small';
+import { Body5Secondary } from './typography/body5-secondary';
 
 export const Typography = {
   Body1,
@@ -20,4 +21,5 @@ export const Typography = {
   Headline4,
   Headline5,
   Body2Small,
+  Body5Secondary,
 };

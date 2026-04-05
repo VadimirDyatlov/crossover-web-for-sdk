@@ -12,7 +12,7 @@ interface Store {
   setScrollPosition: (key: string, position: number) => void;
   fetchProductList: (id: string) => Promise<void>;
 }
-
+// TODO: Вынести в сущность
 export const useProductListStore = create<Store>((set, get) => ({
   data: [],
   isLoading: false,
@@ -33,7 +33,7 @@ export const useProductListStore = create<Store>((set, get) => ({
       set({ isLoading: true });
 
       const response = await api.getProductList(id);
-      const data: types.ProductsResponse = await response.json();
+      const data: types.ProductResponse = await response.json();
 
       set((state) => ({
         data: data.products,

@@ -1,6 +1,8 @@
 import { http, HttpResponse } from 'msw';
 import {
   mockMerchant,
+  mockOrderDetails,
+  mockOrderList,
   mockProductDetails,
   mockProducts1,
   mockProducts2,
@@ -53,3 +55,22 @@ export const productDetailsHandlers = http.get(
     return HttpResponse.json(product);
   },
 );
+
+export const orderListHandler = http.get('/crossover/v1/order/list', () => {
+  return HttpResponse.json({
+    orders: mockOrderList,
+    pagination,
+  });
+});
+
+export const orderDetailsHandler = http.get('/crossover/v1/order/:id', ({ params }) => {
+  const orderId = params.id;
+  const order = mockOrderDetails[orderId as string]
+
+  if (!order) {
+    return HttpResponse.json({ error: 'Товар не найден' }, { status: 404 });
+  }
+
+  return HttpResponse.json(order);
+});
+

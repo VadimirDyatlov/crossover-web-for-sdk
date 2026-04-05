@@ -8,6 +8,7 @@ interface BackButtonProps {
   className?: string;
 }
 
+// TODO: Это shared/ui или это фича?
 export const BackButton: FC<BackButtonProps> = (props) => {
   const { fallbackUrl, className } = props;
   const handleBack = useBackButton(fallbackUrl)

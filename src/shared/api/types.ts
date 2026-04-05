@@ -1,3 +1,10 @@
+export interface Pagination {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  itemsPerPage: number;
+}
+
 export interface InfoWidget {
   description: string;
   picture: string;
@@ -38,14 +45,7 @@ export interface Product {
   imageUrl: string;
 }
 
-export interface Pagination {
-  currentPage: number;
-  totalPages: number;
-  totalItems: number;
-  itemsPerPage: number;
-}
-
-export interface ProductsResponse {
+export interface ProductResponse {
   products: Product[];
   pagination: Pagination;
 }
@@ -57,4 +57,35 @@ export interface ProductDetail {
   imageUrl: string;
   description: string;
   specifications: string;
+}
+
+export interface Order {
+  orderId: string;
+  orderTime: string;
+  merchantInfo: {
+    pointId: string;
+    name: string;
+    logoUrl: string;
+    address: string;
+  },
+  verificationCode: string;
+  status: string;
+  totalItems: number;
+  totalAmount: number;
+  discription: string;
+  localSessionId: string;
+}
+
+export interface OrderResponse {
+  orders: Order[];
+  pagination: Pagination;
+}
+
+export interface OrderDetail {
+  quantity: number;
+  product: Product;
+}
+
+export interface OrderDetailResponse {
+  products: OrderDetail[];
 }
