@@ -849,7 +849,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-100': {
     products: [
       {
-        quantity: 1,
+        quantity: 3,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440002',
           name: 'Фраппе 400мл',
@@ -858,7 +858,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 11,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440003',
           name: 'Колд Брю 350мл',
@@ -876,7 +876,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 12,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440022',
           name: 'Яичница с беконом 180г',
@@ -885,7 +885,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 51,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440009',
           name: 'Американо 250мл',
@@ -903,7 +903,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 18,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440015',
           name: 'Тирамису 160г',
@@ -916,7 +916,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-099': {
     products: [
       {
-        quantity: 1,
+        quantity: 11,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440015',
           name: 'Тирамису 160г',
@@ -929,7 +929,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-098': {
     products: [
       {
-        quantity: 1,
+        quantity: 5,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440007',
           name: 'Латте 300мл',
@@ -938,7 +938,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 7,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440021',
           name: 'Сырники со сметаной 220г',
@@ -951,7 +951,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-097': {
     products: [
       {
-        quantity: 1,
+        quantity: 8,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440000',
           name: 'Айс Латте 350мл',
@@ -969,7 +969,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 9,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440019',
           name: 'Сэндвич с курицей 250г',
@@ -982,7 +982,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-096': {
     products: [
       {
-        quantity: 1,
+        quantity: 4,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440009',
           name: 'Американо 250мл',
@@ -991,7 +991,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 31,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440020',
           name: 'Овсяная каша с ягодами 300г',
@@ -1004,7 +1004,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-095': {
     products: [
       {
-        quantity: 1,
+        quantity: 645,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440005',
           name: 'Айс Мокко 380мл',
@@ -1013,7 +1013,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 3,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440016',
           name: 'Эклер ванильный 90г',
@@ -1026,7 +1026,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-094': {
     products: [
       {
-        quantity: 1,
+        quantity: 111,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440008',
           name: 'Раф 300мл',
@@ -1035,7 +1035,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 33,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440010',
           name: 'Эспрессо 60мл',
@@ -1048,7 +1048,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-093': {
     products: [
       {
-        quantity: 1,
+        quantity: 23,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440004',
           name: 'Айс Американо 300мл',
@@ -1070,7 +1070,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 3,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440015',
           name: 'Тирамису 160г',
@@ -1083,7 +1083,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
   'ORD-091': {
     products: [
       {
-        quantity: 1,
+        quantity: 6,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440001-2',
           name: 'Айс Капучино 550мл',
@@ -1092,7 +1092,7 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
         },
       },
       {
-        quantity: 1,
+        quantity: 8,
         product: {
           id: '660e8400-e29b-41d4-a716-446655440014',
           name: 'Брауни 120г',
