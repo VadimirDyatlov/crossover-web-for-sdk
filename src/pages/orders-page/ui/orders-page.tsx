@@ -19,6 +19,11 @@ export const OrdersPage: FC = () => {
             </Typography.Body1>
           )}
         </SupportBlock>
+        {/* <div className="h-[80px] shrink-0" />  */}
+        <div
+          style={{ height: 'calc(80px + env(safe-area-inset-bottom))' }}
+          className="shrink-0 w-full"
+        />
       </OrdersList>
     </Box>
   );
