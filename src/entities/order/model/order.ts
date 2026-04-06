@@ -9,10 +9,12 @@ interface Store {
     error: string | null;
   };
   orderDetails: {
-    data: types.OrderDetailResponse | null;
+    data: types.OrderDetail[];
     isLoading: boolean;
     error: string | null;
+    selectedOrder: types.Order | null;
   },
+  setSelectedOrder: (order: types.Order) => void;
   fetchOrderList: () => Promise<void>;
   fetchOrderDetails: (id: string) => Promise<void>;
 }
@@ -24,10 +26,18 @@ export const useOrderStore = create<Store>((set) => ({
     error: null,
   },
   orderDetails: {
-    data: null,
+    data: [],
     isLoading: false,
     error: null,
+    selectedOrder: null,
   },
+
+  setSelectedOrder: (order: types.Order | null) => set((state) => ({
+    orderDetails: {
+      ...state.orderDetails,
+      selectedOrder: order,
+    }
+  })),
 
   fetchOrderList: async () => {
     set((state) => ({
@@ -55,11 +65,11 @@ export const useOrderStore = create<Store>((set) => ({
     }));
     
     try {
-      const response = await api.getProductDetails(id);
+      const response = await api.getOrderDetails(id);
       const data: types.OrderDetailResponse = await response.json();
 
       set((state) => ({
-        orderDetails: { ...state.orderDetails, data: data, isLoading: false },
+        orderDetails: { ...state.orderDetails, data: data.products, isLoading: false },
       }));
     } catch (error) {
       set((state) => ({
@@ -83,13 +93,13 @@ export const useOrderListLazy = () => {
   return { data, isLoading };
 };
 
-export const useOrderDetailsLazy = (id: string) => {
-  const {
-    orderDetails: { data, isLoading },
-    fetchOrderDetails,
-  } = useOrderStore();
+// export const useOrderDetailsLazy = (id: string) => {
+//   const {
+//     orderDetails: { data, isLoading },
+//     fetchOrderDetails,
+//   } = useOrderStore();
   
-  useEffect(() => {
-    if (!data && !isLoading) fetchOrderDetails(id);
-  }, [data, isLoading, fetchOrderDetails]);
-};
+//   useEffect(() => {
+//     if (!data && !isLoading) fetchOrderDetails(id);
+//   }, [data, isLoading, fetchOrderDetails]);
+// };

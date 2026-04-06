@@ -7,7 +7,7 @@ interface Store {
   closeModal: () => void;
 }
 
-export const useModal = create<Store>((set) => ({
+export const useModalStore = create<Store>((set) => ({
   visibleModalName: null,
   
   showModal: (modalName) => set({ visibleModalName: modalName }),

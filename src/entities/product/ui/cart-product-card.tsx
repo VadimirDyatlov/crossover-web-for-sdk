@@ -10,6 +10,7 @@ interface CartProductCardProps {
 
 export const CartProductCard: FC<CartProductCardProps> = (props) => {
   const { product, children } = props;
+  // TODO: Вынести в хелпер?
   const parts = product.name.split(' ');
   const weight = parts.pop(); 
   const name = parts.join(' '); 
@@ -29,7 +30,7 @@ export const CartProductCard: FC<CartProductCardProps> = (props) => {
         imgClassName={styles.image}
         placeholderClassName={styles.placeholder}
       />
-      <Stack className="relative w-[100%]">
+      <Stack className="relative w-full">
         <Stack className="mt-[4px]">
           <Typography.Body2Small>{name}</Typography.Body2Small>
           <Typography.Body2Small>{weight}</Typography.Body2Small>

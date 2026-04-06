@@ -30,3 +30,4 @@ export const App = () => {
 // TODO: Корзина
 // TODO: Мои заказы
 // TODO: Доработать ts,prettier,eslint config
+// TODO: Мемоизация

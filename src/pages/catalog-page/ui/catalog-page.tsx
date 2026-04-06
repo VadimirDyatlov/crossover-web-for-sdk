@@ -1,28 +1,27 @@
 import { useMerchantLazy } from '@/entities/merchant';
-import { useModal } from '@/shared/model';
+import { useModalStore } from '@/shared/model';
 import { CatalogBar } from '@/widgets/catalog-bar';
 import { ProductBlock } from '@/widgets/product-block';
-import { Modal } from '@/features/modal';
 import { ProductDetails } from '@/entities/product';
 import { Cart } from '@/entities/cart';
-import { Box } from '@/shared/ui';
+import { Box, Modal } from '@/shared/ui';
 import { MODAL } from '@/shared/lib/constants';
 import type { FC } from 'react';
 
 export const CatalogPage: FC = () => {
   useMerchantLazy();
   
-  const { visibleModalName } = useModal();
+  const { visibleModalName, closeModal } = useModalStore();
 
   return (
     <Box flexDirection="column" className="h-[100svh]">
-      <CatalogBar/>
+      <CatalogBar />
       <ProductBlock />
       {/* TODO: CartButton это widgets или features. */}
-      <Cart /> 
+      <Cart />
 
       {visibleModalName === MODAL.PRODUCT_DETAILS ? (
-        <Modal>
+        <Modal onClose={closeModal}>
           {/* TODO: ProductDetails это widgets? */}
           <ProductDetails />
         </Modal>

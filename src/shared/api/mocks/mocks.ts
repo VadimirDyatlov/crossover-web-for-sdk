@@ -884,6 +884,33 @@ export const mockOrderDetails: Record<string, OrderDetailResponse> = {
           imageUrl: 'https://image.fonwall.ru/o/ax/anime-food-delicious-sausages-egg.jpeg?auto=compress&fit=resize&h=352&w=500&display=thumb&domain=img3.fonwall.ru',
         },
       },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440009',
+          name: 'Американо 250мл',
+          price: 250,
+          imageUrl: 'https://image.fonwall.ru/o/lf/cafe-coffee-restaurant-aroma.jpeg?auto=compress&fit=resize&w=1200&h=800&display=large&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440020',
+          name: 'Овсяная каша с ягодами 300г',
+          price: 290,
+          imageUrl: 'https://image.fonwall.ru/o/er/fruit-berry-sweet-bowl.jpeg?auto=compress&fit=resize&h=333&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
+      {
+        quantity: 1,
+        product: {
+          id: '660e8400-e29b-41d4-a716-446655440015',
+          name: 'Тирамису 160г',
+          price: 420,
+          imageUrl: 'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
+        },
+      },
     ],
   },
   'ORD-099': {

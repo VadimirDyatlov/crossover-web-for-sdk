@@ -1,4 +1,5 @@
-import { OrderCard, useOrderListLazy } from "@/entities/order";
+import { OrderCard, useOrderStore } from "@/entities/order";
+import { useOpenOrder } from "@/features/open-order-details";
 import { Stack } from "@/shared/ui";
 import type { FC, ReactNode } from "react";
 
@@ -8,16 +9,20 @@ interface OrdersListProps {
 
 // TODO: Добавить isLoading и скелетон
 export const OrdersList: FC<OrdersListProps> = ({ children }) => {
-  const { data } = useOrderListLazy();
+  const { data } = useOrderStore((state) => state.orderList);
+  const handleOpen = useOpenOrder(); 
 
   return (
     <Stack
-      className="p-4 flex-1 min-h-0 overflow-y-auto pb-[env(safe-area-inset-bottom)]" 
       spacing="sm"
+      className="p-4 pb-20 flex-1 min-h-0 overflow-y-auto"
     >
       {data.map((order) => (
-        // TODO: Передавать фичу открытия модального окна в OrderCard.
-        <OrderCard key={order.orderId} order={order} />
+        <OrderCard
+          key={order.orderId}
+          order={order}
+          onClick={() => handleOpen(order)}
+        />
       ))}
       {children}
     </Stack>

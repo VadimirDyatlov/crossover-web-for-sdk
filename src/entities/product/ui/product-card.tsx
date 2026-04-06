@@ -1,5 +1,5 @@
 import { useProductDetailsStore } from '../model/product';
-import { useModal } from '@/shared/model';
+import { useModalStore } from '@/shared/model';
 import { Box, Stack, Typography, SmartImage } from '@/shared/ui';
 import { MODAL } from '@/shared/lib';
 import type { FC, ReactNode } from 'react';
@@ -14,7 +14,7 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
   const { children, product } = props;
 
   const { fetchProductDetails } = useProductDetailsStore();
-  const { showModal } = useModal();
+  const { showModal } = useModalStore();
 
   // TODO: Открытие модалки это фича
   const handleClick = () => {

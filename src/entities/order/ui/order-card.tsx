@@ -5,6 +5,7 @@ import type { types } from "@/shared/api";
 
 interface OrderCardProps {
   order: types.Order;
+  onClick: () => void;
 }
 
 // TODO: Подкрашивать status
@@ -14,7 +15,10 @@ export const OrderCard: FC<OrderCardProps> = (props) => {
     props.order;
 
   return (
-    <Stack className="gap-5 rounded-[24px] bg-[#f6f6f8] p-4 shrink-0">
+    <Stack
+      className="gap-5 rounded-[24px] bg-[#f6f6f8] p-4 shrink-0"
+      onClick={props.onClick}
+    >
       <Stack direction="horizontal" justify="between">
         <Stack direction="horizontal" spacing="xs">
           <Typography.Body5Secondary>
