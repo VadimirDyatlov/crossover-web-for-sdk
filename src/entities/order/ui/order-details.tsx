@@ -6,6 +6,7 @@ interface OrderDetailsProps {
   children?: ReactNode;
 }
 
+// TODO: Добавить кнопку повторить заказ?
 export const OrderDetails: FC<OrderDetailsProps> = (props) => {
   const { children } = props;
   const { selectedOrder } = useOrderStore((state) => state.orderDetails);
@@ -43,7 +44,7 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
       </Stack>
       <Stack
         spacing="md"
-        className="p-4 m-4 rounded-[16px] bg-[rgb(246,246,248)]"
+        className="p-4 m-4 mb-20 rounded-[16px] bg-[rgb(246,246,248)]"
       >
         <Stack direction="horizontal" justify="between">
           <Typography.Body2Small>Дата и время</Typography.Body2Small>
