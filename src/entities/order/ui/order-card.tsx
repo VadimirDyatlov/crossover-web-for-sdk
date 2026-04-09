@@ -19,8 +19,8 @@ export const OrderCard: FC<OrderCardProps> = (props) => {
       className="gap-5 rounded-[24px] bg-[#f6f6f8] p-4 shrink-0"
       onClick={props.onClick}
     >
-      <Stack direction="horizontal" justify="between">
-        <Stack direction="horizontal" spacing="xs">
+      <Stack direction="row" justify="between">
+        <Stack direction="row" spacing="xs">
           <Typography.Body5Secondary>
             {formatOrderTime(orderTime)}
           </Typography.Body5Secondary>
@@ -29,8 +29,8 @@ export const OrderCard: FC<OrderCardProps> = (props) => {
         <Typography.Body5Secondary>{orderId}</Typography.Body5Secondary>
       </Stack>
       <Stack spacing="md">
-        <Stack direction="horizontal" justify="between">
-          <Stack direction="horizontal" className="gap-3">
+        <Stack direction="row" justify="between">
+          <Stack direction="row" className="gap-3">
             <SmartImage
               src={merchantInfo.logoUrl}
               alt={merchantInfo.name}
@@ -42,7 +42,7 @@ export const OrderCard: FC<OrderCardProps> = (props) => {
               <Typography.Body2Small>{merchantInfo.address}</Typography.Body2Small>
             </Stack>
           </Stack>
-          <Typography.Headline4>{`${totalAmount} ₽`}</Typography.Headline4>
+          <Typography.Headline4>{`${totalAmount.toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
         </Stack>
         <Stack align="center" className="gap-1 p-2 rounded-[16px] bg-white">
           <Typography.Body2Small>Код подтверждения</Typography.Body2Small>

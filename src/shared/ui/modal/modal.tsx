@@ -1,5 +1,5 @@
 import { Stack } from '@/shared/ui';
-import { XIcon } from 'lucide-react'
+import { CloseIcon } from '@/shared/assets/icons';
 import { cn } from '@/shared/lib';
 import type { FC, ReactNode } from 'react';
 
@@ -25,7 +25,7 @@ export const Modal: FC<ModalProps> = (props) => {
     >
       <Stack align='end' className="w-full">
         <button onClick={onClose}>
-          <XIcon />
+          <CloseIcon />
         </button>
       </Stack>
       <Stack className="w-full">{children}</Stack>

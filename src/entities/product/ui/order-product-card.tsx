@@ -17,7 +17,7 @@ export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
   return (
     <Stack
       key={product.id}
-      direction="horizontal"
+      direction="row"
       align="center"
       spacing="md"
       className="p-[12px_20px]" 
@@ -33,10 +33,10 @@ export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
           <Typography.Body2Small>{name}</Typography.Body2Small>
           <Typography.Body2Small>{weight}</Typography.Body2Small>
         </Stack>
-        <Stack direction="horizontal" align="center" justify="between">
+        <Stack direction="row" align="center" justify="between">
           <Typography.Body2Small>{`${quantity}шт. × ${product.price}`}</Typography.Body2Small>
 
-          <Typography.Headline4>{`${product.price * quantity} ₽`}</Typography.Headline4>
+          <Typography.Headline4>{`${(product.price * quantity).toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
         </Stack>
       </Stack>
     </Stack>

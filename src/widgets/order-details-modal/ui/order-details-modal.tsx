@@ -6,8 +6,8 @@ import { MODAL } from "@/shared/lib";
 import type { FC } from "react";
 
 export const OrderDetailsModal: FC = () => {
-  const { visibleModalName, closeModal } = useModalStore();
   const { data } = useOrderStore((state) => state.orderDetails);
+  const { visibleModalName, closeModal } = useModalStore();
 
   if (visibleModalName !== MODAL.ORDER_DETAILS) return null;
 

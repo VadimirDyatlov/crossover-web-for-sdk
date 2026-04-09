@@ -1,4 +1,0 @@
-.catalogCarContainer {
-  padding-top: env(safe-area-inset-top);
-  /* height: calc(40px + env(safe-area-inset-top)); */
-}

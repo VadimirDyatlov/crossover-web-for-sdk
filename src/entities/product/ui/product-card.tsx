@@ -1,29 +1,21 @@
-import { useProductDetailsStore } from '../model/product';
-import { useModalStore } from '@/shared/model';
 import { Box, Stack, Typography, SmartImage } from '@/shared/ui';
-import { MODAL } from '@/shared/lib';
 import type { FC, ReactNode } from 'react';
 import type { types } from '@/shared/api';
 
 interface ProductCardProps {
   children: ReactNode;
   product: types.Product;
+  onClick: () => void;
 }
 
 export const ProductCard: FC<ProductCardProps> = (props) => {
-  const { children, product } = props;
-
-  const { fetchProductDetails } = useProductDetailsStore();
-  const { showModal } = useModalStore();
-
-  // TODO: Открытие модалки это фича
-  const handleClick = () => {
-    fetchProductDetails(product.id);
-    showModal(MODAL.PRODUCT_DETAILS);
-  };
+  const { children, product, onClick } = props;
 
   return (
-    <Stack className="z-10 relative" onClick={handleClick}>
+    <Stack
+      className="shrink-0"
+      onClick={onClick}
+    >
       <Box className="relative">
         <SmartImage
           src={product.imageUrl}
@@ -34,7 +26,7 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
         {children}
       </Box>
       <Stack className="p-[8px]">
-        <Typography.Headline4>{`${product.price} ₽`}</Typography.Headline4>
+        <Typography.Headline4>{`${product.price.toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
         <Typography.Body2Small>{product.name}</Typography.Body2Small>
       </Stack>
     </Stack>

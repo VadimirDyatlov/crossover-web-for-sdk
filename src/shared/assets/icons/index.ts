@@ -1,3 +1,3 @@
-import CloseIcon from './close-x.svg';
+import CloseIcon from './close-x.svg?react';
 
 export { CloseIcon };

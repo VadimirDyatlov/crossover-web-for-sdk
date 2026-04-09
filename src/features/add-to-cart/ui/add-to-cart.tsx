@@ -7,7 +7,7 @@ import type { FC, MouseEvent } from "react";
 import type { types } from "@/shared/api";
 
 interface AddToCartProps {
-  product: types.Product;
+  product: types.Product | types.ProductDetail;
   className?: string;
 }
 
@@ -18,7 +18,7 @@ export const AddToCart: FC<AddToCartProps> = (props) => {
 
   return (
     <Stack
-      direction="horizontal"
+      direction="row"
       align="center"
       justify={isExpanded ? 'between' : 'center'}
       onClick={(e: MouseEvent<HTMLElement>) => e.stopPropagation()}

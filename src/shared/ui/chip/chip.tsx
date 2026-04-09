@@ -1,5 +1,4 @@
-import clsx from 'clsx';
-import styles from './chip.module.css';
+import { cn } from '@/shared/lib';
 import type { FC } from 'react';
 
 interface ChipProps {
@@ -24,15 +23,16 @@ export const Chip: FC<ChipProps> = ({
 
   return (
     <div
-      className={clsx(
-        styles.chip,
-        isClickable && styles.clickable,
-        disabled && styles.disabled,
+      className={cn(
+        'inline-flex items-center justify-center gap-1 h-[30px] px-[10px] py-1.5 rounded-[30px]',
+        'bg-[#f3f4f6] text-[#1f2937] text-[14px] font-medium whitespace-nowrap',
+        isClickable && 'cursor-pointer active:scale-95 transition-transform',
+        disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
         className,
       )}
-      onClick={onClick}
+      onClick={isClickable ? onClick : undefined}
     >
-      {icon && <span className={styles.icon}>{icon}</span>}
+      {icon && <span className="inline-flex shrink-0">{icon}</span>}
       {content}
     </div>
   );

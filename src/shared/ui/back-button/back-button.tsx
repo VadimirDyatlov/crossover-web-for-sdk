@@ -1,24 +1,26 @@
-import { useBackButton } from './lib/back-button';
 import BackArrow from './icon/back-arrow.svg';
-import type { FC } from 'react';
 import { cn } from '@/shared/lib';
+import type { FC } from 'react';
 
 interface BackButtonProps {
-  fallbackUrl?: string;
   className?: string;
+  onClick: () => void;
 }
 
-// TODO: Это shared/ui или это фича?
 export const BackButton: FC<BackButtonProps> = (props) => {
-  const { fallbackUrl, className } = props;
-  const handleBack = useBackButton(fallbackUrl)
+  const { className, onClick } = props;
 
   return (
-    <button 
-      className={cn('flex items-center justify-center p-2.5 cursor-pointer bg-none border-none', className)}
-      onClick={handleBack}
+    <button
+      className={cn(
+        'flex items-center justify-center',
+        'p-2.5',
+        'cursor-pointer bg-none border-none',
+        className,
+      )}
+      onClick={onClick}
     >
-      <img src={BackArrow}/>
+      <img src={BackArrow} />
     </button>
   );
 };

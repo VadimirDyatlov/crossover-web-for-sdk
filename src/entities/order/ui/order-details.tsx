@@ -7,6 +7,7 @@ interface OrderDetailsProps {
 }
 
 // TODO: Добавить кнопку повторить заказ?
+// TODO: Доработать Typography?
 export const OrderDetails: FC<OrderDetailsProps> = (props) => {
   const { children } = props;
   const { selectedOrder } = useOrderStore((state) => state.orderDetails);
@@ -27,7 +28,7 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
         </Stack>
         <Stack align="center">
           <Typography.Headline4 className="text-[48px]">
-            {`${selectedOrder?.totalAmount} ₽`}
+            {`${selectedOrder?.totalAmount.toLocaleString('ru-RU')} ₽`}
           </Typography.Headline4>
         </Stack>
         <Stack
@@ -46,11 +47,11 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
         spacing="md"
         className="p-4 m-4 mb-20 rounded-[16px] bg-[rgb(246,246,248)]"
       >
-        <Stack direction="horizontal" justify="between">
+        <Stack direction="row" justify="between">
           <Typography.Body2Small>Дата и время</Typography.Body2Small>
           <Typography.Body2Small>{selectedOrder?.orderTime}</Typography.Body2Small>
         </Stack>
-        <Stack direction="horizontal" justify="between">
+        <Stack direction="row" justify="between">
           <Typography.Body2Small>Готов к выдаче</Typography.Body2Small>
           <Typography.Body2Small>11:00</Typography.Body2Small>
         </Stack>

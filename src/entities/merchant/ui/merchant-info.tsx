@@ -1,5 +1,5 @@
-import { useMerchantStore } from '../model/merchant';
 import { Chip, Stack, Typography } from '@/shared/ui';
+import { useMerchantStore } from '../model/merchant';
 import Clock from '../icon/clock.svg?react';
 import type { FC } from 'react';
 
@@ -7,9 +7,15 @@ export const MerchantInfo: FC = () => {
   const { data } = useMerchantStore();
 
   return (
-    <Stack direction="horizontal" justify="between" align='center' spacing="lg" className="m-3.5">
+    <Stack
+      direction="row"
+      justify="between"
+      align="center"
+      spacing="lg"
+      className="m-3.5"
+    >
       <Stack>
-        <Stack direction="horizontal" align='center' spacing='xs'>
+        <Stack direction="row" align="center" spacing="xs">
           <Stack className="w-9 h-9 rounded-full overflow-hidden">
             {/* TODO: Добавить компонент Avatar? */}
             <img
@@ -22,7 +28,7 @@ export const MerchantInfo: FC = () => {
         </Stack>
         <Typography.Body1>{data?.address}</Typography.Body1>
       </Stack>
-      <Chip label='~30 минут' icon={<Clock/>} />
+      <Chip label="~30 минут" icon={<Clock />} />
     </Stack>
   );
 };

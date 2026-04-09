@@ -1,9 +1,9 @@
 import { cn } from '@/shared/lib';
-import type { FC, ReactNode } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 interface StackProps {
   children: ReactNode;
-  direction?: 'horizontal' | 'vertical';
+  direction?: 'row' | 'column';
   spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'none';
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
@@ -12,21 +12,22 @@ interface StackProps {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const Stack: FC<StackProps> = (props) => {
+export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
   const {
     children,
-    direction = 'vertical',
+    direction = 'column',
     spacing = 'none',
     align = 'stretch',
     justify = 'start',
     className,
     wrap = false,
     onClick,
+    ...rest
   } = props;
 
   const directionClasses = {
-    horizontal: 'flex-row',
-    vertical: 'flex-col',
+    row: 'flex-row',
+    column: 'flex-col',
   };
 
   const spacingClasses = {
@@ -57,6 +58,7 @@ export const Stack: FC<StackProps> = (props) => {
 
   return (
     <div
+      ref={ref} 
       className={cn(
         'flex',
         directionClasses[direction],
@@ -67,8 +69,11 @@ export const Stack: FC<StackProps> = (props) => {
         className,
       )}
       onClick={onClick}
+      {...rest} 
     >
       {children}
     </div>
   );
-};
+});
+
+Stack.displayName = 'Stack';

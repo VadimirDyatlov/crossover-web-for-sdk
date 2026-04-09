@@ -1,1 +1,1 @@
-export { SelectCategory } from './ui/select-category';
+export { useSelectCategory } from './model/select-category';

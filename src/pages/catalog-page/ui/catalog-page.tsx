@@ -1,31 +1,35 @@
-import { useMerchantLazy } from '@/entities/merchant';
-import { useModalStore } from '@/shared/model';
-import { CatalogBar } from '@/widgets/catalog-bar';
-import { ProductBlock } from '@/widgets/product-block';
-import { ProductDetails } from '@/entities/product';
-import { Cart } from '@/entities/cart';
-import { Box, Modal } from '@/shared/ui';
-import { MODAL } from '@/shared/lib/constants';
+import { CatalogHeader } from '@/widgets/header';
+import { CategoryList } from '@/widgets/category-list';
+import { ProductList } from '@/widgets/product-list';
+import { ProductDetailsModal } from '@/widgets/product-details-modal';
+import { useSelectCategory } from '@/features/select-category/model/select-category';
+import { OpenCartButton } from '@/features/open-cart';
+import { MerchantInfo, useMerchantLazy } from '@/entities/merchant';
+import { Box, Stack } from '@/shared/ui';
 import type { FC } from 'react';
+// import { useCategoryStore } from '@/entities/category';
+// import { useScrollRestoration } from '@/shared/lib';
 
 export const CatalogPage: FC = () => {
   useMerchantLazy();
-  
-  const { visibleModalName, closeModal } = useModalStore();
+  useSelectCategory()
+
+  // const { selectedCategory } = useCategoryStore();
+  // const scrollRef = useScrollRestoration('product-list', selectedCategory?.id );
 
   return (
-    <Box flexDirection="column" className="h-[100svh]">
-      <CatalogBar />
-      <ProductBlock />
-      {/* TODO: CartButton это widgets или features. */}
-      <Cart />
-
-      {visibleModalName === MODAL.PRODUCT_DETAILS ? (
-        <Modal onClose={closeModal}>
-          {/* TODO: ProductDetails это widgets? */}
-          <ProductDetails />
-        </Modal>
-      ) : null}
+    <Box flexDirection="column" className="h-dvh overflow-hidden">
+      <CatalogHeader />
+      <Stack
+        // ref={scrollRef}
+        className="min-h-0 overflow-y-auto"
+      >
+        <MerchantInfo />
+        <CategoryList />
+        <ProductList />
+      </Stack>
+      <OpenCartButton />
+      <ProductDetailsModal />
     </Box>
   );
 };
