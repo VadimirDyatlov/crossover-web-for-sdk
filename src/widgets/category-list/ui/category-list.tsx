@@ -13,7 +13,7 @@ export const CategoryList: FC = () => {
       direction="row"
       className={cn(
         'sticky -top-[1px] z-25 w-full',
-        'overflow-x-auto min-h-[44px]',
+        'overflow-x-auto overflow-y-hidden min-h-[44px] h-[44px]',
         'bg-white px-2 pt-[1px]',
       )}
     >
