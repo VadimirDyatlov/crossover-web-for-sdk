@@ -27,7 +27,8 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['wouter'],
-          ui: ['lucide-react', 'class-variance-authority'],
+          store: ['zustand', 'zustand/shallow'],
+          utils: ['tailwind-merge', 'clsx'],
         },
       },
     },

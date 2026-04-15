@@ -198,6 +198,8 @@ body {
   overscroll-behavior-y: none;
   -webkit-overflow-scrolling: touch;
   -webkit-touch-callout: none;
+  scrollbar-gutter: stable;
+  touch-action: manipulation;
 }
 
 #root {
@@ -212,8 +214,13 @@ body {
 }
 
 .no-scroll {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
+}
+
+.back-transition::view-transition-old(root),
+.back-transition::view-transition-new(root) {
+  will-change: transform, opacity;
 }
 
 /* Анимация для перехода назад. */
@@ -245,6 +252,11 @@ body {
     transform: translateX(100%);
     opacity: 0;
   }
+}
+
+.forward-transition::view-transition-old(root),
+.forward-transition::view-transition-new(root) {
+  will-change: opacity;
 }
 
 /* Анимация для перехода вперед. */
@@ -294,5 +306,17 @@ body {
 @media (max-width: 991px) {
   * {
     -ms-overflow-style: none;
+  }
+}
+
+/* TODO: Вынести анимации В конфиг Tailwind? */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

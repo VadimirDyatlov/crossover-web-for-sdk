@@ -5,11 +5,12 @@ interface SkeletonProps {
   height?: string;
   width?: string;
   radius?: string;
+  className?: string;
 }
 
 // TODO: Доработать
 export const Skeleton: FC<SkeletonProps> = (props) => {
-  const { width, height, radius } = props;
+  const { width, height, radius, className } = props;
 
   const style = {
     width: width || '100%',
@@ -20,7 +21,7 @@ export const Skeleton: FC<SkeletonProps> = (props) => {
   return (
     <div
       style={style}
-      className={cn('bg-black/10 animate-pulse rounded-xl')}
+      className={cn('bg-black/10 animate-pulse rounded-xl', className)}
     />
   );
 };

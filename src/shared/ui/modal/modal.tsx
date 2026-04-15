@@ -17,7 +17,8 @@ export const Modal: FC<ModalProps> = (props) => {
   return (
     <Stack
       className={cn(
-        'fixed left-0 z-50 w-full h-dvh',
+        // 'fixed left-0 z-50 w-full h-dvh',
+        'fixed left-0 z-50 w-full h-svh',
         'overflow-x-hidden overflow-y-auto bg-white',
         'pt-[env(safe-area-inset-top)]',
         className,

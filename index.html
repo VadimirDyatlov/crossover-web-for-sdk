@@ -27,7 +27,83 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="splash-screen">
+        <div class="splash-header">
+          <a href="/close" class="splash-close-btn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line>
+              <line x1="6.5" y1="6.5" x2="17.5" y2="17.5"></line>
+            </svg>
+          </a>
+        </div>
+        <div class="splash-spinner2"></div>
+        <svg class="splash-spinner" viewBox="0 0 50 50">
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="8.8"
+            stroke-linecap="round"
+            stroke-dasharray="100 125"
+          ></circle>
+        </svg>
+        <style>
+          .splash-screen {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(255, 255, 255);
+            z-index: 9999;
+            color: rgb(49, 55, 59);
+          }
+          .splash-close-btn {
+            position: absolute;
+            top: calc(2px + env(safe-area-inset-top, 0px));
+            left: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #1c1c1c;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+          }
+          .splash-spinner {
+            width: 91px;
+            height: 91px;
+            animation: splash-rotate 1s linear infinite; /* Немного ускорил для динамики */
+            will-change: transform;
+          }
+          @keyframes splash-rotate {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

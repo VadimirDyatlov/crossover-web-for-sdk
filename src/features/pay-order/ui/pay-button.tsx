@@ -11,7 +11,8 @@ export const PayButton: FC = () => {
      justify="center"
       className={cn(
         "fixed left-0 right-0 z-20 w-full pointer-events-none",
-        "bottom-[50px] px-4 pb-[env(safe-area-inset-bottom,0px)]"                  
+        // "bottom-[50px] px-4 pb-[env(safe-area-inset-bottom,0px)]",  
+        "px-4 bottom-[calc(50px+env(safe-area-inset-bottom,0px))]",              
       )}
     >
       <Button 
