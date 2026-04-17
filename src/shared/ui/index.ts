@@ -7,6 +7,8 @@ export { Chip } from './chip/chip';
 export { SmartImage } from './smart-image/smart-image';
 export { Modal } from './modal/modal';
 export { ErrorBoundary } from './error-boundary/error-boundary';
+export { FullPageError } from './full-page-error/full-page-error';
+export { InlineError } from './inline-error/inline-error'
 
 import { Body1 } from './typography/body1';
 import { Headline2 } from './typography/headline2';

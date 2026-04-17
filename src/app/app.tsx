@@ -2,9 +2,9 @@ import { Router, Route, Switch } from 'wouter';
 import { CatalogPage } from '@/pages/catalog-page';
 import { CartPage } from '@/pages/cart-page';
 // import { OrdersPage } from '@/pages/orders-page';
-import { routerPaths } from '@/shared/lib';
+import { NavigationProvider, routerPaths } from '@/shared/lib';
 import { lazy, Suspense } from 'react';
-import { ErrorBoundary, Skeleton, Stack } from '@/shared/ui';
+import { ErrorBoundary, FullPageError, Skeleton, Stack } from '@/shared/ui';
 
 export const CatalogSkeleton = () => {
   return (
@@ -31,27 +31,30 @@ export const App = () => {
   return (
     <ErrorBoundary>
       <Router base={routerPaths.root}>
-        <Switch>
-          <Route path={routerPaths.root}>
-            <CatalogPage />
-          </Route>
-          <Route path={routerPaths.cartPage}>
-            <CartPage />
-          </Route>
-          {/* <Route path={routerPaths.myOrders}>
+        <NavigationProvider>
+          <Switch>
+            <Route path={routerPaths.root}>
+              <CatalogPage />
+            </Route>
+            <Route path={routerPaths.cartPage}>
+              <CartPage />
+            </Route>
+            {/* <Route path={routerPaths.myOrders}>
           <OrdersPage />
         </Route> */}
-          <Route path={routerPaths.myOrders}>
-            {/* TODO: Скелетон для OrdersPage */}
-            {/* <Suspense fallback={<div className="h-[100dvh] w-full bg-red-500" />}> */}
-            <Suspense fallback={<CatalogSkeleton />}>
-              <OrdersPageLazy />
-            </Suspense>
-          </Route>
-          <Route>
-            <div>not-found</div>
-          </Route>
-        </Switch>
+            <Route path={routerPaths.myOrders}>
+              {/* TODO: Скелетон для OrdersPage */}
+              {/* <Suspense fallback={<div className="h-[100dvh] w-full bg-red-500" />}> */}
+              <Suspense fallback={<CatalogSkeleton />}>
+                <OrdersPageLazy />
+              </Suspense>
+            </Route>
+            <Route>
+              {/* <div>not-found</div> */}
+              <FullPageError onBack={() => console.log('123')} />
+            </Route>
+          </Switch>
+        </NavigationProvider>
       </Router>
     </ErrorBoundary>
   );
@@ -105,24 +108,42 @@ export const App = () => {
 //     VitePWA({
 //       registerType: 'autoUpdate',
 //       workbox: {
-//         globPatterns: ['**/*.{js,css,html,ico,png,svg}'] // Что кэшировать
+//         globPatterns: ['**/*.{js,css,html,ico,png,svg}'] // Что кэшировать?
 //       }
 //     })
 //   ]
 // })
 
 // + 17) Нет ErrorBoundary в приложении
+
 // +? 18) Нет window.onerror / window.onunhandledrejection. Необработанные исключения покажут стандартный экран ошибки браузера
+// Точно нужно???
+
 // ? 19) На будущее
 //  - 1) нет проверки и отображения error компонента 
 //  - 2) Нет обработки http статусов
+
 // + 20) CatalogPage при первой загрузке: fetchMerchant() выполняется, но пока грузится MerchantInfo получает name=undefined, address=undefined, logoUrl=undefined. Показывается пустая область с <img src={undefined}>
+
 // ? 21) CategorySelector зависит от merchant data. Пока не загружен массив пустой
+
 // 22) ProductsBlock нет loading-state. data начинается как [], пользователь видит пустое пространство
 // ?кастам фетч 23) Опциоально - Нет возможности отменить загрузку AbortController не используется
-// 24) Нет splash screen между загрузкой JS-бандла и первым рендером белый экран
+
+// + 24) Нет splash screen между загрузкой JS-бандла и первым рендером белый экран
+// при запуске сначала нативный лоудер, мерцание, наш лоудер. выглядит не оч
+
 // 25) Нет обработчиков popstate. wouter использует browser history API напрямую без кастомных обработчиков
+// 1) Нет обработчиков popstate. Зачем обрабатывать popstate если кнопки назад не будет?
+// 2) wouter использует browser history API напрямую без кастомных обработчиков. Какие кастомные обработчики нам нужны?
+
 // 26) Не перехватывается кнопка «Назад» Android. При нажатии «Назад» из MyOrdersPage браузер выполнит стандартное действие (может выйти из WebView)
+// Что за кнопка «Назад»? браузерная кнопка? браузера не будет и кнопки тоже.
+// (может выйти из WebView) ??? не понял
+
 // 27) Модалка ProductDetails не использует history при нажатии «Назад» в Android вместо закрытия модалки произойдёт навигация назад в history
+// Точно нужно обрабатывать нажатие кнопки «Назад»?
+
 // 28) У нас модалка реализована как fullscreen overlay . М мобилках же обычно выязжающая снизу модалка , так привычней дя пользователей
-// 29) Отсутствуют бибилиотеки для жестов
+
+// 29) Отсутствуют бибилиотеки для жестов 'vaul'
