@@ -18,7 +18,7 @@ export const CatalogPage: FC = () => {
   // const scrollRef = useScrollRestoration('product-list', selectedCategory?.id );
   // h-full  h-dvh 
   return (
-    <Box flexDirection="column" className="h-full overflow-hidden">
+    <Box flexDirection="column" className="h-dvh overflow-hidden">
       <CatalogHeader />
       <Stack
         // ref={scrollRef}
@@ -30,6 +30,12 @@ export const CatalogPage: FC = () => {
       </Stack>
       <OpenCartButton />
       <ProductDetailsModal />
+
+      <footer className="pb-[env(safe-area-inset-bottom)] bg-white shadow-up">
+        <div className="p-4">
+          <OpenCartButton />
+        </div>
+      </footer>
     </Box>
   );
 };
