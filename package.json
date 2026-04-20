@@ -22,6 +22,7 @@
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
+    "vaul": "^1.1.2",
     "wouter": "3.9.0",
     "zustand": "^5.0.11"
   },

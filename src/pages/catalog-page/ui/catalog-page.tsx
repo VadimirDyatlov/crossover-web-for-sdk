@@ -12,7 +12,7 @@ import type { FC } from 'react';
 
 export const CatalogPage: FC = () => {
   useMerchantLazy();
-  useSelectCategory()
+  useSelectCategory();
 
   // const { selectedCategory } = useCategoryStore();
   // const scrollRef = useScrollRestoration('product-list', selectedCategory?.id );

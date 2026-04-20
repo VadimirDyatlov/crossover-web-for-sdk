@@ -12,6 +12,7 @@ interface FullPageErrorProps {
 export const FullPageError: FC<FullPageErrorProps> = (props) => {
   const {
     title = 'Не удалось загрузить данные',
+    // TODO: Убрать = ""
     description = 'Возникла временная ошибка. Пожалуйста, попробуйте позже',
     onBack,
     actionLabel = 'Закрыть',

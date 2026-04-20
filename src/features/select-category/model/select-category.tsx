@@ -14,6 +14,12 @@ export const useSelectCategory = () => {
     fetchProductList(category.id); 
   };
 
+  const handleRetry = () => {
+    if (selectedCategory) {
+      fetchProductList(selectedCategory.id);
+    }
+  };
+
   useEffect(() => {
     if (categories.length > 0 && !selectedCategory) {
       setSelectedCategory(categories[0]);
@@ -25,5 +31,6 @@ export const useSelectCategory = () => {
     categories,
     selectedId: selectedCategory?.id,
     handleSelect,
+    handleRetry,
   };
 };

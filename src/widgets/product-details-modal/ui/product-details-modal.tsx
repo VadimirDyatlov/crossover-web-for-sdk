@@ -9,27 +9,37 @@ export const ProductDetailsModal: FC = () => {
   const { visibleModalName, closeModal } = useModalStore();
   const { data, isLoading } = useProductStore((state) => state.productDetails);
 
-  if (visibleModalName !== MODAL.PRODUCT_DETAILS) return null;
+  // if (visibleModalName !== MODAL.PRODUCT_DETAILS) return null;
+  const isOpen = visibleModalName === MODAL.PRODUCT_DETAILS;
 
-  if (isLoading) {
-    return (
-      <Stack spacing="xs">
-        <Skeleton height="350px" width="350px" />
-        <Skeleton height="50px" width="350px" />
-        <Skeleton height="50px" width="350px" />
-        <Skeleton height="50px" width="350px" />
-      </Stack>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Stack spacing="xs">
+  //       <Skeleton height="350px" width="350px" />
+  //       <Skeleton height="50px" width="350px" />
+  //       <Skeleton height="50px" width="350px" />
+  //       <Skeleton height="50px" width="350px" />
+  //     </Stack>
+  //   );
+  // }
 
   return (
-    <Modal onClose={closeModal}>
-      <ProductDetails>
-        {/* TODO: Доработать в соответствии смакетом. */}
-        <Stack direction="row" justify="center">
-          <AddToCart product={data!} />
+    <Modal isOpen={isOpen} onClose={closeModal}>
+      {!data || isLoading ? (
+        <Stack spacing="xs">
+          <Skeleton height="350px" width="350px" />
+          <Skeleton height="50px" width="350px" />
+          <Skeleton height="50px" width="350px" />
+          <Skeleton height="50px" width="350px" />
         </Stack>
-      </ProductDetails>
+      ) : (
+        <ProductDetails>
+          {/* TODO: Доработать в соответствии смакетом. */}
+          <Stack direction="row" justify="center">
+            <AddToCart product={data} />
+          </Stack>
+        </ProductDetails>
+      )}
     </Modal>
   );
 };
