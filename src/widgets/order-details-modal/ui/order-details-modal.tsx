@@ -9,10 +9,10 @@ export const OrderDetailsModal: FC = () => {
   const { data } = useOrderStore((state) => state.orderDetails);
   const { visibleModalName, closeModal } = useModalStore();
 
-  if (visibleModalName !== MODAL.ORDER_DETAILS) return null;
+  const isOpen = visibleModalName === MODAL.ORDER_DETAILS;
 
   return (
-    <Modal onClose={closeModal}>
+    <Modal isOpen={isOpen} onClose={closeModal}>
       <OrderDetails>
         <Stack className="">
           {data.map(({ product, quantity }) => (

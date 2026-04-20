@@ -39,7 +39,7 @@ export const Modal: FC<ModalProps> = (props) => {
       shouldScaleBackground={false}
     >
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-50 bg-black/40" />
+        <Drawer.Overlay className="fixed inset-0 z-50 bg-black" />
 
         <Drawer.Content
           className={cn(
@@ -48,7 +48,7 @@ export const Modal: FC<ModalProps> = (props) => {
             className,
           )}
         >
-          <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-[#E5E5EA] my-4" />
+          <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-10 h-1 flex-shrink-0 rounded-full bg-[#E5E5EA]" />
 
           {/* <div className="flex justify-end px-4">
             <button onClick={onClose} className="p-2 active:opacity-50">
