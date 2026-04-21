@@ -5,6 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>ui-forge</title>
         <style>
+          .splash-screen {
+            margin: 16px;
+            width: 350px;
+            height: 750px;
+            border-radius: 25px;
+            background-color: rgb(203, 201, 201);
+          }
+        </style>
+    <link
+      rel="preload"
+      href="/assets/SBSansText-Regular-DLuYFMsG.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/assets/SBSansText-Semibold-C7QALZzg.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/assets/SBSansDisplay-SemiBold-2xVx6ZnI.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root">
+      <div class="splash-screen"></div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+      <!-- <style>
           :root {
             --sk-color: rgba(0, 0, 0, 0.1);
           }
@@ -159,33 +199,10 @@
             background: var(--sk-color);
             width: 60%;
           }
-        </style>
-    <link
-      rel="preload"
-      href="/assets/SBSansText-Regular-DLuYFMsG.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/assets/SBSansText-Semibold-C7QALZzg.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      href="/assets/SBSansDisplay-SemiBold-2xVx6ZnI.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div id="root">
-      <div class="splash-screen">
-        <!-- Кнопка закрытия вынесена из потока (absolute) -->
+        </style> -->
+
+<!-- 
+              <div class="splash-screen">
         <a href="/close" class="splash-close-btn">
           <svg
             width="24"
@@ -202,13 +219,11 @@
           </svg>
         </a>
 
-        <!-- Header Section -->
         <div class="header-skeleton">
           <div class="header-button sk-anim"></div>
         </div>
 
         <div class="scroll-content">
-          <!-- Merchant Section -->
           <div class="merchant-skeleton">
             <div class="merchant-info">
               <div class="merchant-header">
@@ -220,7 +235,6 @@
             <div class="merchant-chip sk-anim"></div>
           </div>
 
-          <!-- Category Section -->
           <div class="category-skeleton">
             <div class="category-pill active sk-anim"></div>
             <div class="category-pill sk-anim"></div>
@@ -228,7 +242,6 @@
             <div class="category-pill sk-anim"></div>
           </div>
 
-          <!-- Product Grid Section -->
           <div class="product-grid-skeleton">
             <div class="product-card">
               <div class="product-image sk-anim"></div>
@@ -262,8 +275,4 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+      </div> -->
