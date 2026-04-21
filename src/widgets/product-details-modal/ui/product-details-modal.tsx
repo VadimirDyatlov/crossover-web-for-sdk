@@ -1,8 +1,8 @@
-import { AddToCart } from "@/features/add-to-cart";
+import { AddToCartLarge } from "@/features/add-to-cart";
 import { ProductDetails, useProductStore } from "@/entities/product";
 import { useModalStore } from "@/shared/model";
 import { Modal, Skeleton, Stack } from "@/shared/ui";
-import { MODAL } from "@/shared/lib";
+import { cn, MODAL } from "@/shared/lib";
 import type { FC } from "react";
 
 export const ProductDetailsModal: FC = () => {
@@ -34,9 +34,15 @@ export const ProductDetailsModal: FC = () => {
         </Stack>
       ) : (
         <ProductDetails>
-          {/* TODO: Доработать в соответствии смакетом. */}
-          <Stack direction="row" justify="center">
-            <AddToCart product={data} />
+          <Stack
+            align="center"
+            className={cn(
+              'fixed left-0 right-0 z-50 px-4',
+              // "bottom-[34px]",
+              'bottom-[calc(34px+env(safe-area-inset-bottom,0px))]',
+            )}
+          >
+            <AddToCartLarge product={data} />
           </Stack>
         </ProductDetails>
       )}

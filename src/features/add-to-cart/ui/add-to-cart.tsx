@@ -8,7 +8,6 @@ import type { types } from "@/shared/api";
 const controlButtonClasses = cn(
   'w-10 h-10 flex items-center justify-center !p-0',
   'text-[24px] !bg-transparent transition-colors duration-200',
-  
 );
 
 interface AddToCartProps {
