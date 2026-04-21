@@ -4,6 +4,162 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>ui-forge</title>
+        <style>
+          :root {
+            --sk-color: rgba(0, 0, 0, 0.1);
+          }
+
+          .splash-screen {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            padding-top: env(safe-area-inset-top, 0px);
+          }
+
+          .sk-anim {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          }
+          @keyframes pulse {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+            }
+          }
+
+          .splash-close-btn {
+            position: absolute;
+            top: calc(2px + env(safe-area-inset-top, 0px));
+            left: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #1c1c1c;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          /* Header */
+          .header-skeleton {
+            height: 44px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 8px;
+          }
+          .header-button {
+            width: 100px;
+            height: 28px;
+            background: var(--sk-color);
+            border-radius: 25px;
+          }
+
+          /* Merchant Info */
+          .merchant-skeleton {
+            margin: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .merchant-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+          .merchant-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          }
+          .merchant-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--sk-color);
+          }
+          .merchant-name {
+            width: 160px;
+            height: 30px;
+            border-radius: 14px;
+            background: var(--sk-color);
+          }
+          .merchant-address {
+            width: 160px;
+            height: 14px;
+            border-radius: 14px;
+            background: var(--sk-color);
+            margin-top: 2px;
+          }
+          .merchant-chip {
+            width: 84px;
+            height: 32px;
+            border-radius: 16px;
+            background: var(--sk-color);
+          }
+
+          /* Categories */
+          .category-skeleton {
+            height: 44px;
+            display: flex;
+            gap: 8px;
+            padding: 0 8px;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid #f2f2f2;
+          }
+          .category-pill {
+            width: 120px;
+            height: 32px;
+            border-radius: 16px;
+            background: var(--sk-color);
+            flex-shrink: 0;
+          }
+          .category-pill.active {
+            background: rgba(0, 0, 0, 0.15);
+          }
+
+          /* Product Grid */
+          .product-grid-skeleton {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 16px;
+            gap: 4px;
+          }
+          .product-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+          }
+          .product-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            background: var(--sk-color);
+          }
+          .product-title {
+            height: 12px;
+            border-radius: 4px;
+            background: var(--sk-color);
+            width: 100%;
+          }
+          .product-desc {
+            height: 12px;
+            border-radius: 4px;
+            background: var(--sk-color);
+            width: 60%;
+          }
+        </style>
     <link
       rel="preload"
       href="/assets/SBSansText-Regular-DLuYFMsG.woff2"
@@ -29,79 +185,83 @@
   <body>
     <div id="root">
       <div class="splash-screen">
-        <div class="splash-header">
-          <a href="/close" class="splash-close-btn">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line>
-              <line x1="6.5" y1="6.5" x2="17.5" y2="17.5"></line>
-            </svg>
-          </a>
-        </div>
-        <div class="splash-spinner2"></div>
-        <svg class="splash-spinner" viewBox="0 0 50 50">
-          <circle
-            cx="25"
-            cy="25"
-            r="20"
+        <!-- Кнопка закрытия вынесена из потока (absolute) -->
+        <a href="/close" class="splash-close-btn">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="8.8"
+            stroke-width="2.1"
             stroke-linecap="round"
-            stroke-dasharray="100 125"
-          ></circle>
-        </svg>
-        <style>
-          .splash-screen {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgb(255, 255, 255);
-            z-index: 9999;
-            color: rgb(49, 55, 59);
-          }
-          .splash-close-btn {
-            position: absolute;
-            top: calc(2px + env(safe-area-inset-top, 0px));
-            left: 8px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            color: #1c1c1c;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-appearance: none;
-          }
-          .splash-spinner {
-            width: 91px;
-            height: 91px;
-            animation: splash-rotate 1s linear infinite; /* Немного ускорил для динамики */
-            will-change: transform;
-          }
-          @keyframes splash-rotate {
-            from {
-              transform: rotate(0deg);
-            }
-            to {
-              transform: rotate(360deg);
-            }
-          }
-        </style>
+            stroke-linejoin="round"
+          >
+            <line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line>
+            <line x1="6.5" y1="6.5" x2="17.5" y2="17.5"></line>
+          </svg>
+        </a>
+
+        <!-- Header Section -->
+        <div class="header-skeleton">
+          <div class="header-button sk-anim"></div>
+        </div>
+
+        <div class="scroll-content">
+          <!-- Merchant Section -->
+          <div class="merchant-skeleton">
+            <div class="merchant-info">
+              <div class="merchant-header">
+                <div class="merchant-avatar sk-anim"></div>
+                <div class="merchant-name sk-anim"></div>
+              </div>
+              <div class="merchant-address sk-anim"></div>
+            </div>
+            <div class="merchant-chip sk-anim"></div>
+          </div>
+
+          <!-- Category Section -->
+          <div class="category-skeleton">
+            <div class="category-pill active sk-anim"></div>
+            <div class="category-pill sk-anim"></div>
+            <div class="category-pill sk-anim"></div>
+            <div class="category-pill sk-anim"></div>
+          </div>
+
+          <!-- Product Grid Section -->
+          <div class="product-grid-skeleton">
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+            <div class="product-card">
+              <div class="product-image sk-anim"></div>
+              <div class="product-title sk-anim"></div>
+              <div class="product-desc sk-anim"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
