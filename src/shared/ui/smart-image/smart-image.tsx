@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { cn } from "@/shared/lib";
 import PlaceholderSvg from './icon/placeholder.svg?react';
 import ErrorSvg from './icon/error.svg?react';
@@ -7,48 +7,26 @@ import type { FC } from "react";
 interface SmartImageProps {
   src?: string;
   alt?: string;
-  className?: string;     
-  imgClassName?: string; 
+  className?: string;
+  imgClassName?: string;
   placeholderClassName?: string;
+  // loading="lazy" для изображений вне первого экрана, "eager" + fetchPriority="high" для LCP-элемента
+  loading?: 'lazy' | 'eager';
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
+// Модульный синглтон: кэш живёт на время жизни вкладки, повторный рендер не перезапускает загрузку
 const imageCache = new Set<string>();
 
 export const SmartImage: FC<SmartImageProps> = (props) => {
-  const { src, alt, className, imgClassName, placeholderClassName } = props;
+  // alt='' — корректный дефолт для декоративных изображений (a11y)
+  const { src, alt = '', className, imgClassName, placeholderClassName, loading = 'lazy', fetchPriority = 'auto' } = props;
 
   const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>(() => {
     if (!src) return 'error';
+    // Если src уже загружался — пропускаем стадию loading, показываем сразу
     return imageCache.has(src) ? 'loaded' : 'loading';
   });
-
-  useEffect(() => {
-    if (!src) {
-      setStatus('error');
-      return;
-    }
-    
-    if (imageCache.has(src)) {
-      setStatus('loaded');
-      return;
-    }
-
-    setStatus('loading');
-    
-    const img = new Image();
-    img.src = src;
-
-    img.onload = () => {
-      imageCache.add(src);
-      setStatus('loaded');
-    };
-    img.onerror = () => setStatus('error');
-
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [src]);
 
   return (
     <div
@@ -64,7 +42,7 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
             placeholderClassName,
           )}
         >
-          <PlaceholderSvg className="w-1/2 h-1/2  opacity-30" />
+          <PlaceholderSvg className="w-1/2 h-1/2 opacity-30" />
         </div>
       )}
       {status === 'error' && (
@@ -77,15 +55,24 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
           <ErrorSvg className="w-1/2 h-1/2 opacity-30" />
         </div>
       )}
-      <img
-        src={src}
-        alt={alt}
-        className={cn(
-          'w-full h-full transition-all duration-500',
-          imgClassName,
-          status === 'loaded' ? 'opacity-100' : 'opacity-0',
-        )}
-      />
+      {/* Не рендерим <img> без src — иначе браузер делает запрос с пустым URL */}
+      {src && (
+        <img
+          src={src}
+          alt={alt}
+          loading={loading}
+          fetchPriority={fetchPriority}
+          // onLoad/onError вместо useEffect+new Image(): один запрос вместо двух
+          onLoad={() => { imageCache.add(src); setStatus('loaded'); }}
+          onError={() => setStatus('error')}
+          className={cn(
+            // will-change-opacity переносит анимацию появления на GPU
+            'w-full h-full transition-opacity duration-500 will-change-[opacity]',
+            imgClassName,
+            status === 'loaded' ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+      )}
     </div>
   );
 };

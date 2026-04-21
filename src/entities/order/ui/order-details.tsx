@@ -20,7 +20,7 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
             src={selectedOrder?.merchantInfo.logoUrl}
             alt={selectedOrder?.merchantInfo.name}
             className="w-18 h-18 rounded-full border border-[#E5E7EB]"
-            imgClassName="w-full h-full object-cove"
+            imgClassName="w-full h-full object-cover"
           />
           <Typography.Headline4 className="text-[20px]">
             {selectedOrder?.merchantInfo.name}

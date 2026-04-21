@@ -51,7 +51,7 @@ export const App = () => {
             </Route>
             <Route>
               {/* <div>not-found</div> */}
-              <FullPageError onBack={() => console.log('123')} />
+              <FullPageError onBack={() => window.history.back()} />
             </Route>
           </Switch>
         </NavigationProvider>

@@ -34,7 +34,7 @@ export const FullPageError: FC<FullPageErrorProps> = (props) => {
               height="66"
               viewBox="0 0 66 66"
               fill="none"
-              xmlns="http://w3.org"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <line
                 x1="10"

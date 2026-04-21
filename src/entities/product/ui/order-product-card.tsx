@@ -1,4 +1,5 @@
 import { SmartImage, Stack, Typography } from "@/shared/ui";
+import { parseProductName } from '../lib/parse-product-name';
 import type { types } from "@/shared/api";
 import type { FC } from "react";
 
@@ -9,10 +10,7 @@ interface OrderProductCardProps {
 
 export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
   const { product, quantity } = props;
-  // TODO: Вынести в хелпер?
-  const parts = product.name.split(' ');
-  const weight = parts.pop(); 
-  const name = parts.join(' '); 
+  const { name, weight } = parseProductName(product.name);
 
   return (
     <Stack

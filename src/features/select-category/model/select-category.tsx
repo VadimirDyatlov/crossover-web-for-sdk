@@ -7,11 +7,15 @@ import type { types } from '@/shared/api';
 export const useSelectCategory = () => {
   const categories = useMerchantStore((state) => state.data?.category) || [];
   const { selectedCategory, setSelectedCategory } = useCategoryStore();
-  const { fetchProductList } = useProductStore(); 
+  // Без селектора — ре-рендер при каждом изменении productStore (isLoading, data и т.д.)
+  const fetchProductList = useProductStore((state) => state.fetchProductList);
 
   const handleSelect = (category: types.Category) => {
     setSelectedCategory(category);
-    fetchProductList(category.id); 
+    // Race condition: быстрый клик по двум категориям может вернуть ответы в обратном порядке.
+    // Полное решение — AbortController в API-слое. Пока кэш в productStore смягчает проблему
+    // для уже загруженных категорий (повторный запрос не делается).
+    fetchProductList(category.id);
   };
 
   const handleRetry = () => {
@@ -25,7 +29,8 @@ export const useSelectCategory = () => {
       setSelectedCategory(categories[0]);
       fetchProductList(categories[0].id);
     }
-  }, [categories, selectedCategory]);
+  // setSelectedCategory и fetchProductList — стабильные ссылки из Zustand, добавлены для exhaustive-deps
+  }, [categories, selectedCategory, setSelectedCategory, fetchProductList]);
 
   return {
     categories,

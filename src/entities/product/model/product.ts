@@ -46,6 +46,8 @@ export const useProductStore = create<Store>((set, get) => ({
 
     try {
       const response = await api.getProductList(categoryId);
+      // Без проверки ok — 4xx/5xx JSON попадёт в стор как список товаров
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.ProductResponse = await response.json();
 
       set((state) => ({
@@ -77,6 +79,7 @@ export const useProductStore = create<Store>((set, get) => ({
 
     try {
       const response = await api.getProductDetails(productId);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.ProductDetail = await response.json();
 
       set((state) => ({

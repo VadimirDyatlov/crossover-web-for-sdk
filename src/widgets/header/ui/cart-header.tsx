@@ -23,7 +23,7 @@ export const CartHeader: FC = () => {
           src={merchantInfo?.logoUrl}
           alt="logo"
           className="w-9 h-9 rounded-full overflow-hidden"
-          imgClassName="w-full h-full object-cove"
+          imgClassName="w-full h-full object-cover"
         />
       </Stack>
     </Stack>

@@ -19,12 +19,11 @@ export const useMerchantStore = create<Store>((set) => ({
       set({ isLoading: true });
 
       const response = await api.getMerchant();
+      // Без проверки ok сервер может вернуть 4xx/5xx с JSON ошибки — он попадёт в стор как данные
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
 
-      set({
-        data: data,
-        isLoading: false,
-     });
+      set({ data, isLoading: false });
     } catch (error) {
       set({
         error: 'Ошибка',
@@ -35,10 +34,11 @@ export const useMerchantStore = create<Store>((set) => ({
 }));
 
 export const useMerchantLazy = () => {
-  const { data, isLoading, fetchMerchant } = useMerchantStore();
-  
+  const { data, isLoading, error, fetchMerchant } = useMerchantStore();
+
   useEffect(() => {
-    if (!data && !isLoading) fetchMerchant();
-  }, [data, isLoading, fetchMerchant]);
+    // error не проверялся — при неудаче data=null, isLoading=false → бесконечный ретрай
+    if (!data && !isLoading && !error) fetchMerchant();
+  }, [data, isLoading, error, fetchMerchant]);
 };
 

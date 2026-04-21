@@ -14,7 +14,8 @@ interface Store {
     error: string | null;
     selectedOrder: types.Order | null;
   },
-  setSelectedOrder: (order: types.Order) => void;
+  // null нужен для сброса выбранного заказа при закрытии модалки
+  setSelectedOrder: (order: types.Order | null) => void;
   fetchOrderList: () => Promise<void>;
   fetchOrderDetails: (id: string) => Promise<void>;
 }
@@ -46,6 +47,8 @@ export const useOrderStore = create<Store>((set) => ({
 
     try {
       const response = await api.getOrderList();
+      // Без проверки ok — 4xx/5xx JSON попадёт в стор как список заказов
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.OrderResponse = await response.json();
 
       set((state) => ({
@@ -66,6 +69,7 @@ export const useOrderStore = create<Store>((set) => ({
     
     try {
       const response = await api.getOrderDetails(id);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.OrderDetailResponse = await response.json();
 
       set((state) => ({
@@ -80,15 +84,14 @@ export const useOrderStore = create<Store>((set) => ({
 }));
 
 export const useOrderListLazy = () => {
-  const {
-    orderList: { data, isLoading },
-    fetchOrderList,
-  } = useOrderStore();
+  // Подписка только на нужные поля — лишние ре-рендеры при изменении orderDetails не происходят
+  const { data, isLoading, error } = useOrderStore((state) => state.orderList);
+  const fetchOrderList = useOrderStore((state) => state.fetchOrderList);
 
   useEffect(() => {
-    // TODO: Исправить бесконечный цикл загрузки
-    if (!data.length && !isLoading) fetchOrderList();
-  }, [data, isLoading, fetchOrderList]);
+    // error не проверялся — при неудаче data=[], isLoading=false → бесконечный ретрай
+    if (!data.length && !isLoading && !error) fetchOrderList();
+  }, [data.length, isLoading, error, fetchOrderList]);
 
   return { data, isLoading };
 };

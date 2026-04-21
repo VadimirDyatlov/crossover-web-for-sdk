@@ -5,7 +5,8 @@ import type { types } from '@/shared/api';
 
 export const useOpenProduct = () => {
   const { showModal } = useModalStore();
-  const { fetchProductDetails } = useProductStore();
+  // Без селектора компонент ре-рендерится при любом изменении productStore (загрузка, данные)
+  const fetchProductDetails = useProductStore((state) => state.fetchProductDetails);
 
   return (product: types.Product) => {
     showModal(MODAL.PRODUCT_DETAILS);

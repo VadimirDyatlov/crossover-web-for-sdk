@@ -56,11 +56,10 @@ export const Modal: FC<ModalProps> = (props) => {
             </button>
           </div> */}
 
-          {/* Контент скроллится внутри, если его много */}
-          {/* <div className="flex-1 overflow-y-auto px-4 pb-[env(safe-area-inset-bottom)]">
+          {/* overflow-y-auto — контент деталей заказа может превысить высоту модалки на мелких экранах */}
+          <Stack className="w-full flex-1 overflow-y-auto pb-[env(safe-area-inset-bottom,0px)]">
             {children}
-          </div> */}
-          <Stack className="w-full">{children}</Stack>
+          </Stack>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 interface UseScrollRestorationStore {
+  // Растёт неограниченно — в долгоживущем webview стоит очищать при выходе из страницы
   positions: Record<string, Record<string, number>>;
   setPosition: (scope: string, id: string, pos: number) => void;
 }

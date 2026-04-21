@@ -16,7 +16,8 @@ export const OrderDetailsModal: FC = () => {
       <OrderDetails>
         <Stack className="">
           {data.map(({ product, quantity }) => (
-            <OrderProductCard product={product} quantity={quantity} />
+            // key обязателен — без него React использует индекс и неправильно переиспользует DOM
+            <OrderProductCard key={product.id} product={product} quantity={quantity} />
           ))}
         </Stack>
       </OrderDetails>
