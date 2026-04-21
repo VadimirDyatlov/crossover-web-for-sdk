@@ -4,162 +4,156 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>ui-forge</title>
-        <style>
-          :root {
-            --sk-color: rgba(0, 0, 0, 0.1);
-          }
+    <style>
+      :root {
+        --sk-color: rgba(0, 0, 0, 0.1);
+      }
 
-          .splash-screen {
-            position: fixed;
-            inset: 0;
-            background: #fff;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            padding-top: env(safe-area-inset-top, 0px);
-          }
-
-          .sk-anim {
-            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          }
-          @keyframes pulse {
-            0%,
-            100% {
-              opacity: 1;
-            }
-            50% {
-              opacity: 0.5;
-            }
-          }
-
-          .splash-close-btn {
-            position: absolute;
-            top: calc(2px + env(safe-area-inset-top, 0px));
-            left: 8px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            color: #1c1c1c;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-          }
-
-          /* Header */
-          .header-skeleton {
-            height: 44px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 8px;
-          }
-          .header-button {
-            width: 100px;
-            height: 28px;
-            background: var(--sk-color);
-            border-radius: 25px;
-          }
-
-          /* Merchant Info */
-          .merchant-skeleton {
-            margin: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-          .merchant-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-          }
-          .merchant-header {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-          }
-          .merchant-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--sk-color);
-          }
-          .merchant-name {
-            width: 160px;
-            height: 30px;
-            border-radius: 14px;
-            background: var(--sk-color);
-          }
-          .merchant-address {
-            width: 160px;
-            height: 14px;
-            border-radius: 14px;
-            background: var(--sk-color);
-            margin-top: 2px;
-          }
-          .merchant-chip {
-            width: 84px;
-            height: 32px;
-            border-radius: 16px;
-            background: var(--sk-color);
-          }
-
-          /* Categories */
-          .category-skeleton {
-            height: 44px;
-            display: flex;
-            gap: 8px;
-            padding: 0 8px;
-            align-items: center;
-            overflow: hidden;
-            border-bottom: 1px solid #f2f2f2;
-          }
-          .category-pill {
-            width: 120px;
-            height: 32px;
-            border-radius: 16px;
-            background: var(--sk-color);
-            flex-shrink: 0;
-          }
-          .category-pill.active {
-            background: rgba(0, 0, 0, 0.15);
-          }
-
-          /* Product Grid */
-          .product-grid-skeleton {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 16px;
-            gap: 4px;
-          }
-          .product-card {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 12px;
-          }
-          .product-image {
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 16px;
-            background: var(--sk-color);
-          }
-          .product-title {
-            height: 12px;
-            border-radius: 4px;
-            background: var(--sk-color);
-            width: 100%;
-          }
-          .product-desc {
-            height: 12px;
-            border-radius: 4px;
-            background: var(--sk-color);
-            width: 60%;
-          }
-        </style>
+      .splash-screen {
+        position: fixed;
+        inset: 0;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .sk-anim {
+        animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .splash-close-btn {
+        position: absolute;
+        top: calc(2px + env(safe-area-inset-top, 0px));
+        left: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: #1c1c1c;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Header */
+      .header-skeleton {
+        height: 44px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 8px;
+      }
+      .header-button {
+        width: 100px;
+        height: 28px;
+        background: var(--sk-color);
+        border-radius: 25px;
+      }
+      /* Merchant Info */
+      .merchant-skeleton {
+        margin: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .merchant-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .merchant-header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .merchant-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--sk-color);
+      }
+      .merchant-name {
+        width: 160px;
+        height: 30px;
+        border-radius: 14px;
+        background: var(--sk-color);
+      }
+      .merchant-address {
+        width: 160px;
+        height: 14px;
+        border-radius: 14px;
+        background: var(--sk-color);
+        margin-top: 2px;
+      }
+      .merchant-chip {
+        width: 84px;
+        height: 32px;
+        border-radius: 16px;
+        background: var(--sk-color);
+      }
+      /* Categories */
+      .category-skeleton {
+        height: 44px;
+        display: flex;
+        gap: 8px;
+        padding: 0 8px;
+        align-items: center;
+        overflow: hidden;
+        border-bottom: 1px solid #f2f2f2;
+      }
+      .category-pill {
+        width: 120px;
+        height: 32px;
+        border-radius: 16px;
+        background: var(--sk-color);
+        flex-shrink: 0;
+      }
+      .category-pill.active {
+        background: rgba(0, 0, 0, 0.15);
+      }
+      /* Product Grid */
+      .product-grid-skeleton {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 16px;
+        gap: 4px;
+      }
+      .product-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .product-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 16px;
+        background: var(--sk-color);
+      }
+      .product-title {
+        height: 12px;
+        border-radius: 4px;
+        background: var(--sk-color);
+        width: 100%;
+      }
+      .product-desc {
+        height: 12px;
+        border-radius: 4px;
+        background: var(--sk-color);
+        width: 60%;
+      }
+    </style>
     <link
       rel="preload"
       href="/assets/SBSansText-Regular-DLuYFMsG.woff2"
