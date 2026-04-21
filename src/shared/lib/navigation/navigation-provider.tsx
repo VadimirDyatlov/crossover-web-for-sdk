@@ -1,12 +1,25 @@
 // app/providers/NavigationProvider.tsx
+import { useModalStore } from '@/shared/model';
 import { useEffect, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
 
 export const NavigationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isPopStateNavigating = useRef(false);
+  const { visibleModalName, closeModal } = useModalStore();
+
+  useEffect(() => {
+    if (visibleModalName) {
+      window.history.pushState({ modal: visibleModalName }, '');
+    }
+  }, [visibleModalName]);
 
   useEffect(() => {
     const handlePopState = () => {
+      if (visibleModalName) {
+        closeModal();
+        return;
+      }
+
       if (!document.startViewTransition) return;
 
       isPopStateNavigating.current = true;
@@ -25,7 +38,7 @@ export const NavigationProvider: FC<{ children: ReactNode }> = ({ children }) =>
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [visibleModalName]);
 
   return <>{children}</>;
 };

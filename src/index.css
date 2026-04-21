@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@view-transition {
+/* @view-transition {
   navigation: auto;
-}
+} */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -223,21 +223,21 @@ body {
   overflow: hidden;
 }
 
-.back-transition::view-transition-old(root),
+/* .back-transition::view-transition-old(root),
 .back-transition::view-transition-new(root) {
   will-change: transform, opacity;
-}
+} */
 
 /* Анимация для перехода назад. */
-.back-transition::view-transition-old(root) {
+/* .back-transition::view-transition-old(root) {
   animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-right;
 }
 
 .back-transition::view-transition-new(root) {
   animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-left;
-}
+} */
 
-@keyframes slide-in-from-left {
+/* @keyframes slide-in-from-left {
   from {
     transform: translateX(-30%);
     opacity: 0;
@@ -246,9 +246,9 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
-}
+} */
 
-@keyframes slide-out-to-right {
+/* @keyframes slide-out-to-right {
   from {
     transform: translateX(0);
     opacity: 1;
@@ -257,23 +257,23 @@ body {
     transform: translateX(100%);
     opacity: 0;
   }
-}
+} */
 
-.forward-transition::view-transition-old(root),
+/* .forward-transition::view-transition-old(root),
 .forward-transition::view-transition-new(root) {
   will-change: opacity;
-}
+} */
 
 /* Анимация для перехода вперед. */
-.forward-transition::view-transition-old(root) {
+/* .forward-transition::view-transition-old(root) {
   animation: 0.5s ease-out fade-out;
-}
+} */
 
-.forward-transition::view-transition-new(root) {
+/* .forward-transition::view-transition-new(root) {
   animation: 0.5s ease-out fade-in;
-}
+} */
 
-@keyframes fade-out {
+/* @keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -289,7 +289,7 @@ body {
   to {
     opacity: 1;
   }
-}
+} */
 
 /* Скрываем скроллбар для Chrome, Safari и Opera */
 @media (max-width: 991px) {

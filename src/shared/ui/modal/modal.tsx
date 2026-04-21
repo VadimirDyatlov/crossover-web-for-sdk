@@ -50,6 +50,7 @@ export const Modal: FC<ModalProps> = (props) => {
         >
           <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-10 h-1 flex-shrink-0 rounded-full bg-[#E5E5EA]" />
 
+          <Drawer.Title className="sr-only">Информация о товаре</Drawer.Title>
           {/* <div className="flex justify-end px-4">
             <button onClick={onClose} className="p-2 active:opacity-50">
               <CloseIcon />

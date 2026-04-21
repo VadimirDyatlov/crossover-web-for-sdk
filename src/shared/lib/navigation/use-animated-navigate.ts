@@ -15,6 +15,8 @@ export const useAnimatedNavigate = () => {
   return useCallback((to: string, direction: 'forward' | 'back' = 'forward') => {
     if (!isMounted.current) return;
     
+    navigate(to);
+    return;
     if (!document.startViewTransition) {
       navigate(to);
       return;
