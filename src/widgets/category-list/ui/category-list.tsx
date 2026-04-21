@@ -7,7 +7,9 @@ import type { CSSProperties, FC } from 'react';
 export const CategoryList: FC = () => {
   const { categories, selectedId, handleSelect } = useSelectCategory();
   // Второй параметр — тип DOM-элемента, совпадает с forwardRef<HTMLButtonElement> в Category
-  const activeRef = useScrollIntoView<string | undefined, HTMLButtonElement>(selectedId);
+  const activeRef = useScrollIntoView<string | undefined, HTMLButtonElement>(
+    selectedId,
+  );
 
   return (
     <Stack

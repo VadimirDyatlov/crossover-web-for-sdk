@@ -26,5 +26,5 @@ export const useAppNavigation = () => {
     }
   };
 
-  return { closeApp, openMyOrders, openCart, goBack, };
+  return { closeApp, openMyOrders, openCart, goBack };
 };

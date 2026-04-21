@@ -9,20 +9,20 @@ import { ErrorBoundary, FullPageError, Skeleton, Stack } from '@/shared/ui';
 export const CatalogSkeleton = () => {
   return (
     <Stack spacing="sm" className="h-[100dvh] w-full bg-white p-4 pt-[60px]">
-        {[1, 2, 3, 4].map((i) => (
-          <Skeleton 
-            key={i} 
-            height="186px" 
-            width="358px" 
-            radius="24px" 
-            className='bg-[#f6f6f8]'
-          />
-        ))}
+      {[1, 2, 3, 4].map((i) => (
+        <Skeleton
+          key={i}
+          height="186px"
+          width="358px"
+          radius="24px"
+          className="bg-[#f6f6f8]"
+        />
+      ))}
     </Stack>
   );
 };
 
-// lazy точно нужен? 
+// lazy точно нужен?
 const OrdersPageLazy = lazy(() =>
   import('@/pages/orders-page').then((m) => ({ default: m.OrdersPage })),
 );
@@ -68,7 +68,6 @@ export const App = () => {
 // TODO: Мемоизация
 // WebkitOverflowScrolling: 'touch' ?
 
-
 // + 1) В index.html нужно <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
 //
 // для айфон 10+ контент может занять всю область экрана
@@ -90,7 +89,6 @@ export const App = () => {
 // - теперь используется компонент SmartImage(требует проверки)
 
 // + 5) В анимированных элементах нужно свойство - will-change . СНизит нагрузки с цпу и преенест ее на гпу
-
 
 // + 6) В index.css - no-scroll тоже бы 100 vh поменять на dvh
 // +? 7) Не увидел svh lvh нигде в проекте. Для элементов, которые должны быть стабильны (модалка), лучше 100svh

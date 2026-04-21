@@ -1,9 +1,9 @@
-import { AddToCart } from "@/features/add-to-cart";
-import { ProductDetails, useProductStore } from "@/entities/product";
-import { useModalStore } from "@/shared/model";
-import { Modal, Skeleton, Stack } from "@/shared/ui";
-import { MODAL } from "@/shared/lib";
-import type { FC } from "react";
+import { AddToCart } from '@/features/add-to-cart';
+import { ProductDetails, useProductStore } from '@/entities/product';
+import { useModalStore } from '@/shared/model';
+import { Modal, Skeleton, Stack } from '@/shared/ui';
+import { MODAL } from '@/shared/lib';
+import type { FC } from 'react';
 
 export const ProductDetailsModal: FC = () => {
   const { visibleModalName, closeModal } = useModalStore();

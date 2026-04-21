@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { FC, ReactNode } from 'react';
 
 interface Body2SmallProps {
   children: ReactNode;
@@ -12,4 +12,4 @@ export const Body2Small: FC<Body2SmallProps> = (props) => {
       {children}
     </span>
   );
-}
+};

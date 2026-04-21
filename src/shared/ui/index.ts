@@ -2,13 +2,13 @@ export { Box } from './box/box';
 export { Stack } from './stack/stack';
 export { Button } from './button/button';
 export { Skeleton } from './skeleton/skeleton';
-export { BackButton } from './back-button/back-button'
+export { BackButton } from './back-button/back-button';
 export { Chip } from './chip/chip';
 export { SmartImage } from './smart-image/smart-image';
 export { Modal } from './modal/modal';
 export { ErrorBoundary } from './error-boundary/error-boundary';
 export { FullPageError } from './full-page-error/full-page-error';
-export { InlineError } from './inline-error/inline-error'
+export { InlineError } from './inline-error/inline-error';
 
 import { Body1 } from './typography/body1';
 import { Headline2 } from './typography/headline2';

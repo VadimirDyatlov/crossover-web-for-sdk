@@ -13,6 +13,7 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "prettier": "npx prettier --check src",
+    "prettier:write": "npx prettier --write src",
     "prepare": "husky install"
   },
   "dependencies": {

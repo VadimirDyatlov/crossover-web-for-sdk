@@ -1,6 +1,6 @@
-import { NavigateBackButton } from "@/features/navigate-back";
-import { Stack, Typography } from "@/shared/ui";
-import type { FC } from "react";
+import { NavigateBackButton } from '@/features/navigate-back';
+import { Stack, Typography } from '@/shared/ui';
+import type { FC } from 'react';
 
 export const OrdersHeader: FC = () => {
   return (

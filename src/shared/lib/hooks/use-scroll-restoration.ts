@@ -1,12 +1,16 @@
-import { useScrollRestorationStore } from "@/shared/model/scroll-store";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useScrollRestorationStore } from '@/shared/model/scroll-store';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
-export const useScrollRestoration = (scope: string, id: string = 'default', minScroll: number = 0 ) => {
+export const useScrollRestoration = (
+  scope: string,
+  id: string = 'default',
+  minScroll: number = 0,
+) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { positions, setPosition } = useScrollRestorationStore();
+  const { positions, setPosition, clearScope } = useScrollRestorationStore();
 
   // const savedPosition = positions[scope]?.[id] || 0;
-   const savedPosition = positions[scope]?.[id] ?? minScroll;
+  const savedPosition = positions[scope]?.[id] ?? minScroll;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -21,5 +25,5 @@ export const useScrollRestoration = (scope: string, id: string = 'default', minS
     };
   }, [scope, id, setPosition]);
 
-  return scrollRef;
+  return { scrollRef, clearScope: () => clearScope(scope) };
 };

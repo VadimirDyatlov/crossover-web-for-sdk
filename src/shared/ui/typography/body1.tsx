@@ -8,7 +8,7 @@ interface Body1Props {
 
 export const Body1: FC<Body1Props> = (props) => {
   const { className, children } = props;
-  
+
   return (
     <span
       className={cn(

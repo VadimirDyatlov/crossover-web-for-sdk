@@ -16,7 +16,7 @@ export const CatalogPage: FC = () => {
 
   // const { selectedCategory } = useCategoryStore();
   // const scrollRef = useScrollRestoration('product-list', selectedCategory?.id );
-  // h-full  h-dvh 
+  // h-full  h-dvh
   return (
     <Box flexDirection="column" className="h-dvh overflow-hidden">
       <CatalogHeader />

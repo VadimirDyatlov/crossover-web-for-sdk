@@ -17,9 +17,9 @@ interface Store {
   productMap: Record<string, { product: types.Product; quantity: number }>;
   totalPrice: number;
   totalQuantity: number;
-  
+
   getProductList: () => { product: types.Product; quantity: number }[];
-  addProduct: (product: types.Product) => void; 
+  addProduct: (product: types.Product) => void;
   removeProduct: (id: string) => void;
   removeOneProduct: (id: string) => void;
   clearCart: () => void;
@@ -36,7 +36,10 @@ export const useCartStore = create<Store>((set, get) => ({
     const existing = productMap[product.id];
 
     const newProductMap = existing
-      ? { ...productMap, [product.id]: { ...existing, quantity: existing.quantity + 1 } }
+      ? {
+          ...productMap,
+          [product.id]: { ...existing, quantity: existing.quantity + 1 },
+        }
       : { ...productMap, [product.id]: { product, quantity: 1 } };
 
     set({ productMap: newProductMap, ...calcTotals(newProductMap) });
@@ -53,7 +56,10 @@ export const useCartStore = create<Store>((set, get) => ({
       const { [id]: _, ...rest } = productMap;
       newProductMap = rest;
     } else {
-      newProductMap = { ...productMap, [id]: { ...existing, quantity: existing.quantity - 1 } };
+      newProductMap = {
+        ...productMap,
+        [id]: { ...existing, quantity: existing.quantity - 1 },
+      };
     }
 
     set({ productMap: newProductMap, ...calcTotals(newProductMap) });

@@ -1,6 +1,6 @@
-import { SmartImage, Stack, Typography } from "@/shared/ui";
-import { useOrderStore } from "../model/order";
-import type { FC, ReactNode } from "react";
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import { useOrderStore } from '../model/order';
+import type { FC, ReactNode } from 'react';
 
 interface OrderDetailsProps {
   children?: ReactNode;
@@ -11,7 +11,7 @@ interface OrderDetailsProps {
 export const OrderDetails: FC<OrderDetailsProps> = (props) => {
   const { children } = props;
   const { selectedOrder } = useOrderStore((state) => state.orderDetails);
-  
+
   return (
     <Stack className="mt-4">
       <Stack spacing="xl">

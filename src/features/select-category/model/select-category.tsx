@@ -29,7 +29,7 @@ export const useSelectCategory = () => {
       setSelectedCategory(categories[0]);
       fetchProductList(categories[0].id);
     }
-  // setSelectedCategory и fetchProductList — стабильные ссылки из Zustand, добавлены для exhaustive-deps
+    // setSelectedCategory и fetchProductList — стабильные ссылки из Zustand, добавлены для exhaustive-deps
   }, [categories, selectedCategory, setSelectedCategory, fetchProductList]);
 
   return {

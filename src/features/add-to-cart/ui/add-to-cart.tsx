@@ -1,14 +1,12 @@
-
-import { useAddToCart } from "../model/add-to-cart";
-import { Button, Stack } from "@/shared/ui";
-import { cn } from "@/shared/lib";
-import type { FC, MouseEvent } from "react";
-import type { types } from "@/shared/api";
+import { useAddToCart } from '../model/add-to-cart';
+import { Button, Stack } from '@/shared/ui';
+import { cn } from '@/shared/lib';
+import type { FC, MouseEvent } from 'react';
+import type { types } from '@/shared/api';
 
 const controlButtonClasses = cn(
   'w-10 h-10 flex items-center justify-center !p-0',
   'text-[24px] !bg-transparent transition-colors duration-200',
-  
 );
 
 interface AddToCartProps {

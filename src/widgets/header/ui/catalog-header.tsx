@@ -1,8 +1,8 @@
-import { Button, Stack, Typography } from "@/shared/ui";
-import { useAppNavigation } from "@/shared/lib";
+import { Button, Stack, Typography } from '@/shared/ui';
+import { useAppNavigation } from '@/shared/lib';
 import { CloseIcon } from '@/shared/assets/icons';
 import Basket from '../icon/header-basket.svg?react';
-import type { FC } from "react";
+import type { FC } from 'react';
 
 export const CatalogHeader: FC = () => {
   const { closeApp, openMyOrders } = useAppNavigation();

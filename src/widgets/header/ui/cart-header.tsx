@@ -1,11 +1,11 @@
-import { NavigateBackButton } from "@/features/navigate-back";
-import { useMerchantStore } from "@/entities/merchant";
-import { SmartImage, Stack, Typography } from "@/shared/ui";
-import type { FC } from "react";
+import { NavigateBackButton } from '@/features/navigate-back';
+import { useMerchantStore } from '@/entities/merchant';
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import type { FC } from 'react';
 
 export const CartHeader: FC = () => {
   const merchantInfo = useMerchantStore((state) => state.data);
-  
+
   return (
     <Stack className="pt-[env(safe-area-inset-top)]">
       <Stack

@@ -62,7 +62,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
 
   return (
     <div
-      ref={ref} 
+      ref={ref}
       className={cn(
         'flex',
         directionClasses[direction],
@@ -74,7 +74,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
       )}
       onClick={onClick}
       style={style}
-      {...rest} 
+      {...rest}
     >
       {children}
     </div>

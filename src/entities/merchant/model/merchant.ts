@@ -41,4 +41,3 @@ export const useMerchantLazy = () => {
     if (!data && !isLoading && !error) fetchMerchant();
   }, [data, isLoading, error, fetchMerchant]);
 };
-

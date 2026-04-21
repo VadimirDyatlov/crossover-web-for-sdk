@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 import type { ClassValue } from 'clsx';
 
 /**
@@ -9,5 +9,5 @@ import type { ClassValue } from 'clsx';
  * @example cn('px-2', isActive && 'bg-blue-500', { 'text-white': isActive })
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }

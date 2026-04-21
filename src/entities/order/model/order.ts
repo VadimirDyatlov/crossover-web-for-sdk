@@ -13,7 +13,7 @@ interface Store {
     isLoading: boolean;
     error: string | null;
     selectedOrder: types.Order | null;
-  },
+  };
   // null нужен для сброса выбранного заказа при закрытии модалки
   setSelectedOrder: (order: types.Order | null) => void;
   fetchOrderList: () => Promise<void>;
@@ -33,16 +33,17 @@ export const useOrderStore = create<Store>((set) => ({
     selectedOrder: null,
   },
 
-  setSelectedOrder: (order: types.Order | null) => set((state) => ({
-    orderDetails: {
-      ...state.orderDetails,
-      selectedOrder: order,
-    }
-  })),
+  setSelectedOrder: (order: types.Order | null) =>
+    set((state) => ({
+      orderDetails: {
+        ...state.orderDetails,
+        selectedOrder: order,
+      },
+    })),
 
   fetchOrderList: async () => {
     set((state) => ({
-      orderList: { ...state.orderList, isLoading: true, error: null }
+      orderList: { ...state.orderList, isLoading: true, error: null },
     }));
 
     try {
@@ -56,31 +57,42 @@ export const useOrderStore = create<Store>((set) => ({
       }));
     } catch (error) {
       set((state) => ({
-        orderList: { ...state.orderList, error: 'Ошибка загрузки', isLoading: false }
+        orderList: {
+          ...state.orderList,
+          error: 'Ошибка загрузки',
+          isLoading: false,
+        },
       }));
     }
   },
 
-
   fetchOrderDetails: async (id: string) => {
     set((state) => ({
-      orderDetails: { ...state.orderDetails, isLoading: true }
+      orderDetails: { ...state.orderDetails, isLoading: true },
     }));
-    
+
     try {
       const response = await api.getOrderDetails(id);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.OrderDetailResponse = await response.json();
 
       set((state) => ({
-        orderDetails: { ...state.orderDetails, data: data.products, isLoading: false },
+        orderDetails: {
+          ...state.orderDetails,
+          data: data.products,
+          isLoading: false,
+        },
       }));
     } catch (error) {
       set((state) => ({
-        orderDetails: { ...state.orderDetails, error: 'Ошибка загрузки', isLoading: false }
+        orderDetails: {
+          ...state.orderDetails,
+          error: 'Ошибка загрузки',
+          isLoading: false,
+        },
       }));
     }
-  }
+  },
 }));
 
 export const useOrderListLazy = () => {
@@ -101,7 +113,7 @@ export const useOrderListLazy = () => {
 //     orderDetails: { data, isLoading },
 //     fetchOrderDetails,
 //   } = useOrderStore();
-  
+
 //   useEffect(() => {
 //     if (!data && !isLoading) fetchOrderDetails(id);
 //   }, [data, isLoading, fetchOrderDetails]);

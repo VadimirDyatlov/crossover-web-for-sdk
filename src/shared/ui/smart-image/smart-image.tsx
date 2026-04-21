@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { cn } from "@/shared/lib";
+import { useState } from 'react';
+import { cn } from '@/shared/lib';
 import PlaceholderSvg from './icon/placeholder.svg?react';
 import ErrorSvg from './icon/error.svg?react';
-import type { FC } from "react";
+import type { FC } from 'react';
 
 interface SmartImageProps {
   src?: string;
@@ -20,7 +20,15 @@ const imageCache = new Set<string>();
 
 export const SmartImage: FC<SmartImageProps> = (props) => {
   // alt='' — корректный дефолт для декоративных изображений (a11y)
-  const { src, alt = '', className, imgClassName, placeholderClassName, loading = 'lazy', fetchPriority = 'auto' } = props;
+  const {
+    src,
+    alt = '',
+    className,
+    imgClassName,
+    placeholderClassName,
+    loading = 'lazy',
+    fetchPriority = 'auto',
+  } = props;
 
   const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>(() => {
     if (!src) return 'error';
@@ -63,7 +71,10 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
           loading={loading}
           fetchPriority={fetchPriority}
           // onLoad/onError вместо useEffect+new Image(): один запрос вместо двух
-          onLoad={() => { imageCache.add(src); setStatus('loaded'); }}
+          onLoad={() => {
+            imageCache.add(src);
+            setStatus('loaded');
+          }}
           onError={() => setStatus('error')}
           className={cn(
             // will-change-opacity переносит анимацию появления на GPU

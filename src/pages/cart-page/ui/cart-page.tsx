@@ -22,4 +22,3 @@ export const CartPage: FC = () => {
     </Box>
   );
 };
-

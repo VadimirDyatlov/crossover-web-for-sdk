@@ -11,7 +11,7 @@ export const ProductDetails: FC<ProductDetailsProps> = (props) => {
   const { data } = useProductStore((state) => state.productDetails);
 
   return (
-    <Stack> 
+    <Stack>
       <SmartImage
         src={data?.imageUrl}
         alt={data?.name}

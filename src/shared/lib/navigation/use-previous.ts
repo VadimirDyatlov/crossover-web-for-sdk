@@ -9,13 +9,13 @@ interface UsePreviousReturn {
 export const usePrevious = (): UsePreviousReturn => {
   const [location] = useLocation();
   const ref = useRef<string | null>(null);
-  
+
   useEffect(() => {
     ref.current = location;
   }, [location]);
-  
+
   return {
     location,
-    previousLocation: ref.current
+    previousLocation: ref.current,
   };
 };

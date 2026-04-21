@@ -22,8 +22,14 @@ export const useAddToCart = (product: types.Product) => {
     fn();
   }, []);
 
-  const handleIncrement = useCallback(() => throttle(() => addProduct(product)), [throttle, addProduct, product]);
-  const handleDecrement = useCallback(() => throttle(() => removeOneProduct(product.id)), [throttle, removeOneProduct, product.id]);
+  const handleIncrement = useCallback(
+    () => throttle(() => addProduct(product)),
+    [throttle, addProduct, product],
+  );
+  const handleDecrement = useCallback(
+    () => throttle(() => removeOneProduct(product.id)),
+    [throttle, removeOneProduct, product.id],
+  );
 
   return {
     count,

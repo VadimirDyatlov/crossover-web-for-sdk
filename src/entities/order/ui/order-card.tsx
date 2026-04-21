@@ -1,7 +1,7 @@
-import { SmartImage, Stack, Typography } from "@/shared/ui";
-import { formatOrderTime } from "../lib/format-order-time";
-import type { FC } from "react";
-import type { types } from "@/shared/api";
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import { formatOrderTime } from '../lib/format-order-time';
+import type { FC } from 'react';
+import type { types } from '@/shared/api';
 
 interface OrderCardProps {
   order: types.Order;
@@ -9,7 +9,7 @@ interface OrderCardProps {
 }
 
 // TODO: Подкрашивать status
-// TODO: Обработать переполнение текста 
+// TODO: Обработать переполнение текста
 export const OrderCard: FC<OrderCardProps> = (props) => {
   const { orderId, orderTime, merchantInfo, verificationCode, status, totalAmount } =
     props.order;

@@ -2,7 +2,7 @@
 export const formatOrderTime = (dateString: string): string => {
   const date = new Date(dateString);
   const now = new Date();
-  
+
   // Создаем дату "вчера"
   const yesterday = new Date();
   yesterday.setDate(now.getDate() - 1);
