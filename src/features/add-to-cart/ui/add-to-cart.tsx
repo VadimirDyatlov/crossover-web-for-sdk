@@ -7,7 +7,7 @@ import type { types } from "@/shared/api";
 
 const controlButtonClasses = cn(
   'w-10 h-10 flex items-center justify-center !p-0',
-  'text-[24px] !bg-transparent transition-colors duration-200',
+  'text-[24px] active:opacity-70',
 );
 
 interface AddToCartProps {
@@ -48,7 +48,8 @@ export const AddToCart: FC<AddToCartProps> = (props) => {
               'inline-block min-w-[20px] text-center',
               'font-bold text-[16px]',
               'will-change-transform',
-              'animate-[fadeInDown_0.25s_cubic-bezier(0.2,0.8,0.2,1)_forwards]',
+              // 'animate-[fadeInDown_0.25s_cubic-bezier(0.2,0.8,0.2,1)_forwards]',
+              'animate-fade-in-down'
             )}
           >
             {count}
