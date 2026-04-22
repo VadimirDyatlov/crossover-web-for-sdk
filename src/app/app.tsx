@@ -3,7 +3,7 @@ import { CatalogPage } from '@/pages/catalog-page';
 import { CartPage } from '@/pages/cart-page';
 // import { OrdersPage } from '@/pages/orders-page';
 import { NavigationProvider, routerPaths } from '@/shared/lib';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { ErrorBoundary, FullPageError, Skeleton, Stack } from '@/shared/ui';
 
 export const CatalogSkeleton = () => {
@@ -28,6 +28,14 @@ const OrdersPageLazy = lazy(() =>
 );
 
 export const App = () => {
+  useEffect(() => {
+    const splash = document.getElementById('splash');
+    if (!splash) return;
+    splash.style.opacity = '0';
+    const t = setTimeout(() => splash.remove(), 150);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <ErrorBoundary>
       <Router base={routerPaths.root}>

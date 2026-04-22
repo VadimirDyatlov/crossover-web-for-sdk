@@ -43,6 +43,27 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
         className,
       )}
     >
+      {/* Не рендерим <img> без src — иначе браузер делает запрос с пустым URL */}
+      {src && (
+        <img
+          src={src}
+          alt={alt}
+          loading={loading}
+          fetchPriority={fetchPriority}
+          // onLoad/onError вместо useEffect+new Image(): один запрос вместо двух
+          onLoad={() => {
+            imageCache.add(src);
+            setStatus('loaded');
+          }}
+          onError={() => setStatus('error')}
+          className={cn('w-full h-full', imgClassName)}
+        />
+      )}
+      {/*
+        Плейсхолдер поверх img (z-10): img всегда opacity-1, поэтому Chrome
+        видит его как LCP-кандидата с момента первого рендера.
+        Плавное исчезновение теперь на overlay, а не на img.
+      */}
       {status === 'loading' && (
         <div
           className={cn(
@@ -62,27 +83,6 @@ export const SmartImage: FC<SmartImageProps> = (props) => {
         >
           <ErrorSvg className="w-1/2 h-1/2 opacity-30" />
         </div>
-      )}
-      {/* Не рендерим <img> без src — иначе браузер делает запрос с пустым URL */}
-      {src && (
-        <img
-          src={src}
-          alt={alt}
-          loading={loading}
-          fetchPriority={fetchPriority}
-          // onLoad/onError вместо useEffect+new Image(): один запрос вместо двух
-          onLoad={() => {
-            imageCache.add(src);
-            setStatus('loaded');
-          }}
-          onError={() => setStatus('error')}
-          className={cn(
-            // will-change-opacity переносит анимацию появления на GPU
-            'w-full h-full transition-opacity duration-500 will-change-[opacity]',
-            imgClassName,
-            status === 'loaded' ? 'opacity-100' : 'opacity-0',
-          )}
-        />
       )}
     </div>
   );
