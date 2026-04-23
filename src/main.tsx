@@ -27,14 +27,16 @@ const init = async () => {
     </StrictMode>,
   );
 
-  // DEV — dev-сервер, VITE_ENABLE_MSW — явное включение для preview/тестирования
-  if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true') {
-    const { worker } = await import('./shared/api/mocks/browser');
-    await worker.start({ onUnhandledRequest: 'bypass' });
+  try {
+    // DEV — dev-сервер, VITE_ENABLE_MSW — явное включение для preview/тестирования
+    if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true') {
+      const { worker } = await import('./shared/api/mocks/browser');
+      await worker.start({ onUnhandledRequest: 'bypass' });
+    }
+  } finally {
+    // Разблокируем fetch-вызовы в API-слое — даже если MSW упал
+    resolveMswReady();
   }
-
-  // Разблокируем fetch-вызовы в API-слое
-  resolveMswReady();
 };
 
 init();

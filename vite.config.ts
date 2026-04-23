@@ -36,8 +36,8 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    // В production: статически заменяет VITE_ENABLE_MSW через loadEnv (читает .env.local),
-    // чтобы Rollup убирал мёртвый код с dynamic import msw/browser в CI-сборках без .env.local.
+    // В production: статически заменяет VITE_ENABLE_MSW через loadEnv (читает .env.production),
+    // чтобы Rollup убирал мёртвый код с dynamic import msw/browser если MSW не нужен.
     // В dev: не трогаем — Vite сам читает .env.development через нативный import.meta.env.
     ...(mode !== 'development' && {
       define: {
