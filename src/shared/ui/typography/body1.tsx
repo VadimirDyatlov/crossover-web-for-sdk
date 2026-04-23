@@ -1,5 +1,5 @@
-import { cn } from '@/shared/lib';
 import type { FC, ReactNode } from 'react';
+import { cn } from '@/shared/lib';
 
 interface Body1Props {
   className?: string;

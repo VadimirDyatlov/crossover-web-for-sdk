@@ -1,7 +1,7 @@
+import type { FC, ReactNode } from 'react';
+import { cn } from '@/shared/lib';
 import { Stack } from '@/shared/ui';
 import { CallSupportLink } from './call-support-link';
-import { cn } from '@/shared/lib';
-import type { FC, ReactNode } from 'react';
 
 interface SupportBlockProps {
   children: (Link: FC<{ className?: string }>) => ReactNode;

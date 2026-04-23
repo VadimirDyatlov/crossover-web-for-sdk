@@ -1,7 +1,7 @@
-import { NavigateBackButton } from '@/features/navigate-back';
-import { useMerchantStore } from '@/entities/merchant';
-import { SmartImage, Stack, Typography } from '@/shared/ui';
 import type { FC } from 'react';
+import { useMerchantStore } from '@/entities/merchant';
+import { NavigateBackButton } from '@/features/navigate-back';
+import { SmartImage, Stack, Typography } from '@/shared/ui';
 
 export const CartHeader: FC = () => {
   const merchantInfo = useMerchantStore((state) => state.data);

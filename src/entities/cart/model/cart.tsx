@@ -1,4 +1,4 @@
-import { types } from '@/shared/api';
+import type { types } from '@/shared/api';
 import { create } from 'zustand';
 
 type ProductMap = Record<string, { product: types.Product; quantity: number }>;

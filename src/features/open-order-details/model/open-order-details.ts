@@ -1,7 +1,7 @@
-import { useOrderStore } from '@/entities/order';
-import { useModalStore } from '@/shared/model';
-import { MODAL } from '@/shared/lib';
 import type { types } from '@/shared/api';
+import { useOrderStore } from '@/entities/order';
+import { MODAL } from '@/shared/lib';
+import { useModalStore } from '@/shared/model';
 
 export const useOpenOrder = () => {
   const { showModal } = useModalStore();

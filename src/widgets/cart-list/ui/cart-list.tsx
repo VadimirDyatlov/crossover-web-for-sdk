@@ -1,9 +1,9 @@
+import type { FC } from 'react';
 import { useShallow } from 'zustand/shallow';
-import { AddToCart } from '@/features/add-to-cart';
 import { useCartStore } from '@/entities/cart';
 import { CartProductCard } from '@/entities/product';
+import { AddToCart } from '@/features/add-to-cart';
 import { Stack } from '@/shared/ui';
-import type { FC } from 'react';
 
 export const CartList: FC = () => {
   const productList = useCartStore(

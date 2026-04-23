@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import type { types } from '@/shared/api';
+import { useEffect, useMemo } from 'react';
+import { useCategoryStore } from '@/entities/category';
 import { useMerchantStore } from '@/entities/merchant';
 import { useProductStore } from '@/entities/product/model/product';
-import { useCategoryStore } from '@/entities/category';
-import type { types } from '@/shared/api';
 
 export const useSelectCategory = () => {
-  const categories = useMerchantStore((state) => state.data?.category) || [];
+  const categoryData = useMerchantStore((state) => state.data?.category);
+  // useMemo stabilises the reference so the array identity doesn't change on every render
+  const categories = useMemo(() => categoryData || [], [categoryData]);
   const { selectedCategory, setSelectedCategory } = useCategoryStore();
   // Без селектора — ре-рендер при каждом изменении productStore (isLoading, data и т.д.)
   const fetchProductList = useProductStore((state) => state.fetchProductList);

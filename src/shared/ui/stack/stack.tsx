@@ -1,5 +1,5 @@
+import type { ReactNode } from 'react';
 import { cn } from '@/shared/lib';
-import { forwardRef, type ReactNode } from 'react';
 
 interface StackProps {
   children: ReactNode;
@@ -13,7 +13,10 @@ interface StackProps {
   style?: React.CSSProperties;
 }
 
-export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
+export const Stack = ({
+  ref,
+  ...props
+}: StackProps & { ref?: React.RefObject<HTMLDivElement | null> }) => {
   const {
     children,
     direction = 'column',
@@ -79,6 +82,6 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
       {children}
     </div>
   );
-});
+};
 
 Stack.displayName = 'Stack';

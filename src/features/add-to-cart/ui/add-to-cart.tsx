@@ -1,8 +1,8 @@
-import { useAddToCart } from '../model/add-to-cart';
-import { Button, Stack } from '@/shared/ui';
-import { cn } from '@/shared/lib';
 import type { FC, MouseEvent } from 'react';
 import type { types } from '@/shared/api';
+import { cn } from '@/shared/lib';
+import { Button, Stack } from '@/shared/ui';
+import { useAddToCart } from '../model/add-to-cart';
 
 const controlButtonClasses = cn(
   'w-10 h-10 flex items-center justify-center !p-0',
@@ -14,10 +14,9 @@ interface AddToCartProps {
   className?: string;
 }
 
-export const AddToCart: FC<AddToCartProps> = (props) => {
-  const { count, isExpanded, handleIncrement, handleDecrement } = useAddToCart(
-    props.product,
-  );
+export const AddToCart: FC<AddToCartProps> = ({ product, className }) => {
+  const { count, isExpanded, handleIncrement, handleDecrement } =
+    useAddToCart(product);
 
   return (
     <Stack
@@ -29,7 +28,7 @@ export const AddToCart: FC<AddToCartProps> = (props) => {
         'z-20 h-10 overflow-hidden bg-white text-[#383838]! rounded-[24px] shadow-[0_2px_8px_rgba(0,0,0,0.1)]',
         'transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[width]',
         isExpanded ? 'w-[100px]' : 'w-[40px]',
-        props.className,
+        className,
       )}
     >
       {isExpanded ? (

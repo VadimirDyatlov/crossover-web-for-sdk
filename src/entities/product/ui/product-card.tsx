@@ -1,6 +1,6 @@
-import { Box, Stack, Typography, SmartImage } from '@/shared/ui';
 import type { FC, ReactNode } from 'react';
 import type { types } from '@/shared/api';
+import { Box, SmartImage, Stack, Typography } from '@/shared/ui';
 
 interface ProductCardProps {
   children: ReactNode;

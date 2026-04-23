@@ -1,7 +1,7 @@
-import { Stack } from '@/shared/ui';
-import { cn } from '@/shared/lib';
 import type { FC, ReactNode } from 'react';
 import { Drawer } from 'vaul';
+import { cn } from '@/shared/lib';
+import { Stack } from '@/shared/ui';
 
 interface ModalProps {
   children: ReactNode;
@@ -52,7 +52,9 @@ export const Modal: FC<ModalProps> = (props) => {
 
           <Drawer.Title className="sr-only">Информация о товаре</Drawer.Title>
           {/* overscroll-contain  */}
-          <Stack className="flex-1 overflow-y-auto overscroll-contain outline-none">{children}</Stack>
+          <Stack className="flex-1 overflow-y-auto overscroll-contain outline-none">
+            {children}
+          </Stack>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

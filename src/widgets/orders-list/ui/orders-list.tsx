@@ -1,7 +1,7 @@
+import type { FC, ReactNode } from 'react';
 import { OrderCard, useOrderStore } from '@/entities/order';
 import { useOpenOrder } from '@/features/open-order-details';
 import { Stack } from '@/shared/ui';
-import type { FC, ReactNode } from 'react';
 
 interface OrdersListProps {
   children?: ReactNode;

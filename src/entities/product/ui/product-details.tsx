@@ -1,6 +1,6 @@
+import type { FC, ReactNode } from 'react';
 import { SmartImage, Stack, Typography } from '@/shared/ui';
 import { useProductStore } from '../model/product';
-import type { FC, ReactNode } from 'react';
 
 interface ProductDetailsProps {
   children: ReactNode;

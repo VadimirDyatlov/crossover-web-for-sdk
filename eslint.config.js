@@ -1,16 +1,12 @@
 import antfu from '@antfu/eslint-config'
+import prettier from 'eslint-config-prettier'
 
 export default antfu({
   react: true,
 
   typescript: true,
 
-  formatters: {
-    css: true,
-    html: true,
-  },
-
-  ignores: ['dist', 'build', 'coverage', 'node_modules'],
+  ignores: ['dist', 'build', 'coverage', 'node_modules', 'eslint.config.js', 'public/mockServiceWorker.js'],
 
   rules: {
     'no-console': 'warn',
@@ -27,4 +23,4 @@ export default antfu({
   rules: {
     'ts/no-namespace': 'off',
   },
-})
+}).append(prettier)

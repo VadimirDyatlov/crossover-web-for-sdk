@@ -1,5 +1,5 @@
-import { useShallow } from 'zustand/shallow';
 import { useEffect } from 'react';
+import { useShallow } from 'zustand/shallow';
 import { useCartStore } from '@/entities/cart';
 import { useAppNavigation } from '@/shared/lib';
 

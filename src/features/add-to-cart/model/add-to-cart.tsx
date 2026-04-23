@@ -1,6 +1,6 @@
+import type { types } from '@/shared/api';
+import { useCallback, useRef } from 'react';
 import { useCartStore } from '@/entities/cart';
-import { types } from '@/shared/api';
-import { useRef, useCallback } from 'react';
 
 // Минимальный интервал между тапами: защита от задвоения на мобильных без внешних зависимостей
 const TAP_THROTTLE_MS = 300;

@@ -1,11 +1,11 @@
-import { PayButton } from '@/features/pay-order';
-import { AddOrderComment } from '@/features/add-order-comment';
-import { CartHeader } from '@/widgets/header';
-import { CartList } from '@/widgets/cart-list';
+import type { FC } from 'react';
 import { useMerchantLazy } from '@/entities/merchant';
+import { AddOrderComment } from '@/features/add-order-comment';
+import { PayButton } from '@/features/pay-order';
 import { Box, Stack } from '@/shared/ui';
+import { CartList } from '@/widgets/cart-list';
+import { CartHeader } from '@/widgets/header';
 import { useCartAutoExit } from '../model/cart-page';
-import { type FC } from 'react';
 
 export const CartPage: FC = () => {
   useMerchantLazy();
