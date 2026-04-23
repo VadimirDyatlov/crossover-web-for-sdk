@@ -10,6 +10,7 @@ interface StackProps {
   className?: string;
   wrap?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  style?: React.CSSProperties;
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
@@ -22,6 +23,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
     className,
     wrap = false,
     onClick,
+    style,
     ...rest
   } = props;
 
@@ -30,6 +32,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
     column: 'flex-col',
   };
 
+  // gap во flex-контексте не работает на iOS < 14.5 (апрель 2021)
+  // если нужна поддержка старых версий — заменить на margin через padding/negative-margin паттерн
   const spacingClasses = {
     none: 'gap-0',
     xs: 'gap-1',
@@ -58,7 +62,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
 
   return (
     <div
-      ref={ref} 
+      ref={ref}
       className={cn(
         'flex',
         directionClasses[direction],
@@ -69,7 +73,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
         className,
       )}
       onClick={onClick}
-      {...rest} 
+      style={style}
+      {...rest}
     >
       {children}
     </div>

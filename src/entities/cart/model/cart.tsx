@@ -1,13 +1,25 @@
 import { types } from '@/shared/api';
 import { create } from 'zustand';
 
+type ProductMap = Record<string, { product: types.Product; quantity: number }>;
+
+// Единый проход вместо двух отдельных reduce — O(n) вместо O(2n)
+const calcTotals = (map: ProductMap) =>
+  Object.values(map).reduce(
+    (acc, item) => ({
+      totalQuantity: acc.totalQuantity + item.quantity,
+      totalPrice: acc.totalPrice + item.product.price * item.quantity,
+    }),
+    { totalQuantity: 0, totalPrice: 0 },
+  );
+
 interface Store {
   productMap: Record<string, { product: types.Product; quantity: number }>;
   totalPrice: number;
   totalQuantity: number;
-  
+
   getProductList: () => { product: types.Product; quantity: number }[];
-  addProduct: (product: types.Product) => void; 
+  addProduct: (product: types.Product) => void;
   removeProduct: (id: string) => void;
   removeOneProduct: (id: string) => void;
   clearCart: () => void;
@@ -23,71 +35,41 @@ export const useCartStore = create<Store>((set, get) => ({
     const { productMap } = get();
     const existing = productMap[product.id];
 
-    let newProductMap;
+    const newProductMap = existing
+      ? {
+          ...productMap,
+          [product.id]: { ...existing, quantity: existing.quantity + 1 },
+        }
+      : { ...productMap, [product.id]: { product, quantity: 1 } };
 
-    if (existing) {
-      newProductMap = {
-        ...productMap,
-        [product.id]: {
-          ...existing,
-          quantity: existing.quantity + 1,
-        },
-      };
-    } else {
-      newProductMap = {
-        ...productMap,
-        [product.id]: {
-          product,
-          quantity: 1,
-        },
-      };
-    }
-    
-    const items = Object.values(newProductMap);
-    const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-    
-    set({ productMap: newProductMap, totalQuantity, totalPrice });
+    set({ productMap: newProductMap, ...calcTotals(newProductMap) });
   },
   removeOneProduct: (id: string) => {
     const { productMap } = get();
     const existing = productMap[id];
-    
+
     if (!existing) return;
-    
-    let newProducts;
+
+    let newProductMap;
     if (existing.quantity === 1) {
-      newProducts = { ...productMap };
-      delete newProducts[id];
+      // delete на копии мутирует объект — используем деструктуризацию с rest
+      const { [id]: _, ...rest } = productMap;
+      newProductMap = rest;
     } else {
-      newProducts = {
+      newProductMap = {
         ...productMap,
-        [id]: {
-          ...existing,
-          quantity: existing.quantity - 1,
-        },
+        [id]: { ...existing, quantity: existing.quantity - 1 },
       };
     }
-    
-    const items = Object.values(newProducts);
-    const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-    
-    set({ productMap: newProducts, totalQuantity, totalPrice });
+
+    set({ productMap: newProductMap, ...calcTotals(newProductMap) });
   },
   removeProduct: (id: string) => {
     const { productMap } = get();
-    const newProductMap = { ...productMap };
-    delete newProductMap[id];
+    // delete на копии мутирует объект — используем деструктуризацию с rest
+    const { [id]: _, ...newProductMap } = productMap;
 
-    const items = Object.values(newProductMap);
-    const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = items.reduce(
-      (sum, item) => sum + item.product.price * item.quantity,
-      0,
-    );
-
-    set({ productMap: newProductMap, totalQuantity, totalPrice });
+    set({ productMap: newProductMap, ...calcTotals(newProductMap) });
   },
   clearCart: () => {
     set({ productMap: {}, totalPrice: 0, totalQuantity: 0 });

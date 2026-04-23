@@ -2,15 +2,20 @@ import { useSelectCategory } from '@/features/select-category';
 import { Category } from '@/entities/category';
 import { cn, useScrollIntoView } from '@/shared/lib';
 import { Stack } from '@/shared/ui';
-import type { FC } from 'react';
+import type { CSSProperties, FC } from 'react';
 
 export const CategoryList: FC = () => {
   const { categories, selectedId, handleSelect } = useSelectCategory();
-  const activeRef = useScrollIntoView<string | undefined>(selectedId);
+  // Второй параметр — тип DOM-элемента, совпадает с forwardRef<HTMLButtonElement> в Category
+  const activeRef = useScrollIntoView<string | undefined, HTMLButtonElement>(
+    selectedId,
+  );
 
   return (
     <Stack
       direction="row"
+      // position: -webkit-sticky — fallback для iOS WKWebView < 13, Tailwind генерирует только position: sticky
+      style={{ position: '-webkit-sticky' as CSSProperties['position'] }}
       className={cn(
         'sticky -top-[1px] z-25 w-full',
         'overflow-x-auto overflow-y-hidden min-h-[44px] h-[44px]',

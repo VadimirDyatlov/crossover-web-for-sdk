@@ -58,14 +58,3 @@ export const Modal: FC<ModalProps> = (props) => {
     </Drawer.Root>
   );
 };
-
-          {/* <div className="flex justify-end px-4">
-            <button onClick={onClose} className="p-2 active:opacity-50">
-              <CloseIcon />
-            </button>
-          </div> */}
-
-          {/* Контент скроллится внутри, если его много */}
-          {/* <div className="flex-1 overflow-y-auto px-4 pb-[env(safe-area-inset-bottom)]">
-            {children}
-          </div> */}

@@ -1,5 +1,5 @@
 import { useCartStore, CartPreview } from '@/entities/cart';
-import { cn, useAppNavigation } from '@/shared/lib'; 
+import { cn, useAppNavigation } from '@/shared/lib';
 import { Button, Stack } from '@/shared/ui';
 import type { FC } from 'react';
 
@@ -13,9 +13,9 @@ export const OpenCartButton: FC = () => {
     <Stack
       align="center"
       className={cn(
-        "fixed left-0 right-0 z-50 pointer-events-none",
+        'fixed left-0 right-0 z-50 pointer-events-none',
         // "bottom-[50px]",
-        "bottom-[calc(50px+env(safe-area-inset-bottom,0px))]",
+        'bottom-[calc(50px+env(safe-area-inset-bottom,0px))]',
       )}
     >
       <Button

@@ -63,14 +63,16 @@ export const orderListHandler = http.get('/crossover/v1/order/list', () => {
   });
 });
 
-export const orderDetailsHandler = http.get('/crossover/v1/order/:id', ({ params }) => {
-  const orderId = params.id;
-  const order = mockOrderDetails[orderId as string]
+export const orderDetailsHandler = http.get(
+  '/crossover/v1/order/:id',
+  ({ params }) => {
+    const orderId = params.id;
+    const order = mockOrderDetails[orderId as string];
 
-  if (!order) {
-    return HttpResponse.json({ error: 'Товар не найден' }, { status: 404 });
-  }
+    if (!order) {
+      return HttpResponse.json({ error: 'Товар не найден' }, { status: 404 });
+    }
 
-  return HttpResponse.json(order);
-});
-
+    return HttpResponse.json(order);
+  },
+);

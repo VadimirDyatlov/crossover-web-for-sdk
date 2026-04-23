@@ -8,7 +8,7 @@ interface Headline4Props {
 
 export const Headline4: FC<Headline4Props> = (props) => {
   const { className, children } = props;
-  
+
   return (
     <span
       className={cn(

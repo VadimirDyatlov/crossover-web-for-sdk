@@ -1,10 +1,10 @@
-import { ProductCard } from "@/entities/product";
-import { useProductStore } from "@/entities/product/model/product";
-import { AddToCart } from "@/features/add-to-cart/ui/add-to-cart";
-import { useOpenProduct } from "@/features/open-product-details";
-import { useSelectCategory } from "@/features/select-category";
-import { cn } from "@/shared/lib";
-import { InlineError, Stack } from "@/shared/ui";
+import { ProductCard } from '@/entities/product';
+import { useProductStore } from '@/entities/product/model/product';
+import { AddToCart } from '@/features/add-to-cart/ui/add-to-cart';
+import { useOpenProduct } from '@/features/open-product-details';
+import { useSelectCategory } from '@/features/select-category';
+import { cn } from '@/shared/lib';
+import { InlineError, Stack } from '@/shared/ui';
 import type { FC } from 'react';
 
 export const ProductList: FC = () => {
@@ -13,7 +13,7 @@ export const ProductList: FC = () => {
   const handleOpen = useOpenProduct();
 
   if (error) {
-    return (<InlineError onRetry={handleRetry} />)
+    return <InlineError onRetry={handleRetry} />;
   }
 
   return (

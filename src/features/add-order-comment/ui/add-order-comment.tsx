@@ -1,5 +1,5 @@
-import { cn } from "@/shared/lib";
-import type { FC } from "react"
+import { cn } from '@/shared/lib';
+import type { FC } from 'react';
 
 interface AddOrderCommentProps {
   className?: string;
@@ -18,8 +18,8 @@ export const AddOrderComment: FC<AddOrderCommentProps> = ({ className }) => {
       className={cn(
         'rounded-[4px_16px_16px_16px]',
         'py-[18px] px-[16px]',
-        'm-[24px] mb-[140px]',
-        // 'm-[24px] mb-[calc(140px+env(safe-area-inset-bottom,0px))]',
+        // mb без safe-area-inset-bottom перекрывал кнопку «Оплатить» на iPhone с home indicator
+        'm-[24px] mb-[calc(140px+env(safe-area-inset-bottom,0px))]',
         'border border-[rgb(180,180,180)]',
         'bg-white focus-within:border-black transition-colors',
         className,

@@ -12,10 +12,7 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
   const { children, product, onClick } = props;
 
   return (
-    <Stack
-      className="shrink-0"
-      onClick={onClick}
-    >
+    <Stack className="shrink-0" onClick={onClick}>
       <Box className="relative">
         <SmartImage
           src={product.imageUrl}

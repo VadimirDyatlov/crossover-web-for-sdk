@@ -1,7 +1,8 @@
-import { SmartImage, Stack, Typography } from "@/shared/ui";
-import { cn } from "@/shared/lib";
-import type { types } from "@/shared/api";
-import type { FC, ReactNode } from "react";
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import { cn } from '@/shared/lib';
+import { parseProductName } from '../lib/parse-product-name';
+import type { types } from '@/shared/api';
+import type { FC, ReactNode } from 'react';
 
 interface CartProductCardProps {
   product: types.Product;
@@ -10,10 +11,7 @@ interface CartProductCardProps {
 
 export const CartProductCard: FC<CartProductCardProps> = (props) => {
   const { product, children } = props;
-  // TODO: Вынести в хелпер?
-  const parts = product.name.split(' ');
-  const weight = parts.pop();
-  const name = parts.join(' ');
+  const { name, weight } = parseProductName(product.name);
 
   return (
     <Stack

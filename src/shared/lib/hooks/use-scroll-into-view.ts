@@ -9,7 +9,9 @@ interface RelaxedScrollOptions {
   block?: RelaxedScrollLogicalPosition;
 }
 
-export const useScrollIntoView = <T>(
+// E extends HTMLElement позволяет передавать конкретный тип (HTMLButtonElement и т.д.)
+// и получать RefObject<E> вместо RefObject<HTMLElement> — нет конфликта типов при передаче в ref
+export const useScrollIntoView = <T, E extends HTMLElement = HTMLElement>(
   activeDependency: T,
   {
     behavior = 'smooth',
@@ -17,7 +19,7 @@ export const useScrollIntoView = <T>(
     block = 'nearest',
   }: RelaxedScrollOptions = {},
 ) => {
-  const elementRef = useRef<any>(null);
+  const elementRef = useRef<E>(null);
 
   useEffect(() => {
     if (elementRef.current && activeDependency) {

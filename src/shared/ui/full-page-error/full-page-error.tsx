@@ -1,12 +1,12 @@
-import { Button, Typography, Stack } from "..";
-import type { FC } from "react";
+import { Button, Typography, Stack } from '..';
+import type { FC } from 'react';
 
 interface FullPageErrorProps {
-  title?: string;       
-  description?: string; 
-  actionLabel?: string;   
-  isShowIcon?: boolean; 
-  onBack?: () => void;       
+  title?: string;
+  description?: string;
+  actionLabel?: string;
+  isShowIcon?: boolean;
+  onBack?: () => void;
 }
 
 export const FullPageError: FC<FullPageErrorProps> = (props) => {
@@ -27,14 +27,14 @@ export const FullPageError: FC<FullPageErrorProps> = (props) => {
         justify="center"
         className="flex-1 text-center p-6"
       >
-        {isShowIcon && ( 
+        {isShowIcon && (
           <div className="flex items-center justify-center w-[92px] h-[92px]">
             <svg
               width="66"
               height="66"
               viewBox="0 0 66 66"
               fill="none"
-              xmlns="http://w3.org"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <line
                 x1="10"

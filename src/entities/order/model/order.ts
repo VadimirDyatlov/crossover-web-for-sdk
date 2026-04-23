@@ -13,8 +13,9 @@ interface Store {
     isLoading: boolean;
     error: string | null;
     selectedOrder: types.Order | null;
-  },
-  setSelectedOrder: (order: types.Order) => void;
+  };
+  // null нужен для сброса выбранного заказа при закрытии модалки
+  setSelectedOrder: (order: types.Order | null) => void;
   fetchOrderList: () => Promise<void>;
   fetchOrderDetails: (id: string) => Promise<void>;
 }
@@ -32,20 +33,23 @@ export const useOrderStore = create<Store>((set) => ({
     selectedOrder: null,
   },
 
-  setSelectedOrder: (order: types.Order | null) => set((state) => ({
-    orderDetails: {
-      ...state.orderDetails,
-      selectedOrder: order,
-    }
-  })),
+  setSelectedOrder: (order: types.Order | null) =>
+    set((state) => ({
+      orderDetails: {
+        ...state.orderDetails,
+        selectedOrder: order,
+      },
+    })),
 
   fetchOrderList: async () => {
     set((state) => ({
-      orderList: { ...state.orderList, isLoading: true, error: null }
+      orderList: { ...state.orderList, isLoading: true, error: null },
     }));
 
     try {
       const response = await api.getOrderList();
+      // Без проверки ok — 4xx/5xx JSON попадёт в стор как список заказов
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.OrderResponse = await response.json();
 
       set((state) => ({
@@ -53,42 +57,53 @@ export const useOrderStore = create<Store>((set) => ({
       }));
     } catch (error) {
       set((state) => ({
-        orderList: { ...state.orderList, error: 'Ошибка загрузки', isLoading: false }
+        orderList: {
+          ...state.orderList,
+          error: 'Ошибка загрузки',
+          isLoading: false,
+        },
       }));
     }
   },
 
-
   fetchOrderDetails: async (id: string) => {
     set((state) => ({
-      orderDetails: { ...state.orderDetails, isLoading: true }
+      orderDetails: { ...state.orderDetails, isLoading: true },
     }));
-    
+
     try {
       const response = await api.getOrderDetails(id);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.OrderDetailResponse = await response.json();
 
       set((state) => ({
-        orderDetails: { ...state.orderDetails, data: data.products, isLoading: false },
+        orderDetails: {
+          ...state.orderDetails,
+          data: data.products,
+          isLoading: false,
+        },
       }));
     } catch (error) {
       set((state) => ({
-        orderDetails: { ...state.orderDetails, error: 'Ошибка загрузки', isLoading: false }
+        orderDetails: {
+          ...state.orderDetails,
+          error: 'Ошибка загрузки',
+          isLoading: false,
+        },
       }));
     }
-  }
+  },
 }));
 
 export const useOrderListLazy = () => {
-  const {
-    orderList: { data, isLoading },
-    fetchOrderList,
-  } = useOrderStore();
+  // Подписка только на нужные поля — лишние ре-рендеры при изменении orderDetails не происходят
+  const { data, isLoading, error } = useOrderStore((state) => state.orderList);
+  const fetchOrderList = useOrderStore((state) => state.fetchOrderList);
 
   useEffect(() => {
-    // TODO: Исправить бесконечный цикл загрузки
-    if (!data.length && !isLoading) fetchOrderList();
-  }, [data, isLoading, fetchOrderList]);
+    // error не проверялся — при неудаче data=[], isLoading=false → бесконечный ретрай
+    if (!data.length && !isLoading && !error) fetchOrderList();
+  }, [data.length, isLoading, error, fetchOrderList]);
 
   return { data, isLoading };
 };
@@ -98,7 +113,7 @@ export const useOrderListLazy = () => {
 //     orderDetails: { data, isLoading },
 //     fetchOrderDetails,
 //   } = useOrderStore();
-  
+
 //   useEffect(() => {
 //     if (!data && !isLoading) fetchOrderDetails(id);
 //   }, [data, isLoading, fetchOrderDetails]);

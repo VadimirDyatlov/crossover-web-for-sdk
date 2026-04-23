@@ -67,12 +67,12 @@ export interface Order {
     name: string;
     logoUrl: string;
     address: string;
-  },
+  };
   verificationCode: string;
   status: string;
   totalItems: number;
   totalAmount: number;
-  discription: string;
+  description: string;
   localSessionId: string;
 }
 

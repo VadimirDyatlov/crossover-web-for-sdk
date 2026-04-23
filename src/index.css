@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
-@view-transition {
+/* @view-transition {
   navigation: auto;
-}
+} */
 
 @theme {
   @keyframes slide-in-from-left {
@@ -185,11 +185,6 @@
   --gray-text-secondary: rgb(18, 18, 18);
 }
 
-:root {
-  @custom-media --breakpoint-md (min-width: 700px);
-  @custom-media --breakpoint-lg (min-width: 1180px);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -237,10 +232,11 @@ body {
   margin: 0;
   padding: 0;
   /* height: calc(100dvh + 88px); */
-  height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-top));
+  /* Второй параметр был safe-area-inset-top (дублирование) — исправлено на bottom */
+  height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
   /* height: 100%;
   min-height: 100dvh; */
-  overflow: hidden;
+  /* overflow: hidden убран — переопределялся overflow: auto ниже и мешал скроллу к полям при открытой клавиатуре iOS */
 
   /* height: 100%; */
   /* border: solid 1px rgb(0, 38, 255); */
