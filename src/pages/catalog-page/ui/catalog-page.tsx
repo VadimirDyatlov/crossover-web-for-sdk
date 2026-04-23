@@ -22,7 +22,9 @@ export const CatalogPage: FC = () => {
       <CatalogHeader />
       <Stack
         // ref={scrollRef}
-        className="min-h-0 overflow-y-auto"
+        // overscroll-y-none: запрещает iOS rubber-band на этом контейнере —
+        // без него при pull-down MerchantInfo визуально «растягивается»
+        className="min-h-0 overflow-y-auto overscroll-y-none"
       >
         <MerchantInfo />
         <CategoryList />
