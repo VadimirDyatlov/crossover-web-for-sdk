@@ -51,16 +51,8 @@ export const Modal: FC<ModalProps> = (props) => {
           <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-10 h-1 flex-shrink-0 rounded-full bg-[#E5E5EA]" />
 
           <Drawer.Title className="sr-only">Информация о товаре</Drawer.Title>
-          {/* <div className="flex justify-end px-4">
-            <button onClick={onClose} className="p-2 active:opacity-50">
-              <CloseIcon />
-            </button>
-          </div> */}
-
-          {/* overflow-y-auto — контент деталей заказа может превысить высоту модалки на мелких экранах */}
-          <Stack className="w-full flex-1 overflow-y-auto pb-[env(safe-area-inset-bottom,0px)]">
-            {children}
-          </Stack>
+          {/* overscroll-contain  */}
+          <Stack className="flex-1 overflow-y-auto overscroll-contain outline-none">{children}</Stack>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>

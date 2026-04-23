@@ -10,7 +10,10 @@ export const CartPreview: FC<CartPreviewProps> = (props) => {
   return (
     <Stack direction="row" spacing="sm" align="center">
       <Basket />
-      <Typography.Headline4>
+      <Typography.Headline4
+        key={props.price}
+        className="will-change-[opacity,filter] animate-price-fade"
+      >
         {`${props.price.toLocaleString('ru-RU')} ₽`}
       </Typography.Headline4>
     </Stack>

@@ -19,15 +19,35 @@
         padding-top: env(safe-area-inset-top, 0px);
         transition: opacity 0.15s;
       }
-
       .sk-anim {
         animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
       }
       @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
       }
-
+      .splash-close-btn {
+        position: absolute;
+        top: calc(2px + env(safe-area-inset-top, 0px));
+        left: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: #1c1c1c;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Header */
       .header-skeleton {
         height: 44px;
         display: flex;
@@ -41,7 +61,7 @@
         background: var(--sk-color);
         border-radius: 25px;
       }
-
+      /* Merchant Info */
       .merchant-skeleton {
         margin: 14px;
         display: flex;
@@ -93,7 +113,7 @@
         border-radius: 16px;
         background: var(--sk-color);
       }
-
+      /* Categories */
       .category-skeleton {
         height: 44px;
         display: flex;
@@ -101,6 +121,7 @@
         padding: 0 8px;
         align-items: center;
         overflow: hidden;
+        border-bottom: 1px solid #f2f2f2;
       }
       .category-pill {
         width: 120px;
@@ -112,7 +133,7 @@
       .category-pill.active {
         background: rgba(0, 0, 0, 0.18);
       }
-
+      /* Product Grid */
       .product-grid-skeleton {
         display: grid;
         grid-template-columns: 1fr 1fr;
