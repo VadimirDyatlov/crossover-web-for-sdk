@@ -1,7 +1,7 @@
-import { useCartStore, CartPreview } from '@/entities/cart';
+import type { FC } from 'react';
+import { CartPreview, useCartStore } from '@/entities/cart';
 import { cn, useAppNavigation } from '@/shared/lib';
 import { Button, Stack } from '@/shared/ui';
-import type { FC } from 'react';
 
 export const OpenCartButton: FC = () => {
   const { openCart } = useAppNavigation();

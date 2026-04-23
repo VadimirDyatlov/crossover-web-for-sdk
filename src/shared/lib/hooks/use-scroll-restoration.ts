@@ -1,5 +1,5 @@
-import { useScrollRestorationStore } from '@/shared/model/scroll-store';
 import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useScrollRestorationStore } from '@/shared/model/scroll-store';
 
 export const useScrollRestoration = (
   scope: string,
@@ -16,6 +16,8 @@ export const useScrollRestoration = (
     if (scrollRef.current) {
       scrollRef.current.scrollTop = savedPosition;
     }
+    // savedPosition intentionally omitted: restore only on scope/id change, not on every scroll
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scope, id]);
 
   useLayoutEffect(() => {

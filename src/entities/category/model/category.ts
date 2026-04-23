@@ -1,6 +1,6 @@
+import type { types } from '@/shared/api';
 import { useEffect, useRef } from 'react';
 import { create } from 'zustand';
-import type { types } from '@/shared/api';
 
 interface Store {
   selectedCategory: types.Category | null;

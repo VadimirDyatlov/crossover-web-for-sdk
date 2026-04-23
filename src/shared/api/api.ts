@@ -15,7 +15,8 @@ export const getProductList = (id: string, signal?: AbortSignal) =>
 export const getProductDetails = (id: string) =>
   ready.then(() => fetch(`/crossover/v1/product/${id}`));
 
-export const getOrderList = () => ready.then(() => fetch('/crossover/v1/order/list'));
+export const getOrderList = () =>
+  ready.then(() => fetch('/crossover/v1/order/list'));
 
 export const getOrderDetails = (id: string) =>
   ready.then(() => fetch(`/crossover/v1/order/${id}`));

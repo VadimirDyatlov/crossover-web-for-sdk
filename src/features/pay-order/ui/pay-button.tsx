@@ -1,7 +1,7 @@
-import { useCartStore } from '@/entities/cart';
-import { Button, Stack, Typography } from '@/shared/ui';
-import { cn } from '@/shared/lib';
 import type { FC } from 'react';
+import { useCartStore } from '@/entities/cart';
+import { cn } from '@/shared/lib';
+import { Button, Stack, Typography } from '@/shared/ui';
 
 export const PayButton: FC = () => {
   const { totalPrice } = useCartStore();

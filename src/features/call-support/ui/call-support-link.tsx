@@ -1,5 +1,5 @@
-import { cn } from '@/shared/lib';
 import type { FC } from 'react';
+import { cn } from '@/shared/lib';
 
 interface CallSupportLinkProps {
   className?: string;

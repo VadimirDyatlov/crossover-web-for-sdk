@@ -1,6 +1,7 @@
+import type { types } from '@/shared/api';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { api, types } from '@/shared/api';
+import { api } from '@/shared/api';
 
 interface Store {
   data: types.MerchantResponse | null;
@@ -24,9 +25,9 @@ export const useMerchantStore = create<Store>((set) => ({
       const data = await response.json();
 
       set({ data, isLoading: false });
-    } catch (error) {
+    } catch (_error) {
       set({
-        error: 'Ошибка',
+        error: `Ошибка: ${_error instanceof Error ? _error.message : String(_error)}`,
         isLoading: false,
       });
     }

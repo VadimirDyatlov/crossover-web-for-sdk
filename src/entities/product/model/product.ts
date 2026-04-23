@@ -1,5 +1,6 @@
+import type { types } from '@/shared/api';
 import { create } from 'zustand';
-import { api, types } from '@/shared/api';
+import { api } from '@/shared/api';
 
 // Модульная переменная — отменяет предыдущий запрос при быстром переключении категорий
 let productListAbortController: AbortController | null = null;
@@ -51,7 +52,10 @@ export const useProductStore = create<Store>((set, get) => ({
     }));
 
     try {
-      const response = await api.getProductList(categoryId, productListAbortController.signal);
+      const response = await api.getProductList(
+        categoryId,
+        productListAbortController.signal,
+      );
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.ProductResponse = await response.json();
 
@@ -92,16 +96,16 @@ export const useProductStore = create<Store>((set, get) => ({
       set((state) => ({
         productDetails: {
           ...state.productDetails,
-          data: data,
+          data,
           isLoading: false,
         },
       }));
-    } catch (error) {
+    } catch (_error) {
       set((state) => ({
         productDetails: {
           ...state.productDetails,
           isLoading: false,
-          error: 'Ошибка загрузки деталей',
+          error: `Ошибка загрузки деталей: ${_error instanceof Error ? _error.message : String(_error)}`,
         },
       }));
     }

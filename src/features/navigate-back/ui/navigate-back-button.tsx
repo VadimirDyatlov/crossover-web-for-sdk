@@ -1,6 +1,6 @@
+import type { FC } from 'react';
 import { useAppNavigation } from '@/shared/lib';
 import { BackButton } from '@/shared/ui';
-import type { FC } from 'react';
 
 interface NavigateBackButtonProps {
   className?: string;

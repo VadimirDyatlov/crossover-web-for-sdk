@@ -1,9 +1,9 @@
+import type { FC } from 'react';
 import { OrderDetails, useOrderStore } from '@/entities/order';
 import { OrderProductCard } from '@/entities/product';
+import { MODAL } from '@/shared/lib';
 import { useModalStore } from '@/shared/model';
 import { Modal, Stack } from '@/shared/ui';
-import { MODAL } from '@/shared/lib';
-import type { FC } from 'react';
 
 export const OrderDetailsModal: FC = () => {
   const { data } = useOrderStore((state) => state.orderDetails);

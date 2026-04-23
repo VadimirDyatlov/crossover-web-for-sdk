@@ -1,13 +1,13 @@
-import { Button, Stack, Typography } from "@/shared/ui";
-import { useAddToCart } from "../model/add-to-cart";
-import { cn } from "@/shared/lib";
+import type { FC } from 'react';
+import type { types } from '@/shared/api';
+import { cn } from '@/shared/lib';
+import { Button, Stack, Typography } from '@/shared/ui';
 import MinusIcon from '../icon/minus.svg?react';
 import PlusIcon from '../icon/plus.svg?react';
-import type { FC } from "react";
-import type { types } from '@/shared/api';
+import { useAddToCart } from '../model/add-to-cart';
 
 const iconButtonClasses = cn(
-  '!p-0 h-10 w-10 text-white', 
+  '!p-0 h-10 w-10 text-white',
   'will-change-transform animate-fade-in',
 );
 const iconClasses = 'active:opacity-50';
@@ -17,10 +17,10 @@ interface AddToCartLargeProps {
   className?: string;
 }
 
-
 export const AddToCartLarge: FC<AddToCartLargeProps> = (props) => {
   const { product, className } = props;
-  const { count, isExpanded, handleIncrement, handleDecrement } = useAddToCart(product);
+  const { count, isExpanded, handleIncrement, handleDecrement } =
+    useAddToCart(product);
 
   return (
     <Stack

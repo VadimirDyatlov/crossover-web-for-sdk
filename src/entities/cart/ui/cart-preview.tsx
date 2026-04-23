@@ -1,20 +1,20 @@
+import type { FC } from 'react';
 import { Stack, Typography } from '@/shared/ui';
 import Basket from '../icon/basket.svg?react';
-import type { FC } from 'react';
 
 interface CartPreviewProps {
   price: number;
 }
 
-export const CartPreview: FC<CartPreviewProps> = (props) => {
+export const CartPreview: FC<CartPreviewProps> = ({ price }) => {
   return (
     <Stack direction="row" spacing="sm" align="center">
       <Basket />
       <Typography.Headline4
-        key={props.price}
+        key={price}
         className="will-change-[opacity,filter] animate-price-fade"
       >
-        {`${props.price.toLocaleString('ru-RU')} ₽`}
+        {`${price.toLocaleString('ru-RU')} ₽`}
       </Typography.Headline4>
     </Stack>
   );

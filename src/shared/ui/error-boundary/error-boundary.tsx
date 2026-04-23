@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react';
 import { Component } from 'react';
 import { FullPageError } from '../full-page-error/full-page-error';
-import type { ReactNode } from 'react';
 
 export class ErrorBoundary extends Component<{ children: ReactNode }> {
   // error: Error — это ссылка на конструктор, а не null; исправлено на корректный начальный тип
@@ -16,7 +16,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }> {
     if (hasError) {
       return (
         <FullPageError
-          isShowIcon={true}
+          isShowIcon
           title="Упс! Ошибка"
           // error && toString() даёт string | false — не совместимо с string | undefined
           description={error?.toString()}

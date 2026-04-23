@@ -1,8 +1,8 @@
-import { SmartImage, Stack, Typography } from '@/shared/ui';
-import { cn } from '@/shared/lib';
-import { parseProductName } from '../lib/parse-product-name';
-import type { types } from '@/shared/api';
 import type { FC, ReactNode } from 'react';
+import type { types } from '@/shared/api';
+import { cn } from '@/shared/lib';
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import { parseProductName } from '../lib/parse-product-name';
 
 interface CartProductCardProps {
   product: types.Product;

@@ -1,10 +1,10 @@
+import type { FC } from 'react';
 import { useOrderListLazy } from '@/entities/order';
 import { SupportBlock } from '@/features/call-support';
 import { Box, Typography } from '@/shared/ui';
 import { OrdersHeader } from '@/widgets/header';
 import { OrderDetailsModal } from '@/widgets/order-details-modal';
 import { OrdersList } from '@/widgets/orders-list';
-import type { FC } from 'react';
 
 export const OrdersPage: FC = () => {
   useOrderListLazy();

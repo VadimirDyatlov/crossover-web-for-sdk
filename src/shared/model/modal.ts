@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import type { ModalName } from '../lib/constants';
+import { create } from 'zustand';
 
 interface Store {
   visibleModalName: ModalName | null;

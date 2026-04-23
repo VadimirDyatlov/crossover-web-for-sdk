@@ -1,8 +1,8 @@
-import { useSelectCategory } from '@/features/select-category';
+import type { CSSProperties, FC } from 'react';
 import { Category } from '@/entities/category';
+import { useSelectCategory } from '@/features/select-category';
 import { cn, useScrollIntoView } from '@/shared/lib';
 import { Stack } from '@/shared/ui';
-import type { CSSProperties, FC } from 'react';
 
 export const CategoryList: FC = () => {
   const { categories, selectedId, handleSelect } = useSelectCategory();

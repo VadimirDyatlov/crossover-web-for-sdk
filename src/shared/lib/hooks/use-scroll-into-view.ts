@@ -25,7 +25,7 @@ export const useScrollIntoView = <T, E extends HTMLElement = HTMLElement>(
     if (elementRef.current && activeDependency) {
       elementRef.current.scrollIntoView({ behavior, inline, block });
     }
-  }, [activeDependency]);
+  }, [activeDependency, behavior, block, inline]);
 
   return elementRef;
 };

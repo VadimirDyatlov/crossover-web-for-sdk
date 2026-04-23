@@ -1,7 +1,7 @@
+import type { FC } from 'react';
 import { Button, Typography } from '..';
 import { Stack } from '../stack/stack';
 import ArrowClockwise from './icon/arrow_clockwise.svg?react';
-import type { FC } from 'react';
 
 interface InlineErrorProps {
   title?: string;

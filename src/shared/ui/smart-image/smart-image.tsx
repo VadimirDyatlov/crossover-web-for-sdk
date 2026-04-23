@@ -1,8 +1,8 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { cn } from '@/shared/lib';
-import PlaceholderSvg from './icon/placeholder.svg?react';
 import ErrorSvg from './icon/error.svg?react';
-import type { FC } from 'react';
+import PlaceholderSvg from './icon/placeholder.svg?react';
 
 interface SmartImageProps {
   src?: string;

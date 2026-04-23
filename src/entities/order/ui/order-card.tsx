@@ -1,7 +1,7 @@
-import { SmartImage, Stack, Typography } from '@/shared/ui';
-import { formatOrderTime } from '../lib/format-order-time';
 import type { FC } from 'react';
 import type { types } from '@/shared/api';
+import { SmartImage, Stack, Typography } from '@/shared/ui';
+import { formatOrderTime } from '../lib/format-order-time';
 
 interface OrderCardProps {
   order: types.Order;
@@ -10,14 +10,14 @@ interface OrderCardProps {
 
 // TODO: Подкрашивать status
 // TODO: Обработать переполнение текста
-export const OrderCard: FC<OrderCardProps> = (props) => {
+export const OrderCard: FC<OrderCardProps> = ({ order, onClick }) => {
   const { orderId, orderTime, merchantInfo, verificationCode, status, totalAmount } =
-    props.order;
+    order;
 
   return (
     <Stack
       className="gap-5 rounded-[24px] bg-[#f6f6f8] p-4 shrink-0"
-      onClick={props.onClick}
+      onClick={onClick}
     >
       <Stack direction="row" justify="between">
         <Stack direction="row" spacing="xs">

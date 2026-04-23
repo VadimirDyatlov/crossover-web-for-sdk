@@ -1,7 +1,7 @@
+import type { FC, ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 // app/providers/NavigationProvider.tsx
 import { useModalStore } from '@/shared/model';
-import { useEffect, useRef } from 'react';
-import type { FC, ReactNode } from 'react';
 
 export const NavigationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isPopStateNavigating = useRef(false);
@@ -27,6 +27,8 @@ export const NavigationProvider: FC<{ children: ReactNode }> = ({ children }) =>
       document.documentElement.classList.add('back-transition');
 
       const transition = document.startViewTransition(() => {
+        // one-shot zero-delay timeout to yield to the browser before the transition captures
+        // eslint-disable-next-line react-web-api/no-leaked-timeout
         return new Promise((resolve) => setTimeout(resolve, 0));
       });
 
@@ -38,7 +40,7 @@ export const NavigationProvider: FC<{ children: ReactNode }> = ({ children }) =>
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, [visibleModalName]);
+  }, [visibleModalName, closeModal]);
 
   return <>{children}</>;
 };

@@ -1,5 +1,5 @@
-import { Button, Typography, Stack } from '..';
 import type { FC } from 'react';
+import { Button, Stack, Typography } from '..';
 
 interface FullPageErrorProps {
   title?: string;

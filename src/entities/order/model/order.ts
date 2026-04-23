@@ -1,6 +1,7 @@
+import type { types } from '@/shared/api';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { api, types } from '@/shared/api';
+import { api } from '@/shared/api';
 
 interface Store {
   orderList: {
@@ -55,11 +56,11 @@ export const useOrderStore = create<Store>((set) => ({
       set((state) => ({
         orderList: { ...state.orderList, data: data.orders, isLoading: false },
       }));
-    } catch (error) {
+    } catch (_error) {
       set((state) => ({
         orderList: {
           ...state.orderList,
-          error: 'Ошибка загрузки',
+          error: `Ошибка загрузки: ${_error instanceof Error ? _error.message : String(_error)}`,
           isLoading: false,
         },
       }));
@@ -83,11 +84,11 @@ export const useOrderStore = create<Store>((set) => ({
           isLoading: false,
         },
       }));
-    } catch (error) {
+    } catch (_error) {
       set((state) => ({
         orderDetails: {
           ...state.orderDetails,
-          error: 'Ошибка загрузки',
+          error: `Ошибка загрузки: ${_error instanceof Error ? _error.message : String(_error)}`,
           isLoading: false,
         },
       }));

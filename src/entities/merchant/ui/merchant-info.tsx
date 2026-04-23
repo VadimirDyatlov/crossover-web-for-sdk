@@ -1,7 +1,7 @@
-import { Chip, Stack, Typography } from '@/shared/ui';
-import { useMerchantStore } from '../model/merchant';
-import Clock from '../icon/clock.svg?react';
 import type { FC } from 'react';
+import { Chip, Stack, Typography } from '@/shared/ui';
+import Clock from '../icon/clock.svg?react';
+import { useMerchantStore } from '../model/merchant';
 
 export const MerchantInfo: FC = () => {
   const { data } = useMerchantStore();
