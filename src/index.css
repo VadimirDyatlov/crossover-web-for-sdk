@@ -258,7 +258,7 @@ body {
   /* margin: 0; */
   font-family: SBSans, Arial, Helvetica, sans-serif;
   letter-spacing: -0.3px;
-  background: transparent;
+  background: var(--background);
   overflow: auto;
   user-select: none;
   -webkit-tap-highlight-color: transparent;

@@ -30,7 +30,7 @@ export const CatalogPage: FC = () => {
   return (
     <Box flexDirection="column" className="h-dvh overflow-hidden">
       <CatalogHeader />
-      <Stack className="min-h-0 overflow-y-auto overscroll-y-none">
+      <Stack className="min-h-0 overflow-y-auto overscroll-y-none pb-[env(safe-area-inset-bottom,0px)]">
         <MerchantInfo />
         <CategoryList />
         <ProductList />
