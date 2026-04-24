@@ -56,11 +56,11 @@ export const useOrderStore = create<Store>((set) => ({
       set((state) => ({
         orderList: { ...state.orderList, data: data.orders, isLoading: false },
       }));
-    } catch (_error) {
+    } catch (error) {
       set((state) => ({
         orderList: {
           ...state.orderList,
-          error: `Ошибка загрузки: ${_error instanceof Error ? _error.message : String(_error)}`,
+          error: `Ошибка загрузки: ${error instanceof Error ? error.message : String(error)}`,
           isLoading: false,
         },
       }));
@@ -84,11 +84,11 @@ export const useOrderStore = create<Store>((set) => ({
           isLoading: false,
         },
       }));
-    } catch (_error) {
+    } catch (error) {
       set((state) => ({
         orderDetails: {
           ...state.orderDetails,
-          error: `Ошибка загрузки: ${_error instanceof Error ? _error.message : String(_error)}`,
+          error: `Ошибка загрузки: ${error instanceof Error ? error.message : String(error)}`,
           isLoading: false,
         },
       }));

@@ -25,9 +25,9 @@ export const useMerchantStore = create<Store>((set) => ({
       const data = await response.json();
 
       set({ data, isLoading: false });
-    } catch (_error) {
+    } catch (error) {
       set({
-        error: `Ошибка: ${_error instanceof Error ? _error.message : String(_error)}`,
+        error: `Ошибка: ${error instanceof Error ? error.message : String(error)}`,
         isLoading: false,
       });
     }
