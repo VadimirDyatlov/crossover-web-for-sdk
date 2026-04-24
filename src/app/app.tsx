@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Router, Switch } from 'wouter';
 import { CartPage } from '@/pages/cart-page';
 import { CatalogPage, CatalogSkeleton } from '@/pages/catalog-page';
@@ -12,14 +12,6 @@ const OrdersPageLazy = lazy(() =>
 );
 
 export const App = () => {
-  useEffect(() => {
-    const splash = document.getElementById('splash');
-    if (!splash) return;
-    splash.style.opacity = '0';
-    const t = setTimeout(() => splash.remove(), 150);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
     <ErrorBoundary>
       <Router base={routerPaths.root}>
