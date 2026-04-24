@@ -14,7 +14,7 @@ export const CartPage: FC = () => {
   return (
     <Box flexDirection="column" className="h-dvh overflow-hidden">
       <CartHeader />
-      <Stack className="min-h-0 overflow-y-auto">
+      <Stack className="min-h-0 overflow-y-auto pb-[env(safe-area-inset-bottom,0px)]">
         <CartList />
         <AddOrderComment />
       </Stack>

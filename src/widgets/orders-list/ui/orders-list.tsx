@@ -13,7 +13,7 @@ export const OrdersList: FC<OrdersListProps> = ({ children }) => {
   const handleOpen = useOpenOrder();
 
   return (
-    <Stack spacing="sm" className="p-4 pb-20 flex-1 min-h-0 overflow-y-auto">
+    <Stack spacing="sm" className="p-4 pb-[calc(80px+env(safe-area-inset-bottom,0px))] flex-1 min-h-0 overflow-y-auto">
       {data.map((order) => (
         <OrderCard
           key={order.orderId}

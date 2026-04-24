@@ -22,7 +22,7 @@ export const CatalogPage: FC = () => {
       <CatalogHeader />
       <Stack
         // ref={scrollRef}
-        className="min-h-0 overflow-y-auto"
+        className="min-h-0 overflow-y-auto pb-[env(safe-area-inset-bottom,0px)]"
       >
         <MerchantInfo />
         <CategoryList />
