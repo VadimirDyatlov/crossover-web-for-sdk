@@ -100,12 +100,12 @@ export const useProductStore = create<Store>((set, get) => ({
           isLoading: false,
         },
       }));
-    } catch (_error) {
+    } catch (error) {
       set((state) => ({
         productDetails: {
           ...state.productDetails,
           isLoading: false,
-          error: `Ошибка загрузки деталей: ${_error instanceof Error ? _error.message : String(_error)}`,
+          error: `Ошибка загрузки деталей: ${error instanceof Error ? error.message : String(error)}`,
         },
       }));
     }

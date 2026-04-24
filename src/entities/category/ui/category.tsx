@@ -27,5 +27,3 @@ export const Category = ({
     </Button>
   );
 };
-
-Category.displayName = 'Category';
