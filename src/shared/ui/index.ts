@@ -17,6 +17,7 @@ export { Modal } from './modal/modal';
 export { Skeleton } from './skeleton/skeleton';
 export { SmartImage } from './smart-image/smart-image';
 export { Stack } from './stack/stack';
+export { SuspenseRoute } from './suspense-route/suspense-route';
 
 export const Typography = {
   Body1,

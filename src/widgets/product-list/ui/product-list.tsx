@@ -6,14 +6,19 @@ import { useOpenProduct } from '@/features/open-product-details';
 import { useSelectCategory } from '@/features/select-category';
 import { cn } from '@/shared/lib';
 import { InlineError, Stack } from '@/shared/ui';
+import { ProductListSkeleton } from './product-list-skeleton';
 
 export const ProductList: FC = () => {
-  const { data, error } = useProductStore((state) => state.productList);
+  const { data, isLoading, error } = useProductStore((state) => state.productList);
   const { handleRetry } = useSelectCategory();
   const handleOpen = useOpenProduct();
 
   if (error) {
     return <InlineError onRetry={handleRetry} />;
+  }
+
+  if (isLoading) {
+    return <ProductListSkeleton />
   }
 
   return (

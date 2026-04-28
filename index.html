@@ -79,15 +79,17 @@
         gap: 4px;
       }
       .merchant-avatar {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         background: var(--sk-color);
         flex-shrink: 0;
       }
       /* Текст задаёт LCP-кандидата уже из HTML, до загрузки JS */
       .merchant-name {
-        min-width: 140px;
+        box-sizing: border-box; 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        width: 160px;
         height: 30px;
         border-radius: 14px;
         background: var(--sk-color);
@@ -98,6 +100,7 @@
         color: var(--sk-color);
       }
       .merchant-address {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         width: 140px;
         height: 14px;
         border-radius: 14px;
@@ -108,7 +111,7 @@
         color: var(--sk-color);
       }
       .merchant-chip {
-        width: 84px;
+        width: 110px;
         height: 32px;
         border-radius: 16px;
         background: var(--sk-color);
@@ -139,8 +142,6 @@
       .product-card-sk {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 12px;
       }
       .product-image-sk {
         width: 100%;
@@ -148,11 +149,18 @@
         border-radius: 16px;
         background: var(--sk-color);
       }
+      .product-info-sk {
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
       .product-title-sk {
         height: 12px;
         border-radius: 4px;
         background: var(--sk-color);
-        width: 100%;
+        width: 90%;
       }
       .product-desc-sk {
         height: 12px;
@@ -216,33 +224,45 @@
       <div class="product-grid-skeleton">
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
         <div class="product-card-sk">
           <div class="product-image-sk sk-anim"></div>
-          <div class="product-title-sk sk-anim"></div>
-          <div class="product-desc-sk sk-anim"></div>
+          <div class="product-info-sk">
+            <div class="product-title-sk sk-anim"></div>
+            <div class="product-desc-sk sk-anim"></div>
+          </div>
         </div>
       </div>
     </div>

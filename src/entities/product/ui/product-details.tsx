@@ -24,7 +24,6 @@ export const ProductDetails: FC<ProductDetailsProps> = (props) => {
         <Typography.Body1>{data?.specifications}</Typography.Body1>
       </Stack>
       {children}
-      {/* TODO: Добавить фичу добавление товара в козину */}
     </Stack>
   );
 };

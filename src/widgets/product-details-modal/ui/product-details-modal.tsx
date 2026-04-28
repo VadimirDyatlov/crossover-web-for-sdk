@@ -3,35 +3,23 @@ import { ProductDetails, useProductStore } from '@/entities/product';
 import { AddToCartLarge } from '@/features/add-to-cart';
 import { cn, MODAL } from '@/shared/lib';
 import { useModalStore } from '@/shared/model';
-import { Modal, Skeleton, Stack } from '@/shared/ui';
+import { FullPageError, Modal, Stack } from '@/shared/ui';
+import { useProductModal } from '../model/product-details-modal';
+import { ProductDetailsSkeleton } from './product-details-skeleton';
 
 export const ProductDetailsModal: FC = () => {
+  const { data, isLoading, error } = useProductStore((state) => state.productDetails);
   const { visibleModalName, closeModal } = useModalStore();
-  const { data, isLoading } = useProductStore((state) => state.productDetails);
+  const { handleClose } = useProductModal();
 
-  // if (visibleModalName !== MODAL.PRODUCT_DETAILS) return null;
   const isOpen = visibleModalName === MODAL.PRODUCT_DETAILS;
 
-  // if (isLoading) {
-  //   return (
-  //     <Stack spacing="xs">
-  //       <Skeleton height="350px" width="350px" />
-  //       <Skeleton height="50px" width="350px" />
-  //       <Skeleton height="50px" width="350px" />
-  //       <Skeleton height="50px" width="350px" />
-  //     </Stack>
-  //   );
-  // }
+  if (error) return <FullPageError onBack={handleClose} actionLabel="Назад" />;
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
       {!data || isLoading ? (
-        <Stack spacing="xs">
-          <Skeleton height="350px" width="350px" />
-          <Skeleton height="50px" width="350px" />
-          <Skeleton height="50px" width="350px" />
-          <Skeleton height="50px" width="350px" />
-        </Stack>
+        <ProductDetailsSkeleton />
       ) : (
         <ProductDetails>
           <Stack
