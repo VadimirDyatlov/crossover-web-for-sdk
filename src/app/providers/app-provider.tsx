@@ -10,7 +10,7 @@ export const AppProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props;
   const { isReady, error } = useMerchantInit();
   const { closeApp } = useAppNavigation();
-  
+    
   useSplashScreen();
   useModalHistory();
   useBackNavigation();

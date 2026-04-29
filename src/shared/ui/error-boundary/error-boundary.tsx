@@ -10,6 +10,18 @@ export class ErrorBoundary extends Component<{ children: ReactNode }> {
     return { hasError: true, error };
   }
 
+  componentDidUpdate() {
+    if (this.state.hasError) {
+      this.removeSplash();
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.hasError) {
+      this.removeSplash();
+    }
+  }
+
   private removeSplash() {
     const splash = document.getElementById('splash');
     
@@ -23,8 +35,6 @@ export class ErrorBoundary extends Component<{ children: ReactNode }> {
     const { hasError, error } = this.state;
 
     if (hasError) {
-      this.removeSplash();
-
       return (
         <FullPageError
           isShowIcon

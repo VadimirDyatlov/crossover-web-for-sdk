@@ -17,7 +17,7 @@ export const CategoryList: FC = () => {
       // position: -webkit-sticky — fallback для iOS WKWebView < 13, Tailwind генерирует только position: sticky
       style={{ position: '-webkit-sticky' as CSSProperties['position'] }}
       className={cn(
-        'sticky -top-[1px] z-25 w-full',
+        'sticky -top-[1px] z-25 w-full', // TODO: Вырезать sticky?
         'overflow-x-auto overflow-y-hidden min-h-[44px] h-[44px]',
         'bg-white px-2 pt-[1px]',
       )}

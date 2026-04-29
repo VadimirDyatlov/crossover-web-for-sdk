@@ -1,31 +1,45 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useScrollRestorationStore } from '@/shared/model/scroll-store';
 
-export const useScrollRestoration = (
-  scope: string,
-  id: string = 'default',
-  minScroll: number = 0,
-) => {
+export const useScrollRestoration = (scope: string, id?: string) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { positions, setPosition, clearScope } = useScrollRestorationStore();
+  const setPosition = useScrollRestorationStore((state) => state.setPosition);
+  const positions = useScrollRestorationStore((state) => state.positions);
 
-  // const savedPosition = positions[scope]?.[id] || 0;
-  const savedPosition = positions[scope]?.[id] ?? minScroll;
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = savedPosition;
-    }
-    // savedPosition intentionally omitted: restore only on scope/id change, not on every scroll
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scope, id]);
+  const currentInfo = useRef({ scope, id });
+  currentInfo.current = { scope, id };
 
   useLayoutEffect(() => {
-    const el = scrollRef.current;
-    return () => {
-      if (el) setPosition(scope, id, el.scrollTop);
-    };
-  }, [scope, id, setPosition]);
+    if (scrollRef.current && id) {
+      const savedPosition = positions[scope]?.[id] ?? 0;
+      scrollRef.current.scrollTop = savedPosition;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, scope]); 
 
-  return { scrollRef, clearScope: () => clearScope(scope) };
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const handleScroll = () => {
+      if (timeoutId) return;
+
+      timeoutId = setTimeout(() => {
+        const { scope: s, id: i } = currentInfo.current;
+        if (i) setPosition(s, i, el.scrollTop);
+        timeoutId = null;
+      }, 300); // TODO: Может быть потеря точности
+    };
+
+    el.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      el.removeEventListener('scroll', handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [setPosition]);
+
+  return { scrollRef };
 };
