@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Chip, Stack, Typography } from '@/shared/ui';
+import { Chip, SmartImage, Stack, Typography } from '@/shared/ui';
 import Clock from '../icon/clock.svg?react';
 import { useMerchantStore } from '../model/merchant';
 
@@ -16,14 +16,12 @@ export const MerchantInfo: FC = () => {
     >
       <Stack>
         <Stack direction="row" align="center" spacing="xs">
-          <Stack className="w-9 h-9 rounded-full overflow-hidden">
-            {/* TODO: Добавить компонент Avatar? */}
-            <img
-              src={data?.logoUrl}
-              alt="logo"
-              className="w-full h-full object-cover"
-            />
-          </Stack>
+          <SmartImage
+            src={data?.logoUrl}
+            alt="logo"
+            className="size-9 rounded-full bg-gray-100"
+            imgClassName="w-full h-full object-cover"
+          />
           <Typography.Headline5>{data?.name}</Typography.Headline5>
         </Stack>
         <Typography.Body1>{data?.address}</Typography.Body1>

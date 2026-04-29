@@ -6,9 +6,12 @@ import { useOpenProduct } from '@/features/open-product-details';
 import { useSelectCategory } from '@/features/select-category';
 import { cn } from '@/shared/lib';
 import { InlineError, Stack } from '@/shared/ui';
+import { useProductListScroll } from '../model/product-list';
+import { ProductListSkeleton } from './product-list-skeleton';
 
 export const ProductList: FC = () => {
-  const { data, error } = useProductStore((state) => state.productList);
+  const { data, isLoading, error } = useProductStore((state) => state.productList);
+  const { scrollRef } = useProductListScroll()
   const { handleRetry } = useSelectCategory();
   const handleOpen = useOpenProduct();
 
@@ -18,22 +21,28 @@ export const ProductList: FC = () => {
 
   return (
     <Stack
+      ref={scrollRef}
       spacing="xs"
       className={cn(
+        'min-h-0 overflow-y-auto',
         'grid grid-cols-2 p-4',
         // "pb-[120px]",
         'pb-[calc(120px+env(safe-area-inset-bottom,0px))]',
       )}
     >
-      {data.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onClick={() => handleOpen(product)}
-        >
-          <AddToCart product={product} className="absolute bottom-2 right-2" />
-        </ProductCard>
-      ))}
+      {isLoading ? (
+        <ProductListSkeleton />
+      ) : (
+        data.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onClick={() => handleOpen(product)}
+          >
+            <AddToCart product={product} className="absolute bottom-2 right-2" />
+          </ProductCard>
+        ))
+      )}
     </Stack>
   );
 };

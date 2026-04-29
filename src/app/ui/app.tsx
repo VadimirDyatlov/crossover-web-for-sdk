@@ -1,44 +1,16 @@
-import { lazy, Suspense } from 'react';
-import { Route, Router, Switch } from 'wouter';
-import { CartPage } from '@/pages/cart-page';
-import { CatalogPage, CatalogSkeleton } from '@/pages/catalog-page';
-// import { OrdersPage } from '@/pages/orders-page';
-import { NavigationProvider, routerPaths } from '@/shared/lib';
-import { ErrorBoundary, FullPageError } from '@/shared/ui';
-
-// lazy точно нужен?
-const OrdersPageLazy = lazy(() =>
-  import('@/pages/orders-page').then((m) => ({ default: m.OrdersPage })),
-);
+import { Router } from 'wouter';
+import { routerPaths } from '@/shared/lib';
+import { ErrorBoundary } from '@/shared/ui';
+import { AppProvider } from '../providers/app-provider';
+import { Routing } from '../providers/router';
 
 export const App = () => {
   return (
     <ErrorBoundary>
       <Router base={routerPaths.root}>
-        <NavigationProvider>
-          <Switch>
-            <Route path={routerPaths.root}>
-              <CatalogPage />
-            </Route>
-            <Route path={routerPaths.cartPage}>
-              <CartPage />
-            </Route>
-            {/* <Route path={routerPaths.myOrders}>
-          <OrdersPage />
-        </Route> */}
-            <Route path={routerPaths.myOrders}>
-              {/* TODO: Скелетон для OrdersPage */}
-              {/* <Suspense fallback={<div className="h-[100dvh] w-full bg-red-500" />}> */}
-              <Suspense fallback={<CatalogSkeleton />}>
-                <OrdersPageLazy />
-              </Suspense>
-            </Route>
-            <Route>
-              {/* <div>not-found</div> */}
-              <FullPageError onBack={() => window.history.back()} />
-            </Route>
-          </Switch>
-        </NavigationProvider>
+        <AppProvider>
+          <Routing />
+        </AppProvider>
       </Router>
     </ErrorBoundary>
   );

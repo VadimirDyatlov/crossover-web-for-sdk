@@ -1,30 +1,36 @@
+import { useLocation } from 'wouter';
 import { routerPaths } from '@/shared/lib';
 import { useAnimatedNavigate } from './use-animated-navigate';
 import { usePrevious } from './use-previous';
 
 export const useAppNavigation = () => {
-  const navigate = useAnimatedNavigate();
+  const navigate = useLocation()[1];
+  const animatedNavigate = useAnimatedNavigate();
   const { location, previousLocation } = usePrevious();
 
   const closeApp = () => {
-    navigate(routerPaths.close);
+    animatedNavigate(routerPaths.close);
   };
 
   const openMyOrders = () => {
-    navigate(routerPaths.myOrders);
+    animatedNavigate(routerPaths.myOrders);
   };
 
   const openCart = () => {
-    navigate(routerPaths.cartPage);
+    animatedNavigate(routerPaths.cartPage);
   };
 
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
-      navigate(previousLocation, 'back');
+      animatedNavigate(previousLocation, 'back');
     } else {
-      navigate(fallbackUrl, 'back');
+      animatedNavigate(fallbackUrl, 'back');
     }
   };
 
-  return { closeApp, openMyOrders, openCart, goBack };
+  const openCatalog = () => {
+    navigate(routerPaths.root);
+  };
+
+  return { closeApp, openMyOrders, openCart, goBack, openCatalog };
 };

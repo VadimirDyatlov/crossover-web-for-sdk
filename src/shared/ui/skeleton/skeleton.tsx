@@ -21,7 +21,7 @@ export const Skeleton: FC<SkeletonProps> = (props) => {
   return (
     <div
       style={style}
-      className={cn('bg-black/10 animate-pulse rounded-xl', className)}
+      className={cn('bg-[var(--sk-color)] animate-pulse rounded-xl', className)}
     />
   );
 };

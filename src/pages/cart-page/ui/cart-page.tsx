@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useMerchantLazy } from '@/entities/merchant';
 import { AddOrderComment } from '@/features/add-order-comment';
 import { PayButton } from '@/features/pay-order';
 import { Box, Stack } from '@/shared/ui';
@@ -8,7 +7,6 @@ import { CartHeader } from '@/widgets/header';
 import { useCartAutoExit } from '../model/cart-page';
 
 export const CartPage: FC = () => {
-  useMerchantLazy();
   useCartAutoExit();
 
   return (

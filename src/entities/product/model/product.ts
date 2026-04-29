@@ -19,6 +19,7 @@ interface Store {
   };
   fetchProductList: (id: string) => Promise<void>;
   fetchProductDetails: (id: string) => Promise<void>;
+  resetProductDetailsError: () => void;
 }
 
 export const useProductStore = create<Store>((set, get) => ({
@@ -58,7 +59,6 @@ export const useProductStore = create<Store>((set, get) => ({
       );
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.ProductResponse = await response.json();
-
       set((state) => ({
         productList: {
           ...state.productList,
@@ -92,7 +92,6 @@ export const useProductStore = create<Store>((set, get) => ({
       const response = await api.getProductDetails(productId);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data: types.ProductDetail = await response.json();
-
       set((state) => ({
         productDetails: {
           ...state.productDetails,
@@ -110,4 +109,11 @@ export const useProductStore = create<Store>((set, get) => ({
       }));
     }
   },
+  
+  resetProductDetailsError: () => set((state) => ({
+    productDetails: {
+      ...state.productDetails,
+      error: null,
+    }
+  })),
 }));

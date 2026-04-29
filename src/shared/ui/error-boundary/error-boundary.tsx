@@ -10,6 +10,27 @@ export class ErrorBoundary extends Component<{ children: ReactNode }> {
     return { hasError: true, error };
   }
 
+  componentDidUpdate() {
+    if (this.state.hasError) {
+      this.removeSplash();
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.hasError) {
+      this.removeSplash();
+    }
+  }
+
+  private removeSplash() {
+    const splash = document.getElementById('splash');
+    
+    if (splash) {
+      splash.style.opacity = '0';
+      setTimeout(() => splash.remove(), 150);
+    }
+  }
+
   render() {
     const { hasError, error } = this.state;
 

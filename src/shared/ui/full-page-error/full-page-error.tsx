@@ -20,7 +20,10 @@ export const FullPageError: FC<FullPageErrorProps> = (props) => {
   } = props;
 
   return (
-    <Stack direction="column" className="h-[100svh] w-full bg-white">
+    <Stack
+      direction="column"
+      className="absolute inset-0 z-50 h-full w-full bg-white"
+    >
       <Stack
         spacing="xl"
         align="center"

@@ -19,6 +19,7 @@ interface Store {
   setSelectedOrder: (order: types.Order | null) => void;
   fetchOrderList: () => Promise<void>;
   fetchOrderDetails: (id: string) => Promise<void>;
+  resetOrderDetailsError: () => void;
 }
 
 export const useOrderStore = create<Store>((set) => ({
@@ -94,6 +95,13 @@ export const useOrderStore = create<Store>((set) => ({
       }));
     }
   },
+
+  resetOrderDetailsError: () => set((state) => ({
+    orderDetails: {
+      ...state.orderDetails,
+      error: null,
+    }
+  })),
 }));
 
 export const useOrderListLazy = () => {
@@ -109,13 +117,3 @@ export const useOrderListLazy = () => {
   return { data, isLoading };
 };
 
-// export const useOrderDetailsLazy = (id: string) => {
-//   const {
-//     orderDetails: { data, isLoading },
-//     fetchOrderDetails,
-//   } = useOrderStore();
-
-//   useEffect(() => {
-//     if (!data && !isLoading) fetchOrderDetails(id);
-//   }, [data, isLoading, fetchOrderDetails]);
-// };
