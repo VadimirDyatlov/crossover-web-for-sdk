@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { Route, Switch } from 'wouter';
-// TODO: Импортировать скелетоны напрямую из /ui/, а не из index.ts, 
+// TODO: Импортировать скелетоны напрямую из /ui/, а не из index.ts,
 // чтобы избежать разрыва lazy-loading и лишнего веса в основном бандле. ???
 import { CartSkeleton } from '@/pages/cart-page';
 import { CatalogPage } from '@/pages/catalog-page';
@@ -25,11 +25,20 @@ const PAGES = {
     ),
     fallback: <OrdersSkeleton />,
   },
+  search: {
+    Component: lazy(() =>
+      import('@/pages/search-page').then((module) => ({
+        default: module.SearchPage,
+      })),
+    ),
+    fallback: <div />,
+  },
 } as const;
 
 export const Routing = () => (
   <Switch>
     <Route path={routerPaths.root} component={CatalogPage} />
+    <SuspenseRoute path={routerPaths.searchPage} {...PAGES.search} />
     <SuspenseRoute path={routerPaths.cartPage} {...PAGES.cart} />
     <SuspenseRoute path={routerPaths.myOrders} {...PAGES.orders} />
     <Route component={NotFoundPage} />
