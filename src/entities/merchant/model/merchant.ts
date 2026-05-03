@@ -1,13 +1,13 @@
 import type { types } from '@/shared/api';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { api } from '@/shared/api';
+import { api, bridgeMock } from '@/shared/api';
 
 interface Store {
   data: types.MerchantResponse | null;
   isLoading: boolean;
   error: string | null;
-  fetchMerchant: () => Promise<void>;
+  fetchMerchant: (branchId: string) => Promise<void>;
 }
 
 export const useMerchantStore = create<Store>((set) => ({
@@ -15,15 +15,13 @@ export const useMerchantStore = create<Store>((set) => ({
   isLoading: false,
   error: null,
 
-  fetchMerchant: async () => {
-    try {
-      set({ isLoading: true });
+  fetchMerchant: async (branchId: string) => {
+     try {
+      set({ isLoading: true, error: null });
 
-      const response = await api.getMerchant();
-      // Без проверки ok сервер может вернуть 4xx/5xx с JSON ошибки — он попадёт в стор как данные
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-
+      const data = await api.getMerchant(branchId); 
+      
+      // TODO: Добавить проверку valibot
       set({ data, isLoading: false });
     } catch (error) {
       set({
@@ -36,9 +34,9 @@ export const useMerchantStore = create<Store>((set) => ({
 
 export const useMerchantLazy = () => {
   const { data, isLoading, error, fetchMerchant } = useMerchantStore();
+  const branchId = bridgeMock.getExtBranchId();
 
   useEffect(() => {
-    // error не проверялся — при неудаче data=null, isLoading=false → бесконечный ретрай
-    if (!data && !isLoading && !error) fetchMerchant();
-  }, [data, isLoading, error, fetchMerchant]);
+    if (!data && !isLoading && !error) fetchMerchant(branchId);
+  }, [data, isLoading, error, fetchMerchant, branchId]);
 };

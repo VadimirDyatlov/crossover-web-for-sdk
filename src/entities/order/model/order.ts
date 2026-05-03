@@ -1,35 +1,39 @@
 import type { types } from '@/shared/api';
 import { useEffect } from 'react';
 import { create } from 'zustand';
-import { api } from '@/shared/api';
+import { api, bridgeMock } from '@/shared/api';
 
 interface Store {
   orderList: {
     data: types.Order[];
     isLoading: boolean;
     error: string | null;
+    page: number;
+    limit: number;
   };
   orderDetails: {
-    data: types.OrderDetail[];
+    data: types.OrderDetailResponse | null;
     isLoading: boolean;
     error: string | null;
     selectedOrder: types.Order | null;
   };
-  // null нужен для сброса выбранного заказа при закрытии модалки
   setSelectedOrder: (order: types.Order | null) => void;
-  fetchOrderList: () => Promise<void>;
+  fetchOrderList: (params: types.GetOrderListParams) => Promise<void>;
   fetchOrderDetails: (id: string) => Promise<void>;
   resetOrderDetailsError: () => void;
 }
 
-export const useOrderStore = create<Store>((set) => ({
+export const useOrderStore = create<Store>((set, get) => ({
   orderList: {
     data: [],
     isLoading: false,
     error: null,
+    // TODO: Для реализации ленивой загрузки 
+    page: 1,
+    limit: 30,
   },
   orderDetails: {
-    data: [],
+    data: null,
     isLoading: false,
     error: null,
     selectedOrder: null,
@@ -43,16 +47,17 @@ export const useOrderStore = create<Store>((set) => ({
       },
     })),
 
-  fetchOrderList: async () => {
+  fetchOrderList: async (params: types.GetOrderListParams) => {
+    const { page, limit } = get().orderList;
+
     set((state) => ({
       orderList: { ...state.orderList, isLoading: true, error: null },
     }));
 
     try {
-      const response = await api.getOrderList();
-      // Без проверки ok — 4xx/5xx JSON попадёт в стор как список заказов
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data: types.OrderResponse = await response.json();
+      const data = await api.getOrderList(
+        { ...params, page, limit },
+      );
 
       set((state) => ({
         orderList: { ...state.orderList, data: data.orders, isLoading: false },
@@ -61,7 +66,7 @@ export const useOrderStore = create<Store>((set) => ({
       set((state) => ({
         orderList: {
           ...state.orderList,
-          error: `Ошибка загрузки: ${error instanceof Error ? error.message : String(error)}`,
+          error: `Ошибка: ${error instanceof Error ? error.message : String(error)}`,
           isLoading: false,
         },
       }));
@@ -74,14 +79,12 @@ export const useOrderStore = create<Store>((set) => ({
     }));
 
     try {
-      const response = await api.getOrderDetails(id);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data: types.OrderDetailResponse = await response.json();
+      const data = await api.getOrderDetails(id);
 
       set((state) => ({
         orderDetails: {
           ...state.orderDetails,
-          data: data.products,
+          data,
           isLoading: false,
         },
       }));
@@ -89,7 +92,7 @@ export const useOrderStore = create<Store>((set) => ({
       set((state) => ({
         orderDetails: {
           ...state.orderDetails,
-          error: `Ошибка загрузки: ${error instanceof Error ? error.message : String(error)}`,
+          error: `Ошибка: ${error instanceof Error ? error.message : String(error)}`,
           isLoading: false,
         },
       }));
@@ -105,14 +108,16 @@ export const useOrderStore = create<Store>((set) => ({
 }));
 
 export const useOrderListLazy = () => {
-  // Подписка только на нужные поля — лишние ре-рендеры при изменении orderDetails не происходят
   const { data, isLoading, error } = useOrderStore((state) => state.orderList);
   const fetchOrderList = useOrderStore((state) => state.fetchOrderList);
 
+  const extBranchId = bridgeMock.getExtBranchId();
+  const subId = bridgeMock.getSubId();
+
   useEffect(() => {
-    // error не проверялся — при неудаче data=[], isLoading=false → бесконечный ретрай
-    if (!data.length && !isLoading && !error) fetchOrderList();
-  }, [data.length, isLoading, error, fetchOrderList]);
+    if (!data.length && !isLoading && !error)
+      fetchOrderList({ extBranchId, subId });
+  }, [data.length, isLoading, error, fetchOrderList, extBranchId, subId]);
 
   return { data, isLoading };
 };

@@ -26,7 +26,8 @@ export const OrderCard: FC<OrderCardProps> = ({ order, onClick }) => {
           </Typography.Body5Secondary>
           <Typography.Body5Secondary>{`• ${status}`}</Typography.Body5Secondary>
         </Stack>
-        <Typography.Body5Secondary>{orderId}</Typography.Body5Secondary>
+        {/* TODO: Переделать под новый дизайн и убрать slice */}
+        <Typography.Body5Secondary>{orderId.slice(10)}</Typography.Body5Secondary>
       </Stack>
       <Stack spacing="md">
         <Stack direction="row" justify="between">
@@ -42,7 +43,9 @@ export const OrderCard: FC<OrderCardProps> = ({ order, onClick }) => {
               <Typography.Body2Small>{merchantInfo.address}</Typography.Body2Small>
             </Stack>
           </Stack>
-          <Typography.Headline4>{`${totalAmount.toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
+          <Typography.Headline4 className="whitespace-nowrap">
+            {`${totalAmount.toLocaleString('ru-RU')} ₽`}
+          </Typography.Headline4>
         </Stack>
         <Stack align="center" className="gap-1 p-2 rounded-[16px] bg-white">
           <Typography.Body2Small>Код подтверждения</Typography.Body2Small>

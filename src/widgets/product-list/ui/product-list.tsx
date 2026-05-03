@@ -3,16 +3,15 @@ import { ProductCard } from '@/entities/product';
 import { useProductStore } from '@/entities/product/model/product';
 import { AddToCart } from '@/features/add-to-cart/ui/add-to-cart';
 import { useOpenProduct } from '@/features/open-product-details';
-import { useSelectCategory } from '@/features/select-category';
 import { cn } from '@/shared/lib';
 import { InlineError, Stack } from '@/shared/ui';
-import { useProductListScroll } from '../model/product-list';
+import { useProductListActions, useProductListScroll } from '../model/product-list';
 import { ProductListSkeleton } from './product-list-skeleton';
 
 export const ProductList: FC = () => {
   const { data, isLoading, error } = useProductStore((state) => state.productList);
   const { scrollRef } = useProductListScroll()
-  const { handleRetry } = useSelectCategory();
+  const { handleRetry } = useProductListActions();
   const handleOpen = useOpenProduct();
 
   if (error) {

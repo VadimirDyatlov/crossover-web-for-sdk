@@ -11,13 +11,15 @@ interface Store {
     isLoading: boolean;
     error: string | null;
     cache: Record<string, types.Product[]>;
+    page: number;
+    limit: number;
   };
   productDetails: {
     data: types.ProductDetail | null;
     isLoading: boolean;
     error: string | null;
   };
-  fetchProductList: (id: string) => Promise<void>;
+  fetchProductList: (params: types.GetProductListParams) => Promise<void>;
   fetchProductDetails: (id: string) => Promise<void>;
   resetProductDetailsError: () => void;
 }
@@ -28,6 +30,9 @@ export const useProductStore = create<Store>((set, get) => ({
     isLoading: false,
     error: null,
     cache: {},
+    // TODO: Для реализации ленивой загрузки 
+    page: 1,
+    limit: 30,
   },
   productDetails: {
     data: null,
@@ -35,8 +40,9 @@ export const useProductStore = create<Store>((set, get) => ({
     error: null,
   },
 
-  fetchProductList: async (categoryId: string) => {
-    const cachedData = get().productList.cache[categoryId];
+  fetchProductList: async (params: types.GetProductListParams) => {
+    const cachedData = get().productList.cache[params.categoryId];
+    const { page, limit } = get().productList;
 
     if (cachedData) {
       set((state) => ({
@@ -53,12 +59,11 @@ export const useProductStore = create<Store>((set, get) => ({
     }));
 
     try {
-      const response = await api.getProductList(
-        categoryId,
+      const data = await api.getProductList(
+        { ...params, page, limit },
         productListAbortController.signal,
       );
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data: types.ProductResponse = await response.json();
+
       set((state) => ({
         productList: {
           ...state.productList,
@@ -66,7 +71,7 @@ export const useProductStore = create<Store>((set, get) => ({
           isLoading: false,
           cache: {
             ...state.productList.cache,
-            [categoryId]: data.products,
+            [params.categoryId]: data.products,
           },
         },
       }));
@@ -76,8 +81,8 @@ export const useProductStore = create<Store>((set, get) => ({
       set((state) => ({
         productList: {
           ...state.productList,
+          error: `Ошибка: ${error instanceof Error ? error.message : String(error)}`,
           isLoading: false,
-          error: 'Ошибка загрузки товаров',
         },
       }));
     }
@@ -89,9 +94,8 @@ export const useProductStore = create<Store>((set, get) => ({
     }));
 
     try {
-      const response = await api.getProductDetails(productId);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data: types.ProductDetail = await response.json();
+      const data = await api.getProductDetails(productId);
+
       set((state) => ({
         productDetails: {
           ...state.productDetails,
@@ -104,7 +108,7 @@ export const useProductStore = create<Store>((set, get) => ({
         productDetails: {
           ...state.productDetails,
           isLoading: false,
-          error: `Ошибка загрузки деталей: ${error instanceof Error ? error.message : String(error)}`,
+          error: `Ошибка: ${error instanceof Error ? error.message : String(error)}`,
         },
       }));
     }

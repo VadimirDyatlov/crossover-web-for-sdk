@@ -23,12 +23,8 @@ export const OrderDetailsModal: FC = () => {
       ) : (
         <OrderDetails>
           <Stack>
-            {data.map(({ product, quantity }) => (
-              <OrderProductCard
-                key={product.id}
-                product={product}
-                quantity={quantity}
-              />
+            {data?.cart.map((product) => (
+              <OrderProductCard key={product.productId} {...product} />
             ))}
           </Stack>
         </OrderDetails>
