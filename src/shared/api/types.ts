@@ -57,6 +57,7 @@ export interface ProductDetail {
 }
 
 export interface Order {
+  verificationCode: string;
   localSessionId: string;
   merchantInfo: MerchantInfo;
   orderId: string;
@@ -65,7 +66,6 @@ export interface Order {
   statusParams: StatusParams;
   totalAmount: number;
   totalItems: number;
-  verificationCode: string;
 }
 
 export interface MerchantInfo {
@@ -114,7 +114,7 @@ export interface OrderDetailProduct {
 export interface StatusParams {
   code: string;
   color: string;
-  text: string;
+  text?: string;
 }
 
 export interface Pagination {

@@ -1,6 +1,5 @@
-// @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { formatOrderTime } from './format-order-time';
+import { formatOrderTime } from '../lib/format-order-time';
 
 const TODAY = '2026-04-21T14:30:00';
 const YESTERDAY = '2026-04-20T09:15:00';
