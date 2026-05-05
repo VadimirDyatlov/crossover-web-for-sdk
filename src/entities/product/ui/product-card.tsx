@@ -3,9 +3,9 @@ import type { types } from '@/shared/api';
 import { Box, SmartImage, Stack, Typography } from '@/shared/ui';
 
 interface ProductCardProps {
-  children: ReactNode;
+  children?: ReactNode;
   product: types.Product;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const ProductCard: FC<ProductCardProps> = (props) => {

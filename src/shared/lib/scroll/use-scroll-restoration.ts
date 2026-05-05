@@ -15,7 +15,7 @@ export const useScrollRestoration = (scope: string, id?: string) => {
       scrollRef.current.scrollTop = savedPosition;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, scope]); 
+  }, [id, scope]);
 
   useEffect(() => {
     const el = scrollRef.current;

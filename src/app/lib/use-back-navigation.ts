@@ -24,7 +24,7 @@ export const useBackNavigation = () => {
     };
 
     window.addEventListener('popstate', handlePopState);
-    
+
     return () => {
       window.removeEventListener('popstate', handlePopState);
       if (timeoutId) clearTimeout(timeoutId);

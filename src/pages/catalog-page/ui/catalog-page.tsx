@@ -1,7 +1,5 @@
 import type { FC } from 'react';
-import {
-  MerchantInfo,
-} from '@/entities/merchant';
+import { MerchantInfo } from '@/entities/merchant';
 import { OpenCartButton } from '@/features/open-cart';
 import { useSelectCategory } from '@/features/select-category/model/select-category';
 import { Box } from '@/shared/ui';
