@@ -9,7 +9,7 @@ export const NotFoundPage: FC = () => {
     <FullPageError
       title="404"
       description="Страница не найдена"
-      onBack={openCatalog}
+      onBack={() => openCatalog('')}
     />
   );
 };

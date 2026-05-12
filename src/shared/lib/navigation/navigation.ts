@@ -10,26 +10,51 @@ export const useAppNavigation = () => {
 
   const closeApp = () => {
     animatedNavigate(routerPaths.close);
+    // animate: 'slide',
+    //  animate: 'slide-back',
   };
 
   const openMyOrders = () => {
-    animatedNavigate(routerPaths.myOrders);
+    // animatedNavigate(routerPaths.myOrders);
+    navigate(routerPaths.myOrders, {
+      state: {
+        animate: 'slide',
+      },
+    });
   };
 
   const openCart = () => {
-    animatedNavigate(routerPaths.cartPage);
+    // animatedNavigate(routerPaths.cartPage);
+    navigate(routerPaths.cartPage, {
+      state: {
+        animate: 'slide',
+      },
+    });
   };
 
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
-      animatedNavigate(previousLocation, 'back');
+      // animatedNavigate(previousLocation, 'back');
+      navigate(previousLocation, {
+        state: {
+          animate: 'slide-back',
+        },
+      });
     } else {
-      animatedNavigate(fallbackUrl, 'back');
+      // animatedNavigate(fallbackUrl, 'back');
+      navigate(fallbackUrl, {
+        state: {
+          animate: 'slide-back',
+        },
+      });
     }
   };
 
-  const openCatalog = () => {
-    navigate(routerPaths.root);
+  const openCatalog = (animate = 'slide-back') => {
+    // navigate(routerPaths.root);
+    navigate(routerPaths.root, {
+      state: { animate },
+    });
   };
 
   return { closeApp, openMyOrders, openCart, goBack, openCatalog };

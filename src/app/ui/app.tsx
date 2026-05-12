@@ -16,6 +16,8 @@ export const App = () => {
   );
 };
 
+{/* <PageTransition> */}
+{/* </PageTransition> */}
 // TODO: npm run lint ошибка
 // TODO: npm run test:coverage ошибка
 // TODO: Корзина
