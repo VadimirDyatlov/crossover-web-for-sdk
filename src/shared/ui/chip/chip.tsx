@@ -25,7 +25,7 @@ export const Chip: FC<ChipProps> = ({
     <div
       className={cn(
         'inline-flex items-center justify-center gap-1 h-[30px] px-[10px] py-1.5 rounded-[30px]',
-        'bg-[#f3f4f6] text-[#1f2937] text-[14px] font-medium whitespace-nowrap',
+        'bg-[#f3f4f6] text-[#1f2937] text-[13px] font-medium whitespace-nowrap',
         isClickable && 'cursor-pointer active:scale-95 transition-transform',
         disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
         className,

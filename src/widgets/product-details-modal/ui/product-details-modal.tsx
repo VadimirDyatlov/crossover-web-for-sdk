@@ -8,7 +8,9 @@ import { useProductModal } from '../model/product-details-modal';
 import { ProductDetailsSkeleton } from './product-details-skeleton';
 
 export const ProductDetailsModal: FC = () => {
-  const { data, isLoading, error } = useProductStore((state) => state.productDetails);
+  const { data, isLoading, error } = useProductStore(
+    (state) => state.productDetails,
+  );
   const { visibleModalName, closeModal } = useModalStore();
   const { handleClose } = useProductModal();
 

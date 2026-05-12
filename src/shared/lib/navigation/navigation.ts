@@ -20,6 +20,10 @@ export const useAppNavigation = () => {
     animatedNavigate(routerPaths.cartPage);
   };
 
+  const openSearch = () => {
+    animatedNavigate(routerPaths.searchPage);
+  };
+
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
       animatedNavigate(previousLocation, 'back');
@@ -32,5 +36,5 @@ export const useAppNavigation = () => {
     navigate(routerPaths.root);
   };
 
-  return { closeApp, openMyOrders, openCart, goBack, openCatalog };
+  return { closeApp, openMyOrders, openCart, openSearch, goBack, openCatalog };
 };

@@ -4,14 +4,18 @@ import { Skeleton, Stack } from '@/shared/ui';
 export const OrdersSkeleton: FC = () => {
   return (
     <Stack direction="column" className="h-dvh w-full bg-white overflow-hidden">
-      <Stack align="center" justify="center" className="h-[44px] shrink-0 border-b border-gray-100">
+      <Stack
+        align="center"
+        justify="center"
+        className="h-[44px] shrink-0 border-b border-gray-100"
+      >
         <Skeleton width="124px" height="28px" radius="12px" />
       </Stack>
 
       <Stack spacing="sm" className="p-4 overflow-hidden">
         {[1, 2, 3, 4].map((index) => (
-          <Stack 
-            key={index} 
+          <Stack
+            key={index}
             className="h-[186px] w-full gap-5 rounded-[24px] bg-[#f6f6f8] p-4 shrink-0"
           >
             <Stack direction="row" justify="between">
