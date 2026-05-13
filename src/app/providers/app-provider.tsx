@@ -10,13 +10,13 @@ export const AppProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props;
   const { isReady, error } = useMerchantInit();
   const { closeApp } = useAppNavigation();
-    
+
   useSplashScreen();
   useModalHistory();
   // useBackNavigation();
 
   if (error) return <FullPageError onBack={closeApp} actionLabel="Закрыть" />;
-  if (!isReady) return null; 
+  if (!isReady) return null;
 
   return <>{children}</>;
 };

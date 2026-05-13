@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react';
-import { TransitLayer } from './transit-layer';
 import { cn } from '../utils';
+import { TransitLayer } from './transit-layer';
 import { useTransitionLogic } from './use-transition-logic';
 
 interface AnimatedSwitchProps {

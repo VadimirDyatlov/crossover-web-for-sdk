@@ -30,7 +30,7 @@ export const TransitLayer: FC<TransitLayerProps> = ({
 }) => {
   // Обработка случая, когда анимация не задана (мгновенный переход)
   useEffect(() => {
-    if (isExiting && (!exitClass)) {
+    if (isExiting && !exitClass) {
       onExited();
     }
   }, [isExiting, exitClass, onExited]);

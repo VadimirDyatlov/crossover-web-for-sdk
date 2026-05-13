@@ -96,12 +96,13 @@ export const useOrderStore = create<Store>((set) => ({
     }
   },
 
-  resetOrderDetailsError: () => set((state) => ({
-    orderDetails: {
-      ...state.orderDetails,
-      error: null,
-    }
-  })),
+  resetOrderDetailsError: () =>
+    set((state) => ({
+      orderDetails: {
+        ...state.orderDetails,
+        error: null,
+      },
+    })),
 }));
 
 export const useOrderListLazy = () => {
@@ -116,4 +117,3 @@ export const useOrderListLazy = () => {
 
   return { data, isLoading };
 };
-

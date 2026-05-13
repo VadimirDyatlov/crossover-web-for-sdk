@@ -16,14 +16,12 @@ export const App = () => {
   );
 };
 
-{/* <PageTransition> */}
-{/* </PageTransition> */}
-// TODO: npm run lint ошибка
-// TODO: npm run test:coverage ошибка
-// TODO: Корзина
-// TODO: Мои заказы
-// TODO: Доработать ts,prettier,eslint config
-// TODO: Мемоизация
+// TODO: npm run lint ошибка +
+// TODO: npm run test:coverage ошибка +
+// TODO: Корзина +
+// TODO: Мои заказы +
+// TODO: Доработать ts,prettier,eslint config +
+// TODO: Мемоизация +
 // WebkitOverflowScrolling: 'touch' ?
 
 // + 1) В index.html нужно <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />

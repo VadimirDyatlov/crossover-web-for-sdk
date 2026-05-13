@@ -1,7 +1,7 @@
-import type { ReactNode, ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import type { RouteDefProps } from './route-def';
-import React from 'react';
 import type { Layer, TransitionPreset, TransitionType } from './types';
+import React from 'react';
 import { TRANSITION_PRESETS } from './constants';
 
 /**
@@ -19,24 +19,20 @@ import { TRANSITION_PRESETS } from './constants';
  */
 export const matchChild = (children: ReactNode, location: string) => {
   // Превращаем children в плоский массив для удобного поиска
-  const childrenArray = React.Children.toArray(
-    children,
+  const childrenArray = (Array.isArray(children) ? children : [children]).filter(
+    React.isValidElement,
   ) as ReactElement<RouteDefProps>[];
-  
-  // Ищем точное совпадение
-  const directMatch = childrenArray.find(
-    (child) => React.isValidElement(child) && child.props.path === location
-  );
 
-  if (directMatch) return { Component: directMatch.props.component, isNotFound: false };
+  // Ищем точное совпадение
+  const directMatch = childrenArray.find((child) => child.props.path === location);
+  if (directMatch)
+    return { Component: directMatch.props.component, isNotFound: false };
 
   // Ищем звездочку
-  const fallback = childrenArray.find(
-    (child) => React.isValidElement(child) && child.props.path === '*'
-  );
+  const fallback = childrenArray.find((child) => child.props.path === '*');
 
-  return fallback 
-    ? { Component: fallback.props.component, isNotFound: true } 
+  return fallback
+    ? { Component: fallback.props.component, isNotFound: true }
     : { Component: null, isNotFound: true };
 };
 
@@ -58,12 +54,12 @@ export const clearTransitionState = () => {
 
 /**
  * Извлекает текущий пресет анимации из истории браузера и сопоставляет его со словарем пресетов.
- * @param {Record<string, TransitionPreset>} presets - Словарь доступных пресетов анимации (TRANSITION_PRESETS).
+ * @param {boolean} isNotFound - Словарь доступных пресетов анимации (TRANSITION_PRESETS).
  * @returns {TransitionPreset} Возвращает объект пресета с классами анимации или пресет по умолчанию (none).
  */
-export const getTransitionPreset = (isNotFound: boolean) => {
+export const getTransitionPreset = (isNotFound: boolean): TransitionPreset => {
   if (isNotFound) return TRANSITION_PRESETS.none;
-  
+
   const key = window.history.state?.animate as TransitionType;
 
   return TRANSITION_PRESETS[key] || TRANSITION_PRESETS.none;
@@ -76,17 +72,17 @@ export const getTransitionPreset = (isNotFound: boolean) => {
  * @returns {Array<Layer>} Массив с начальной страницей или пустой массив, если соответствие не найдено.
  */
 export const initState = (children: ReactNode, location: string): Layer[] => {
-  const {Component, isNotFound} = matchChild(children, location);
+  const { Component, isNotFound } = matchChild(children, location);
 
   if (!Component) return [];
 
   return [
     {
       id: `init-${Date.now()}`,
-      Component: Component,
+      Component,
       isExiting: false,
       // Первая страница появляется сразу без анимации
-      isEntering:  !isNotFound,
+      isEntering: !isNotFound,
       enterClass: '',
       exitClass: '',
     },

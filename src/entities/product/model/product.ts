@@ -109,11 +109,12 @@ export const useProductStore = create<Store>((set, get) => ({
       }));
     }
   },
-  
-  resetProductDetailsError: () => set((state) => ({
-    productDetails: {
-      ...state.productDetails,
-      error: null,
-    }
-  })),
+
+  resetProductDetailsError: () =>
+    set((state) => ({
+      productDetails: {
+        ...state.productDetails,
+        error: null,
+      },
+    })),
 }));

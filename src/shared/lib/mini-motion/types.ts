@@ -23,4 +23,4 @@ export interface TransitionPreset {
   exitClass: string;
 }
 
-export type TransitionType  = keyof typeof TRANSITION_PRESETS;
+export type TransitionType = keyof typeof TRANSITION_PRESETS;

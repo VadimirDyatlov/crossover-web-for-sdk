@@ -2,25 +2,29 @@ import type { ReactNode } from 'react';
 import type { Layer } from './types';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'wouter';
+import { SAFETY_TIMEOUT } from './constants';
 import {
   clearTransitionState,
   getTransitionPreset,
   initState,
   matchChild,
 } from './utils';
-import { SAFETY_TIMEOUT } from './constants';
+
+interface UseTransitionLogicReturn {
+  items: Layer[];
+  isTransitioning: boolean;
+  handleRemove: (id: string) => () => void;
+}
 
 /**
  * Хук для управления логикой анимированных переходов между страницами.
  * Реализует синхронизацию стейта в фазе рендера для предотвращения мерцания (flicker-free).
  * @param {ReactNode} children - Набор дочерних элементов RouteDef, в которых описаны компоненты страниц.
- * @returns {{
- *   items: Array<Layer>,
- *   isTransitioning: boolean,
- *   handleRemove: (id: string) => void
- * }}
+ * @returns {UseTransitionLogicReturn} Объект с состоянием анимации.
  */
-export const useTransitionLogic = (children: ReactNode) => {
+export const useTransitionLogic = (
+  children: ReactNode,
+): UseTransitionLogicReturn => {
   const [location] = useLocation();
 
   // Ленивая инициализация: initState выполнится только ОДИН раз при маунте.
@@ -89,9 +93,11 @@ export const useTransitionLogic = (children: ReactNode) => {
    * Очистка всех таймеров при размонтировании роутера.
    */
   useEffect(() => {
+    const currentTimeouts = timeouts.current;
+
     return () => {
       // Чистим все запланированные удаления страниц
-      Object.values(timeouts.current).forEach(clearTimeout);
+      Object.values(currentTimeouts).forEach(clearTimeout);
     };
   }, []);
 

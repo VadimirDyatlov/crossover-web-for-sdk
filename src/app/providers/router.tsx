@@ -1,7 +1,7 @@
+import { useLocation } from 'wouter';
 import { AnimatedSwitch } from '@/shared/lib/mini-motion/animated-switch';
 import { RouteDef } from '@/shared/lib/mini-motion/route-def';
 import { Button } from '@/shared/ui';
-import { useLocation } from 'wouter';
 
 const Home = () => {
   const navigate = useLocation()[1];
