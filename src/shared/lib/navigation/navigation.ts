@@ -43,7 +43,7 @@ export const useAppNavigation = () => {
     }
   };
 
-  const openCatalog = (animate = TransitionPresetName.SlideBack) => {
+  const openCatalog = (animate: string = TransitionPresetName.SlideBack) => {
     navigate(routerPaths.root, {
       state: { animate },
     });
