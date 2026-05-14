@@ -24,7 +24,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }> {
 
   private removeSplash() {
     const splash = document.getElementById('splash');
-    
+
     if (splash) {
       splash.style.opacity = '0';
       setTimeout(() => splash.remove(), 150);

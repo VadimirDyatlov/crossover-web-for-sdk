@@ -1,5 +1,5 @@
-import { useOrderStore } from "@/entities/order";
-import { useModalStore } from "@/shared/model";
+import { useOrderStore } from '@/entities/order';
+import { useModalStore } from '@/shared/model';
 
 export const useOrderModal = () => {
   const { closeModal } = useModalStore();

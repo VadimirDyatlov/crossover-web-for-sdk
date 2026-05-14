@@ -3,5 +3,6 @@ export const routerPaths = {
   root: '/',
   cartPage: '/cart',
   myOrders: '/my-orders',
+  searchPage: '/search',
   close: '/close',
 } as const;

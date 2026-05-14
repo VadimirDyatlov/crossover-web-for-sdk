@@ -16,6 +16,7 @@ export { ErrorBoundary } from './error-boundary/error-boundary';
 export { FullPageError } from './full-page-error/full-page-error';
 export { InlineError } from './inline-error/inline-error';
 export { Modal } from './modal/modal';
+export { SearchField } from './search-field/search-field';
 export { Skeleton } from './skeleton/skeleton';
 export { SmartImage } from './smart-image/smart-image';
 export { Stack } from './stack/stack';
