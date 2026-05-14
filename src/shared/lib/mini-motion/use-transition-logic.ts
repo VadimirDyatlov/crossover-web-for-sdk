@@ -59,16 +59,6 @@ export const useTransitionLogic = (
         // Если страница уже анимирует выход, не трогаем её
         if (item.isExiting) return item;
 
-        // Очищаем старый таймер, если он был (защита от гонки условий)
-        if (timeouts.current[item.id]) {
-          clearTimeout(timeouts.current[item.id]);
-        }
-
-        // Таймер безопасности: если CSS-событие onAnimationEnd не сработает,
-        // страница будет принудительно удалена через SAFETY_TIMEOUT.
-        const timerId = setTimeout(() => handleRemove(item.id), SAFETY_TIMEOUT);
-        timeouts.current[item.id] = timerId;
-
         // Переводим страницу в статус выхода и фиксируем её анимацию
         return { ...item, isExiting: true, enterClass, exitClass };
       });
@@ -88,6 +78,34 @@ export const useTransitionLogic = (
       setState({ currentLocation: location, items: updatedItems });
     }
   }
+
+  /**
+   * Запуск сайд-эффектов
+   */
+  useEffect(() => {
+    state.items.forEach((item) => {
+      // Обрабатываем только те страницы, которые перешли в статус выхода
+      if (item.isExiting) {
+        // ЗАЩИТА ОТ ГОНКИ УСЛОВИЙ: Если для этого ID уже существовал таймер,
+        // (например, страница прервала свой вход и сразу начала выходить), очищаем его.
+        if (timeouts.current[item.id]) {
+          clearTimeout(timeouts.current[item.id]);
+        }
+
+        // Запускаем гарантированный таймер удаления
+        // eslint-disable-next-line react-web-api/no-leaked-timeout
+        const timerId = setTimeout(() => {
+          handleRemove(item.id)();
+        }, SAFETY_TIMEOUT);
+
+        timeouts.current[item.id] = timerId;
+      }
+    });
+
+    // В массив зависимостей добавляем только длину, чтобы эффект реагировал
+    // исключительно на добавление/удаление слоев, предотвращая бесконечные циклы
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.items.length]);
 
   /**
    * Очистка всех таймеров при размонтировании роутера.

@@ -1,57 +1,49 @@
 import { useLocation } from 'wouter';
 import { routerPaths } from '@/shared/lib';
-import { useAnimatedNavigate } from './use-animated-navigate';
+import { TransitionPresetName } from '../mini-motion';
 import { usePrevious } from './use-previous';
 
 export const useAppNavigation = () => {
   const navigate = useLocation()[1];
-  const animatedNavigate = useAnimatedNavigate();
   const { location, previousLocation } = usePrevious();
 
   const closeApp = () => {
-    animatedNavigate(routerPaths.close);
-    // animate: 'slide',
-    //  animate: 'slide-back',
+    navigate(routerPaths.close);
   };
 
   const openMyOrders = () => {
-    // animatedNavigate(routerPaths.myOrders);
-    navigate(routerPaths.myOrders, {
+    navigate(routerPaths.orders, {
       state: {
-        animate: 'slide',
+        animate: TransitionPresetName.SlideForward,
       },
     });
   };
 
   const openCart = () => {
-    // animatedNavigate(routerPaths.cartPage);
-    navigate(routerPaths.cartPage, {
+    navigate(routerPaths.cart, {
       state: {
-        animate: 'slide',
+        animate: TransitionPresetName.SlideForward,
       },
     });
   };
 
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
-      // animatedNavigate(previousLocation, 'back');
       navigate(previousLocation, {
         state: {
-          animate: 'slide-back',
+          animate: TransitionPresetName.SlideBack,
         },
       });
     } else {
-      // animatedNavigate(fallbackUrl, 'back');
       navigate(fallbackUrl, {
         state: {
-          animate: 'slide-back',
+          animate: TransitionPresetName.SlideBack,
         },
       });
     }
   };
 
-  const openCatalog = (animate = 'slide-back') => {
-    // navigate(routerPaths.root);
+  const openCatalog = (animate = TransitionPresetName.SlideBack) => {
     navigate(routerPaths.root, {
       state: { animate },
     });

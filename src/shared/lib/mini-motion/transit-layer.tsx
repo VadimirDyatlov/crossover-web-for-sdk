@@ -45,6 +45,7 @@ export const TransitLayer: FC<TransitLayerProps> = ({
       }}
       className={cn(
         'h-full w-full absolute inset-0 overflow-y-auto transform-gpu',
+        'bg-white',
         isExiting ? exitClass : isEntering ? enterClass : '',
         'will-change-transform',
       )}

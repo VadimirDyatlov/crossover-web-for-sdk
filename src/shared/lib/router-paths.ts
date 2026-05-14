@@ -1,7 +1,7 @@
 export const routerPaths = {
   unknown: '*',
   root: '/',
-  cartPage: '/cart',
-  myOrders: '/my-orders',
+  cart: '/cart',
+  orders: '/orders',
   close: '/close',
 } as const;
