@@ -1,22 +1,30 @@
-import { mswReadyPromise } from './msw-ready';
+import type { types } from '@/shared/api';
+import { request } from './base';
 
-// В dev-режиме ждём готовности MSW перед первым запросом
-const ready =
-  import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true'
-    ? mswReadyPromise
-    : Promise.resolve();
+export const getMerchant = (extBranchId: string) =>
+  request<types.MerchantResponse, types.GetMerchantParams>(
+    '/crossover/v1/merchant',
+    { extBranchId },
+  );
 
-// TODO: Написать кастомный fetch.
-export const getMerchant = () => ready.then(() => fetch('/crossover/v1/merchant'));
-
-export const getProductList = (id: string, signal?: AbortSignal) =>
-  ready.then(() => fetch(`/crossover/v1/product/list/${id}`, { signal }));
+export const getProductList = (
+  params: types.GetProductListParams,
+  signal?: AbortSignal,
+) =>
+  request<types.ProductResponse, types.GetProductListParams>(
+    '/crossover/v1/product/list',
+    params,
+    { signal },
+  );
 
 export const getProductDetails = (id: string) =>
-  ready.then(() => fetch(`/crossover/v1/product/${id}`));
+  request<types.ProductDetail>(`/crossover/v1/product/${id}`);
 
-export const getOrderList = () =>
-  ready.then(() => fetch('/crossover/v1/order/list'));
+export const getOrderList = (params: types.GetOrderListParams) =>
+  request<types.OrderResponse, types.GetOrderListParams>(
+    '/crossover/v1/order/list',
+    params,
+  );
 
 export const getOrderDetails = (id: string) =>
-  ready.then(() => fetch(`/crossover/v1/order/${id}`));
+  request<types.OrderDetailResponse>(`/crossover/v1/order/${id}`);

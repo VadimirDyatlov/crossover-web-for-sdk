@@ -42,12 +42,22 @@ export default defineConfig(({ mode }) => {
     // В dev: не трогаем — Vite сам читает .env.development через нативный import.meta.env.
     ...(mode !== 'development' && {
       define: {
-        'import.meta.env.VITE_ENABLE_MSW': JSON.stringify(env.VITE_ENABLE_MSW ?? 'false'),
+        'import.meta.env.VITE_ENABLE_MSW': JSON.stringify(
+          env.VITE_ENABLE_MSW ?? 'false',
+        ),
       },
     }),
     server: {
       port: 5173,
       open: true,
+      proxy: {
+        '/api': {
+          target: 'https://ift.gate1.spaymentsplus.ru',
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
     },
   };
 });

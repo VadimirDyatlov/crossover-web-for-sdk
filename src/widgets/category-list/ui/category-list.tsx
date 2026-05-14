@@ -4,11 +4,13 @@ import { useSelectCategory } from '@/features/select-category';
 import { SearchIcon } from '@/shared/assets/icons';
 import { cn, useAppNavigation, useScrollIntoView } from '@/shared/lib';
 import { Chip, Stack } from '@/shared/ui';
+import { useCatalogInit } from '../model/category-list';
 
 export const CategoryList: FC = () => {
   const { categories, selectedId, handleSelect } = useSelectCategory();
   const { openSearch } = useAppNavigation();
-  // Второй параметр — тип DOM-элемента, совпадает с forwardRef<HTMLButtonElement> в Category
+  useCatalogInit();
+
   const activeRef = useScrollIntoView<string | undefined, HTMLButtonElement>(
     selectedId,
   );
