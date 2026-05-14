@@ -28,7 +28,7 @@ export const useOrderStore = create<Store>((set, get) => ({
     data: [],
     isLoading: false,
     error: null,
-    // TODO: Для реализации ленивой загрузки 
+    // TODO: Для реализации ленивой загрузки
     page: 1,
     limit: 30,
   },
@@ -55,9 +55,7 @@ export const useOrderStore = create<Store>((set, get) => ({
     }));
 
     try {
-      const data = await api.getOrderList(
-        { ...params, page, limit },
-      );
+      const data = await api.getOrderList({ ...params, page, limit });
 
       set((state) => ({
         orderList: { ...state.orderList, data: data.orders, isLoading: false },
@@ -116,8 +114,7 @@ export const useOrderListLazy = () => {
   const subId = bridgeMock.getSubId();
 
   useEffect(() => {
-    if (!data.length && !isLoading && !error)
-      fetchOrderList({ extBranchId, subId });
+    if (!data.length && !isLoading && !error) fetchOrderList({ extBranchId, subId });
   }, [data.length, isLoading, error, fetchOrderList, extBranchId, subId]);
 
   return { data, isLoading };

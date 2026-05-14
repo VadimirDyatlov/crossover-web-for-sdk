@@ -1,5 +1,5 @@
-import type { FC } from "react";
-import { Skeleton, Stack } from "@/shared/ui";
+import type { FC } from 'react';
+import { Skeleton, Stack } from '@/shared/ui';
 
 export const OrdersListSkeleton: FC = () => {
   return [1, 2, 3, 4].map((index) => (

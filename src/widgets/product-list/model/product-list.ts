@@ -18,9 +18,9 @@ export const useProductListActions = () => {
 
   const handleRetry = () => {
     if (selectedCategory?.id) {
-      fetchProductList({ 
-        categoryId: selectedCategory.id, 
-        pointId 
+      fetchProductList({
+        categoryId: selectedCategory.id,
+        pointId,
       });
     }
   };

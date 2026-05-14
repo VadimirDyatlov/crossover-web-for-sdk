@@ -10,12 +10,7 @@ export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
   const { name: productName, weight } = parseProductName(name);
 
   return (
-    <Stack
-      direction="row"
-      align="center"
-      spacing="md"
-      className="p-[12px_20px]"
-    >
+    <Stack direction="row" align="center" spacing="md" className="p-[12px_20px]">
       <SmartImage
         src={imageUrl}
         alt={name}

@@ -1,4 +1,4 @@
-import { bridgeMock } from "./bridge-mock";
+import { bridgeMock } from './bridge-mock';
 
 export const getCommonHeaders = () => {
   return {

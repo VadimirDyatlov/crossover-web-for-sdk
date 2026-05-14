@@ -73,7 +73,7 @@ export interface MerchantInfo {
   logoUrl: string;
   name: string;
   pointId: string;
-};
+}
 
 export interface StatusParams {
   code: string;
@@ -98,7 +98,7 @@ export interface OrderDetailResponse {
   orderTime: string;
   status: StatusParams;
   totalAmount: number;
-  totalItems: number; 
+  totalItems: number;
   verificationCode: string;
 }
 

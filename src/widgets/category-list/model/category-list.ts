@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react";
-import { useCategoryStore } from "@/entities/category";
-import { useMerchantStore } from "@/entities/merchant";
-import { useProductStore } from "@/entities/product";
+import { useEffect, useMemo } from 'react';
+import { useCategoryStore } from '@/entities/category';
+import { useMerchantStore } from '@/entities/merchant';
+import { useProductStore } from '@/entities/product';
 
 export const useCatalogInit = () => {
   const categoryData = useMerchantStore((state) => state.data?.category);
@@ -12,13 +12,12 @@ export const useCatalogInit = () => {
   const fetchProductList = useProductStore((state) => state.fetchProductList);
 
   useEffect(() => {
-      if (categories.length > 0 && !selectedCategory) {
-
+    if (categories.length > 0 && !selectedCategory) {
       const params = {
         categoryId: categories[0].id,
         pointId,
-      }
-      
+      };
+
       setSelectedCategory(categories[0]);
       fetchProductList(params);
     }

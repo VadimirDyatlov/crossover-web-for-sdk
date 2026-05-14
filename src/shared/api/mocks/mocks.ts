@@ -59,7 +59,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/pb/snow-winter-decoration-red.jpeg?auto=compress&fit=resize&h=400&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -69,7 +69,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/nw/snow-winter-flower-petal.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -79,7 +79,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/cd/cat-kitty-cute.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -89,7 +89,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/cb/liquid-cafe-coffee-dark-rjfd.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -99,7 +99,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/rd/snow-winter-warm-sweet.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img1.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -109,7 +109,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/og/drink-a-cup-deer.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -119,7 +119,7 @@ export const mockProducts1: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/yg/drinks-glass-ice-cream-wallpaper-hot-cocoa.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
 ];
@@ -133,7 +133,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/uq/coffee-morning-foam-cup.jpeg?auto=compress&fit=resize&h=325&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -143,7 +143,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/vk/coffee-shop-coffee-tea-morning.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img1.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -153,7 +153,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/ze/cafe-coffee-tea-morning-oxgc.jpeg?auto=compress&fit=resize&h=282&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -163,7 +163,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/lf/cafe-coffee-restaurant-aroma.jpeg?auto=compress&fit=resize&w=1200&h=800&display=large&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -173,7 +173,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/gn/coffee-dish-meal-food-ovbt.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -183,7 +183,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/rj/coffee-cup-hot-chocolate-food.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -193,7 +193,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/xp/cafe-coffee-tea-morning-azhz.jpeg?auto=compress&fit=resize&w=1200&h=800&display=large&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -203,7 +203,7 @@ export const mockProducts2: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/zc/cold-glass-cup-hot-chocolate.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
 ];
@@ -217,7 +217,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/pn/food-cake-chocolate-slni.jpeg?auto=compress&fit=resize&h=335&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -227,7 +227,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/iw/food-produce-baking-dessert.jpeg?auto=compress&fit=resize&h=667&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -237,7 +237,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/nf/food-strawberries-cake.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -247,7 +247,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/xf/sweet-dish-meal-food-nrle.jpeg?auto=compress&fit=resize&h=341&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -257,7 +257,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/ww/food-strawberries-ice-cream.jpeg?auto=compress&fit=resize&h=313&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -267,7 +267,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/wi/berry-sweet-food-produce.jpeg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img3.fonwall.ru',
-          timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -277,7 +277,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop&auto=format',
       'https://avatars.mds.yandex.net/get-entity_search/4789399/1254336384/S600xU_2x',
-                timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
   {
@@ -287,7 +287,7 @@ export const mockProducts3: Product[] = [
     imageUrl:
       // 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&auto=format',
       'https://image.fonwall.ru/o/nz/pirozhnoe-shokoladnoe-orehi.jpg?auto=compress&fit=resize&h=334&w=500&display=thumb&domain=img2.fonwall.ru',
-                timeToPrepare: 45,
+    timeToPrepare: 45,
     unitOfMeasurement: '',
   },
 ];

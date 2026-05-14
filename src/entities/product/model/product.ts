@@ -30,7 +30,7 @@ export const useProductStore = create<Store>((set, get) => ({
     isLoading: false,
     error: null,
     cache: {},
-    // TODO: Для реализации ленивой загрузки 
+    // TODO: Для реализации ленивой загрузки
     page: 1,
     limit: 30,
   },

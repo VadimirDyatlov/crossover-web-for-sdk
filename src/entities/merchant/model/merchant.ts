@@ -16,11 +16,11 @@ export const useMerchantStore = create<Store>((set) => ({
   error: null,
 
   fetchMerchant: async (branchId: string) => {
-     try {
+    try {
       set({ isLoading: true, error: null });
 
-      const data = await api.getMerchant(branchId); 
-      
+      const data = await api.getMerchant(branchId);
+
       // TODO: Добавить проверку valibot
       set({ data, isLoading: false });
     } catch (error) {

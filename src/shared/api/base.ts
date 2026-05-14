@@ -6,10 +6,7 @@ const ready =
     ? mswReadyPromise
     : Promise.resolve();
 
-export const request = async <
-  T,
-  P extends object = Record<string, unknown>,
->(
+export const request = async <T, P extends object = Record<string, unknown>>(
   endpoint: string,
   params?: P,
   options: RequestInit = {},

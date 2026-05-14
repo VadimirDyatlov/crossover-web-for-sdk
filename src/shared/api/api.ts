@@ -1,5 +1,5 @@
 import type { types } from '@/shared/api';
-import { request } from "./base";
+import { request } from './base';
 
 export const getMerchant = (extBranchId: string) =>
   request<types.MerchantResponse, types.GetMerchantParams>(
@@ -7,7 +7,10 @@ export const getMerchant = (extBranchId: string) =>
     { extBranchId },
   );
 
-export const getProductList = (params: types.GetProductListParams, signal?: AbortSignal) =>
+export const getProductList = (
+  params: types.GetProductListParams,
+  signal?: AbortSignal,
+) =>
   request<types.ProductResponse, types.GetProductListParams>(
     '/crossover/v1/product/list',
     params,
@@ -17,8 +20,11 @@ export const getProductList = (params: types.GetProductListParams, signal?: Abor
 export const getProductDetails = (id: string) =>
   request<types.ProductDetail>(`/crossover/v1/product/${id}`);
 
-export const getOrderList = (params: types.GetOrderListParams,) => 
-  request<types.OrderResponse, types.GetOrderListParams>('/crossover/v1/order/list', params);
+export const getOrderList = (params: types.GetOrderListParams) =>
+  request<types.OrderResponse, types.GetOrderListParams>(
+    '/crossover/v1/order/list',
+    params,
+  );
 
-export const getOrderDetails = (id: string) => 
+export const getOrderDetails = (id: string) =>
   request<types.OrderDetailResponse>(`/crossover/v1/order/${id}`);

@@ -10,7 +10,7 @@ import { ProductListSkeleton } from './product-list-skeleton';
 
 export const ProductList: FC = () => {
   const { data, isLoading, error } = useProductStore((state) => state.productList);
-  const { scrollRef } = useProductListScroll()
+  const { scrollRef } = useProductListScroll();
   const { handleRetry } = useProductListActions();
 
   const handleOpen = useOpenProduct();
