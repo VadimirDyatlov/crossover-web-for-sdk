@@ -1,3 +1,12 @@
+export {
+  BRIDGE_EVENT,
+  bridge,
+  trackAction,
+  tracker,
+  USER_ACTION,
+  useBridgeTracking,
+} from './bridge';
+export type { UserActionName, UserActionPayload } from './bridge';
 export * from './constants';
 export { useAppNavigation } from './navigation/navigation';
 export * from './router-paths';
