@@ -1,13 +1,14 @@
 import type { types } from '@/shared/api';
-// @vitest-environment node
 import { beforeEach, describe, expect, it } from 'vitest';
-import { useCartStore } from './cart';
+import { useCartStore } from '../model/cart';
 
 const mockProduct = (id: string, price: number): types.Product => ({
   id,
   name: `Товар ${id}`,
   price,
   imageUrl: '',
+  timeToPrepare: 30,
+  unitOfMeasurement: '',
 });
 
 beforeEach(() => {

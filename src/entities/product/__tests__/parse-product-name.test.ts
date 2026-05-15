@@ -1,6 +1,5 @@
-// @vitest-environment node
 import { describe, expect, it } from 'vitest';
-import { parseProductName } from './parse-product-name';
+import { parseProductName } from '../lib/parse-product-name';
 
 describe('parseProductName', () => {
   it('отделяет вес от названия', () => {

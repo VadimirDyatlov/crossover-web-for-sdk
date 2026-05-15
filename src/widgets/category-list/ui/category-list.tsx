@@ -1,12 +1,16 @@
 import type { CSSProperties, FC } from 'react';
 import { Category } from '@/entities/category';
 import { useSelectCategory } from '@/features/select-category';
-import { cn, useScrollIntoView } from '@/shared/lib';
-import { Stack } from '@/shared/ui';
+import { SearchIcon } from '@/shared/assets/icons';
+import { cn, useAppNavigation, useScrollIntoView } from '@/shared/lib';
+import { Chip, Stack } from '@/shared/ui';
+import { useCatalogInit } from '../model/category-list';
 
 export const CategoryList: FC = () => {
   const { categories, selectedId, handleSelect } = useSelectCategory();
-  // Второй параметр — тип DOM-элемента, совпадает с forwardRef<HTMLButtonElement> в Category
+  const { openSearch } = useAppNavigation();
+  useCatalogInit();
+
   const activeRef = useScrollIntoView<string | undefined, HTMLButtonElement>(
     selectedId,
   );
@@ -22,6 +26,12 @@ export const CategoryList: FC = () => {
         'bg-white px-2 pt-[1px]',
       )}
     >
+      <Chip
+        icon={<SearchIcon className="size-4" />}
+        label="Поиск"
+        className="self-center"
+        onClick={openSearch}
+      />
       {categories.map((category) => {
         const isSelected = category.id === selectedId;
 

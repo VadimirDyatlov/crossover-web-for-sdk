@@ -1,18 +1,13 @@
 import type { FC } from 'react';
-import { useOrderListLazy, useOrderStore } from '@/entities/order';
+import { useOrderListLazy } from '@/entities/order';
 import { SupportBlock } from '@/features/call-support';
-import { useAppNavigation } from '@/shared/lib';
-import { Box, FullPageError, Typography } from '@/shared/ui';
+import { Box, Typography } from '@/shared/ui';
 import { OrdersHeader } from '@/widgets/header';
 import { OrderDetailsModal } from '@/widgets/order-details-modal';
 import { OrdersList } from '@/widgets/orders-list';
 
 export const OrdersPage: FC = () => {
   useOrderListLazy();
-  const error = useOrderStore((state) => state.orderList.error);
-  const { openCatalog } = useAppNavigation();
-
-  if (error) return <FullPageError onBack={openCatalog} actionLabel="Закрыть" />;
 
   return (
     <Box flexDirection="column" className="h-dvh overflow-hidden">

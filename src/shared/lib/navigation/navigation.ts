@@ -27,6 +27,10 @@ export const useAppNavigation = () => {
     });
   };
 
+  const openSearch = () => {
+    animatedNavigate(routerPaths.searchPage);
+  };
+
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
       navigate(previousLocation, {
@@ -49,5 +53,5 @@ export const useAppNavigation = () => {
     });
   };
 
-  return { closeApp, openMyOrders, openCart, goBack, openCatalog };
+  return { closeApp, openMyOrders, openCart, openSearch, goBack, openCatalog };
 };

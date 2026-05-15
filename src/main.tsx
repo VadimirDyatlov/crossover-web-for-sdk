@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from '@/app';
-import { resolveMswReady } from '@/shared/api/msw-ready';
+import { resolveMswReady } from '@/shared/api';
 import './index.css';
 
 const init = async () => {
@@ -29,7 +29,8 @@ const init = async () => {
 
   try {
     // DEV — dev-сервер, VITE_ENABLE_MSW — явное включение для preview/тестирования
-    if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true') {
+    // if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === 'true') {
+    if (import.meta.env.VITE_ENABLE_MSW === 'true') {
       // Снимаем регистрацию старых SW перед стартом MSW: Lighthouse и другие инструменты
       // оставляют в activeClientIds «мёртвые» clientId, из-за которых SW виснет на
       // перехвате fetch и worker.start() никогда не получает MOCKING_ENABLED.

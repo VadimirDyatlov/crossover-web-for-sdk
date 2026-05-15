@@ -1,8 +1,14 @@
-export interface Pagination {
-  currentPage: number;
-  totalPages: number;
-  totalItems: number;
-  itemsPerPage: number;
+// TODO: Можно перенести типы в сущности
+export interface MerchantResponse {
+  address: string;
+  category: Category[];
+  infoWidget: InfoWidget;
+  logoUrl: string;
+  name: string;
+  pointId: string;
+  qrData: string;
+  status: Status;
+  timeToPrepare: number;
 }
 
 export interface InfoWidget {
@@ -21,17 +27,6 @@ export interface Category {
   size: number;
 }
 
-export interface MerchantResponse {
-  pointId: string;
-  name: string;
-  logoUrl: string;
-  address: string;
-  qrData: string;
-  infoWidget: InfoWidget;
-  status: Status;
-  category: Category[];
-}
-
 export interface ErrorResponse {
   errorCode: number;
   error: string;
@@ -40,9 +35,11 @@ export interface ErrorResponse {
 
 export interface Product {
   id: string;
+  imageUrl: string;
   name: string;
   price: number;
-  imageUrl: string;
+  timeToPrepare: number;
+  unitOfMeasurement: string;
 }
 
 export interface ProductResponse {
@@ -52,28 +49,35 @@ export interface ProductResponse {
 
 export interface ProductDetail {
   id: string;
+  imageUrl: string;
   name: string;
   price: number;
-  imageUrl: string;
-  description: string;
-  specifications: string;
+  timeToPrepare: number;
+  unitOfMeasurement: string;
 }
 
 export interface Order {
+  verificationCode: string;
+  localSessionId: string;
+  merchantInfo: MerchantInfo;
   orderId: string;
   orderTime: string;
-  merchantInfo: {
-    pointId: string;
-    name: string;
-    logoUrl: string;
-    address: string;
-  };
-  verificationCode: string;
   status: string;
-  totalItems: number;
+  statusParams: StatusParams;
   totalAmount: number;
-  description: string;
-  localSessionId: string;
+  totalItems: number;
+}
+
+export interface MerchantInfo {
+  address: string;
+  logoUrl: string;
+  name: string;
+  pointId: string;
+}
+
+export interface StatusParams {
+  code: string;
+  color: string;
 }
 
 export interface OrderResponse {
@@ -87,5 +91,54 @@ export interface OrderDetail {
 }
 
 export interface OrderDetailResponse {
-  products: OrderDetail[];
+  cart: OrderDetailProduct[];
+  localSessionId: string;
+  merchantInfo: MerchantInfo;
+  orderId: string;
+  orderTime: string;
+  status: StatusParams;
+  totalAmount: number;
+  totalItems: number;
+  verificationCode: string;
+}
+
+export interface OrderDetailProduct {
+  costPrice: number;
+  imageUrl: string;
+  name: string;
+  productId: string;
+  quantity: number;
+  unitOfMeasurement: string;
+}
+
+export interface StatusParams {
+  code: string;
+  color: string;
+  text?: string;
+}
+
+export interface Pagination {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  itemsPerPage: number;
+}
+
+export interface GetMerchantParams {
+  extBranchId: string;
+}
+
+export interface GetProductListParams extends Partial<PaginationRequest> {
+  categoryId: string;
+  pointId: string;
+}
+
+export interface GetOrderListParams extends Partial<PaginationRequest> {
+  extBranchId: string;
+  subId: string;
+}
+
+export interface PaginationRequest {
+  page: number;
+  limit: number;
 }
