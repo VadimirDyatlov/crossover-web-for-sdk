@@ -28,7 +28,11 @@ export const useAppNavigation = () => {
   };
 
   const openSearch = () => {
-    animatedNavigate(routerPaths.searchPage);
+    navigate(routerPaths.search, {
+      state: {
+        animate: TransitionPresetName.SlideForward,
+      },
+    });
   };
 
   const goBack = (fallbackUrl = '/') => {

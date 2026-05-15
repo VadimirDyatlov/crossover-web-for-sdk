@@ -11,7 +11,6 @@ vi.mock('../useTransitionLogic', () => ({
 }));
 
 const DummyCatalog = () => <div data-testid="catalog-page">Catalog</div>;
-// const DummyCart = () => <div data-testid="cart-page">Cart</div>;
 
 describe('mini-Motion Library', () => {
   beforeEach(() => {
