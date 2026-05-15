@@ -19,7 +19,7 @@ export const ProductDetails: FC<ProductDetailsProps> = (props) => {
         imgClassName="object-cover"
       />
       <Stack spacing="md" className="pt-8 pr-4 pb-4 pl-4">
-        <Typography.Headline3>{data?.name}</Typography.Headline3>
+        <Typography variant="headline1">{data?.name}</Typography>
         {/* <Typography.Body1>{data?.description}</Typography.Body1>
         <Typography.Body1>{data?.specifications}</Typography.Body1> */}
       </Stack>

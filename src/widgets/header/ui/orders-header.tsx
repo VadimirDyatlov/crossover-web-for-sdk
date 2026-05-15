@@ -12,7 +12,7 @@ export const OrdersHeader: FC = () => {
         className="h-[44px] relative"
       >
         <NavigateBackButton className="absolute left-2" />
-        <Typography.Headline3>Мои заказы</Typography.Headline3>
+        <Typography variant="headline1">Мои заказы</Typography>
       </Stack>
     </Stack>
   );

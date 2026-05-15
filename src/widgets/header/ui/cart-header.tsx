@@ -16,8 +16,8 @@ export const CartHeader: FC = () => {
       >
         <NavigateBackButton />
         <Stack align="center">
-          <Typography.Headline3>Заказ</Typography.Headline3>
-          <Typography.Body1>{merchantInfo?.address}</Typography.Body1>
+          <Typography variant="headline1">Заказ</Typography>
+          <Typography variant="body1">{merchantInfo?.address}</Typography>
         </Stack>
         <SmartImage
           src={merchantInfo?.logoUrl}

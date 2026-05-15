@@ -15,9 +15,9 @@ export const OrdersPage: FC = () => {
       <OrdersList>
         <SupportBlock className="mt-2">
           {(Link) => (
-            <Typography.Body1>
+            <Typography variant="body1">
               По вопросам оплаты заказов звоните <Link />
-            </Typography.Body1>
+            </Typography>
           )}
         </SupportBlock>
       </OrdersList>

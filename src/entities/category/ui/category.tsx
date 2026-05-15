@@ -23,7 +23,7 @@ export const Category = ({
       )}
       onClick={onSelect}
     >
-      <Typography.Headline4>{category.name}</Typography.Headline4>
+      <Typography variant="headline2">{category.name}</Typography>
     </Button>
   );
 };
