@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Layer } from './types';
 import { useEffect, useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useLocation } from 'wouter';
 import { SAFETY_TIMEOUT } from './constants';
 import {
@@ -49,6 +50,8 @@ export const useTransitionLogic = (
     clearTransitionState();
   };
 
+  console.log(location !== state.currentLocation);
+  
   if (location !== state.currentLocation) {
     const { Component: NextComponent, isNotFound } = matchChild(children, location);
     const { enterClass, exitClass } = getTransitionPreset(isNotFound);
@@ -59,13 +62,20 @@ export const useTransitionLogic = (
         // Если страница уже анимирует выход, не трогаем её
         if (item.isExiting) return item;
 
+        // 1. При смене страницы в условие if (location !== state.currentLocation) мы попадаем один раз
+        // 2. Если мы попали туда два раза на одной странице, то таймер мы очистим и только после заведем новый
+        if (timeouts.current[item.id]) clearTimeout(timeouts.current[item.id]);
+
+        const timerId = setTimeout(() => handleRemove(item.id)(), SAFETY_TIMEOUT);
+        timeouts.current[item.id] = timerId;
+
         // Переводим страницу в статус выхода и фиксируем её анимацию
         return { ...item, isExiting: true, enterClass, exitClass };
       });
 
       // Добавляем новую страницу в массив.
       updatedItems.push({
-        id: `page-${Date.now()}`,
+        id: uuidv4(),
         Component: NextComponent,
         isExiting: false,
         // Флаг запуска анимации входа для новой страницы
@@ -82,30 +92,29 @@ export const useTransitionLogic = (
   /**
    * Запуск сайд-эффектов
    */
-  useEffect(() => {
-    state.items.forEach((item) => {
-      // Обрабатываем только те страницы, которые перешли в статус выхода
-      if (item.isExiting) {
-        // ЗАЩИТА ОТ ГОНКИ УСЛОВИЙ: Если для этого ID уже существовал таймер,
-        // (например, страница прервала свой вход и сразу начала выходить), очищаем его.
-        if (timeouts.current[item.id]) {
-          clearTimeout(timeouts.current[item.id]);
-        }
+  // Удалить!
+  // useEffect(() => {
+  //   state.items.forEach((item) => {
+  //     // Обрабатываем только те страницы, которые перешли в статус выхода
+  //     if (item.isExiting) {
+  //       // ЗАЩИТА ОТ ГОНКИ УСЛОВИЙ: Если для этого ID уже существовал таймер,
+  //       // (например, страница прервала свой вход и сразу начала выходить), очищаем его.
+  //       if (timeouts.current[item.id]) {
+  //         clearTimeout(timeouts.current[item.id]);
+  //       }
 
-        // Запускаем гарантированный таймер удаления
-        // eslint-disable-next-line react-web-api/no-leaked-timeout
-        const timerId = setTimeout(() => {
-          handleRemove(item.id)();
-        }, SAFETY_TIMEOUT);
+  //       // Запускаем гарантированный таймер удаления
+  //       // eslint-disable-next-line react-web-api/no-leaked-timeout
+  //       const timerId = setTimeout(() => {
+  //         handleRemove(item.id)();
+  //       }, SAFETY_TIMEOUT);
 
-        timeouts.current[item.id] = timerId;
-      }
-    });
+  //       timeouts.current[item.id] = timerId;
+  //     }
+  //   });
 
-    // В массив зависимостей добавляем только длину, чтобы эффект реагировал
-    // исключительно на добавление/удаление слоев, предотвращая бесконечные циклы
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.items.length]);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [state.items]);
 
   /**
    * Очистка всех таймеров при размонтировании роутера.
