@@ -68,7 +68,7 @@ export const FullPageError: FC<FullPageErrorProps> = (props) => {
         </Stack>
       </Stack>
       {onBack && (
-        <Stack className="p-4 pb-8">
+        <Stack className="p-4 pb-[calc(32px+env(safe-area-inset-bottom,0px))]">
           <Button
             variant="primary"
             className="w-full h-[60px] rounded-[20px]"

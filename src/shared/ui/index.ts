@@ -20,7 +20,6 @@ export { SearchField } from './search-field/search-field';
 export { Skeleton } from './skeleton/skeleton';
 export { SmartImage } from './smart-image/smart-image';
 export { Stack } from './stack/stack';
-export { SuspenseRoute } from './suspense-route/suspense-route';
 export { PlaceholderSvg };
 
 export const Typography = {
