@@ -50,8 +50,6 @@ export const useTransitionLogic = (
     clearTransitionState();
   };
 
-  console.log(location !== state.currentLocation);
-  
   if (location !== state.currentLocation) {
     const { Component: NextComponent, isNotFound } = matchChild(children, location);
     const { enterClass, exitClass } = getTransitionPreset(isNotFound);
@@ -62,8 +60,6 @@ export const useTransitionLogic = (
         // Если страница уже анимирует выход, не трогаем её
         if (item.isExiting) return item;
 
-        // 1. При смене страницы в условие if (location !== state.currentLocation) мы попадаем один раз
-        // 2. Если мы попали туда два раза на одной странице, то таймер мы очистим и только после заведем новый
         if (timeouts.current[item.id]) clearTimeout(timeouts.current[item.id]);
 
         const timerId = setTimeout(() => handleRemove(item.id)(), SAFETY_TIMEOUT);
@@ -88,33 +84,6 @@ export const useTransitionLogic = (
       setState({ currentLocation: location, items: updatedItems });
     }
   }
-
-  /**
-   * Запуск сайд-эффектов
-   */
-  // Удалить!
-  // useEffect(() => {
-  //   state.items.forEach((item) => {
-  //     // Обрабатываем только те страницы, которые перешли в статус выхода
-  //     if (item.isExiting) {
-  //       // ЗАЩИТА ОТ ГОНКИ УСЛОВИЙ: Если для этого ID уже существовал таймер,
-  //       // (например, страница прервала свой вход и сразу начала выходить), очищаем его.
-  //       if (timeouts.current[item.id]) {
-  //         clearTimeout(timeouts.current[item.id]);
-  //       }
-
-  //       // Запускаем гарантированный таймер удаления
-  //       // eslint-disable-next-line react-web-api/no-leaked-timeout
-  //       const timerId = setTimeout(() => {
-  //         handleRemove(item.id)();
-  //       }, SAFETY_TIMEOUT);
-
-  //       timeouts.current[item.id] = timerId;
-  //     }
-  //   });
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [state.items]);
 
   /**
    * Очистка всех таймеров при размонтировании роутера.
