@@ -1,3 +1,12 @@
+export {
+  bridge,
+  BRIDGE_EVENT,
+  trackAction,
+  tracker,
+  useBridgeTracking,
+  USER_ACTION,
+} from './bridge';
+export type { UserActionName, UserActionPayload } from './bridge';
 export * from './constants';
 export { useAppNavigation } from './navigation/navigation';
 export { createLazyComponent } from './react/create-lazy-component';

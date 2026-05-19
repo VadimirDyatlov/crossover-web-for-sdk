@@ -1,10 +1,16 @@
 import type { FC } from 'react';
 import { useCartStore } from '@/entities/cart';
-import { cn } from '@/shared/lib';
+import { cn, trackAction, USER_ACTION } from '@/shared/lib';
 import { Button, Stack, Typography } from '@/shared/ui';
 
 export const PayButton: FC = () => {
-  const { totalPrice } = useCartStore();
+  const { totalPrice, totalQuantity } = useCartStore();
+
+  // Нажатие «Оплатить» — ключевое действие, уводим его в нативку:
+  // оплата дальше пойдёт нативным флоу (платёжный SDK)
+  const handlePay = () => {
+    trackAction(USER_ACTION.CART_PAY, { totalPrice, totalQuantity });
+  };
 
   return (
     <Stack
@@ -16,6 +22,7 @@ export const PayButton: FC = () => {
       )}
     >
       <Button
+        onClick={handlePay}
         className={cn('w-full h-[60px] rounded-[20px]', 'pointer-events-auto')}
       >
         {/* TODO: PriceInfo это сущность */}

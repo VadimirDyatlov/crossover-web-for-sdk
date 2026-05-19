@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { create } from 'zustand';
 import { useSearchStore } from '@/entities/product';
+import { trackAction, USER_ACTION } from '@/shared/lib';
 
 interface Store {
   query: string;
@@ -26,6 +27,8 @@ export const useSearchLogic = () => {
     }
 
     const timer = setTimeout(() => {
+      // Трекаем запрос после дебаунса — каждый набранный символ событием слать не нужно
+      trackAction(USER_ACTION.SEARCH_QUERY, { stage: 'submit', query });
       fetchListByText(query);
     }, 500);
 

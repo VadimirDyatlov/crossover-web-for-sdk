@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from '@/app';
 import { resolveMswReady } from '@/shared/api';
+import { tracker, USER_ACTION } from '@/shared/lib';
 import './index.css';
 
 const init = async () => {
@@ -11,6 +12,13 @@ const init = async () => {
 
   window.onunhandledrejection = (event) => {
     console.error('Unhandled Rejection:', event.reason);
+
+    // Необработанные промисы тоже уводим в нативку: window 'error' их не ловит,
+    // а трекер навешивает только слушатель 'error'.
+    tracker.trackAction(USER_ACTION.ERROR_JS, {
+      message: event.reason?.message ?? String(event.reason),
+      kind: 'unhandledrejection',
+    });
 
     if (
       event.reason?.name === 'ChunkLoadError' ||
