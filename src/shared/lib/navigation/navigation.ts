@@ -3,45 +3,65 @@ import { routerPaths } from '@/shared/lib';
 // Прямой импорт из ./bridge, а не из барреля '@/shared/lib' — navigation.ts сам
 // реэкспортируется этим баррелем, замыкать импорт на себя не стоит.
 import { trackAction, USER_ACTION } from '../bridge';
-import { useAnimatedNavigate } from './use-animated-navigate';
+import { TransitionPresetName } from '../mini-motion';
 import { usePrevious } from './use-previous';
 
 export const useAppNavigation = () => {
   const navigate = useLocation()[1];
-  const animatedNavigate = useAnimatedNavigate();
   const { location, previousLocation } = usePrevious();
 
   const closeApp = () => {
-    // Закрытие WebView — нативке нужно знать, чтобы свернуть/выгрузить экран
     trackAction(USER_ACTION.APP_CLOSE);
-    animatedNavigate(routerPaths.close);
+    ЯЯnavigate(routerPaths.close);
   };
 
   const openMyOrders = () => {
     trackAction(USER_ACTION.ORDERS_OPEN);
-    animatedNavigate(routerPaths.myOrders);
+    navigate(routerPaths.orders, {
+      state: {
+        animate: TransitionPresetName.SlideForward,
+      },
+    });
   };
 
   const openCart = () => {
     trackAction(USER_ACTION.CART_OPEN);
-    animatedNavigate(routerPaths.cartPage);
+    navigate(routerPaths.cart, {
+      state: {
+        animate: TransitionPresetName.SlideForward,
+      },
+    });
   };
 
   const openSearch = () => {
     trackAction(USER_ACTION.SEARCH_QUERY, { stage: 'open' });
-    animatedNavigate(routerPaths.searchPage);
+    navigate(routerPaths.search, {
+      state: {
+        animate: TransitionPresetName.SlideForward,
+      },
+    });
   };
 
   const goBack = (fallbackUrl = '/') => {
     if (previousLocation && previousLocation !== location) {
-      animatedNavigate(previousLocation, 'back');
+      navigate(previousLocation, {
+        state: {
+          animate: TransitionPresetName.SlideBack,
+        },
+      });
     } else {
-      animatedNavigate(fallbackUrl, 'back');
+      navigate(fallbackUrl, {
+        state: {
+          animate: TransitionPresetName.SlideBack,
+        },
+      });
     }
   };
 
-  const openCatalog = () => {
-    navigate(routerPaths.root);
+  const openCatalog = (animate: string = TransitionPresetName.SlideBack) => {
+    navigate(routerPaths.root, {
+      state: { animate },
+    });
   };
 
   return { closeApp, openMyOrders, openCart, openSearch, goBack, openCatalog };

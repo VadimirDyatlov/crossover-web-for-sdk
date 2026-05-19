@@ -6,10 +6,10 @@ interface OrderDetailsProps {
   children?: ReactNode;
 }
 
-// TODO: Добавить кнопку повторить заказ?
 // TODO: Доработать Typography?
 export const OrderDetails: FC<OrderDetailsProps> = (props) => {
   const { children } = props;
+  // TODO: Убрать selectedOrder, все данные есть в OrderDetailResponse
   const { selectedOrder } = useOrderStore((state) => state.orderDetails);
 
   return (

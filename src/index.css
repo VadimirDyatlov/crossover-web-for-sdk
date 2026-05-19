@@ -9,66 +9,103 @@
     from {
       opacity: 1;
     }
+
     to {
       opacity: 0;
     }
   }
+
   @keyframes fade-in {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
   }
-  @keyframes slide-out-to-right {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-  @keyframes slide-in-from-left {
-    from {
-      transform: translateX(-30%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+
   @keyframes fade-in-down {
     from {
       transform: translateY(-20%);
       opacity: 0;
     }
+
     to {
       transform: translateY(0);
       opacity: 1;
     }
   }
+
   @keyframes price-fade {
     from {
       opacity: 0;
       filter: blur(4px);
     }
+
     to {
       opacity: 1;
       filter: blur(0);
     }
   }
 
-  --animate-fade-out: fade-out 0.5s ease-out both;
-  --animate-fade-in: fade-in 0.5s ease-out both;
-  --animate-slide-out-right: slide-out-to-right 0.5s cubic-bezier(0.4, 0, 0.2, 1)
-    both;
-  --animate-slide-in-left: slide-in-from-left 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-fade-out: fade-out 0.2s ease-out both;
+  --animate-fade-in: fade-in 0.2s ease-out both;
+
   --animate-fade-in-down: fade-in-down 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   --animate-price-fade: price-fade 0.5s ease-out forwards;
+
+  /* --- ВПЕРЕД (Справа налево) --- */
+  /* Новая страница заходит справа */
+  @keyframes push-in-fwd {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  /* Старая страница уходит влево */
+  @keyframes push-out-fwd {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* --- НАЗАД (Слева направо) --- */
+  /* Новая страница заходит слева */
+  @keyframes push-in-bk {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  /* Старая страница уходит вправо */
+  @keyframes push-out-bk {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  --animate-push-in-fwd: push-in-fwd 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-push-out-fwd: push-out-fwd 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  --animate-push-in-bk: push-in-bk 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  --animate-push-out-bk: push-out-bk 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -299,33 +336,11 @@ body {
   overflow: hidden;
 }
 
-.forward-transition::view-transition-old(root),
-.forward-transition::view-transition-new(root),
-.back-transition::view-transition-old(root),
-.back-transition::view-transition-new(root) {
-  will-change: transform, opacity;
-}
-
-/* Анимация для перехода вперед. */
-.forward-transition::view-transition-old(root) {
-  animation: 0.5s ease-out fade-out;
-}
-.forward-transition::view-transition-new(root) {
-  animation: 0.5s ease-out fade-in;
-}
-
-/* Анимация для перехода назад. */
-.back-transition::view-transition-old(root) {
-  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-right;
-}
-.back-transition::view-transition-new(root) {
-  animation: 0.5s cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-left;
-}
-
 /* Скрываем скроллбар для Chrome, Safari и Opera */
 @media (max-width: 991px) {
   ::-webkit-scrollbar {
-    display: none; /* Это надежнее, чем width: 0 */
+    display: none;
+    /* Это надежнее, чем width: 0 */
     width: 0 !important;
     height: 0 !important;
   }

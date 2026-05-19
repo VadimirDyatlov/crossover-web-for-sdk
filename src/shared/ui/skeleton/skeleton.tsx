@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { cn } from '@/shared/lib';
 
 interface SkeletonProps {
@@ -6,11 +6,12 @@ interface SkeletonProps {
   width?: string;
   radius?: string;
   className?: string;
+  children?: ReactNode;
 }
 
 // TODO: Доработать
 export const Skeleton: FC<SkeletonProps> = (props) => {
-  const { width, height, radius, className } = props;
+  const { width, height, radius, className, children } = props;
 
   const style = {
     width: width || '100%',
@@ -21,7 +22,18 @@ export const Skeleton: FC<SkeletonProps> = (props) => {
   return (
     <div
       style={style}
-      className={cn('bg-[var(--sk-color)] animate-pulse rounded-xl', className)}
-    />
+      className={cn(
+        'relative',
+        'bg-[var(--sk-color)] animate-pulse overflow-hidden',
+        !radius && 'rounded-xl',
+        className,
+      )}
+    >
+      {children && (
+        <div className="absolute inset-0 flex items-center justify-center ">
+          {children}
+        </div>
+      )}
+    </div>
   );
 };

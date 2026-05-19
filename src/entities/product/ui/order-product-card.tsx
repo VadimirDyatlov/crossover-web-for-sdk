@@ -3,38 +3,29 @@ import type { types } from '@/shared/api';
 import { SmartImage, Stack, Typography } from '@/shared/ui';
 import { parseProductName } from '../lib/parse-product-name';
 
-interface OrderProductCardProps {
-  product: types.Product;
-  quantity: number;
-}
+interface OrderProductCardProps extends types.OrderDetailProduct {}
 
 export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
-  const { product, quantity } = props;
-  const { name, weight } = parseProductName(product.name);
+  const { costPrice, imageUrl, name, quantity } = props;
+  const { name: productName, weight } = parseProductName(name);
 
   return (
-    <Stack
-      key={product.id}
-      direction="row"
-      align="center"
-      spacing="md"
-      className="p-[12px_20px]"
-    >
+    <Stack direction="row" align="center" spacing="md" className="p-[12px_20px]">
       <SmartImage
-        src={product.imageUrl}
-        alt={product.name}
+        src={imageUrl}
+        alt={name}
         className="h-16 w-16 shrink-0 aspect-square rounded-[16px] overflow-hidden bg-gray-100"
         imgClassName="object-cover w-full h-full"
       />
       <Stack className="w-full">
         <Stack className="mt-[4px]">
-          <Typography.Body2Small>{name}</Typography.Body2Small>
+          <Typography.Body2Small>{productName}</Typography.Body2Small>
           <Typography.Body2Small>{weight}</Typography.Body2Small>
         </Stack>
         <Stack direction="row" align="center" justify="between">
-          <Typography.Body2Small>{`${quantity}шт. × ${product.price}`}</Typography.Body2Small>
+          <Typography.Body2Small>{`${quantity}шт. × ${costPrice}`}</Typography.Body2Small>
 
-          <Typography.Headline4>{`${(product.price * quantity).toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
+          <Typography.Headline4>{`${(costPrice * quantity).toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
         </Stack>
       </Stack>
     </Stack>

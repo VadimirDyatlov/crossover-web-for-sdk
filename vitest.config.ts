@@ -13,7 +13,7 @@ export default defineConfig({
     pool: 'forks',
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
+    setupFiles: ['./setupTest.ts'],
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     exclude: [
       'node_modules',
