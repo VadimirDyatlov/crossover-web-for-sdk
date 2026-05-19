@@ -1,10 +1,10 @@
 export {
-  BRIDGE_EVENT,
   bridge,
+  BRIDGE_EVENT,
   trackAction,
   tracker,
-  USER_ACTION,
   useBridgeTracking,
+  USER_ACTION,
 } from './bridge';
 export type { UserActionName, UserActionPayload } from './bridge';
 export * from './constants';

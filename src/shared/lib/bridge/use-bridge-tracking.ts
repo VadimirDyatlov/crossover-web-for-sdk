@@ -27,9 +27,7 @@ export function useBridgeTracking(): void {
   useEffect(() => {
     const handleVisibility = () => {
       tracker.trackAction(
-        document.hidden
-          ? USER_ACTION.APP_BACKGROUND
-          : USER_ACTION.APP_FOREGROUND,
+        document.hidden ? USER_ACTION.APP_BACKGROUND : USER_ACTION.APP_FOREGROUND,
       );
     };
     document.addEventListener('visibilitychange', handleVisibility);

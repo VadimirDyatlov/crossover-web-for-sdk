@@ -12,7 +12,7 @@ export const useAppNavigation = () => {
 
   const closeApp = () => {
     trackAction(USER_ACTION.APP_CLOSE);
-    ЯЯnavigate(routerPaths.close);
+    navigate(routerPaths.close);
   };
 
   const openMyOrders = () => {
