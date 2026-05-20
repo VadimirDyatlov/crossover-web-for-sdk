@@ -43,6 +43,20 @@ export default function handler(req: IncomingMessage, res: ServerResponse) {
   }
   headers.host = target.host;
 
+  // Debug: ?__debug=1 — вернуть, что мы реально шлём на шлюз, без проксирования.
+  // Помогает понять, на чём F5 ASM режет запрос. Удалить после диагностики.
+  if (incoming.searchParams.get('__debug') === '1') {
+    res.setHeader('content-type', 'application/json');
+    res.end(
+      JSON.stringify(
+        { method: req.method, target: target.host, path, headers },
+        null,
+        2,
+      ),
+    );
+    return;
+  }
+
   const proxyReq = https.request(
     {
       protocol: target.protocol,
