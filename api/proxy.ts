@@ -17,10 +17,19 @@ export default function handler(req: IncomingMessage, res: ServerResponse) {
 
   // Парсим входящий URL (база-заглушка, нужен только для разбора query).
   const incoming = new URL(req.url ?? '/', 'http://localhost');
-  const upstreamPath = incoming.searchParams.get('__upstream') ?? '';
-  incoming.searchParams.delete('__upstream');
+  const sp = incoming.searchParams;
+  const upstreamPath = sp.get('__upstream') ?? '';
 
-  const query = incoming.searchParams.toString();
+  // Вычищаем служебные параметры, чтобы они НЕ ушли на шлюз:
+  // - __upstream: наш носитель исходного пути;
+  // - path: Vercel сам дублирует сюда `:path*` из rewrite, причём со слэшами
+  //   в виде %2F — закодированный слэш ловит F5 ASM («evasion») и режет запрос;
+  // - __debug: отладочный флаг.
+  sp.delete('__upstream');
+  sp.delete('path');
+  sp.delete('__debug');
+
+  const query = sp.toString();
   const path = `/${upstreamPath}${query ? `?${query}` : ''}`;
 
   // WAF апстрима (F5 ASM) режет запрос по «прокси/облачным» заголовкам, которые
@@ -36,6 +45,8 @@ export default function handler(req: IncomingMessage, res: ServerResponse) {
       lower.startsWith('x-forwarded-') ||
       lower === 'forwarded' ||
       lower === 'x-real-ip' ||
+      lower === 'x-invocation-id' ||
+      lower === 'via' ||
       lower === 'connection'
     ) {
       delete headers[key];
