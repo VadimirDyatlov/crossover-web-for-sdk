@@ -23,6 +23,26 @@ export default function handler(req: IncomingMessage, res: ServerResponse) {
   const query = incoming.searchParams.toString();
   const path = `/${upstreamPath}${query ? `?${query}` : ''}`;
 
+  // WAF апстрима (F5 ASM) режет запрос по «прокси/облачным» заголовкам, которые
+  // Vercel дописывает, а vite-прокси — нет. Чистим их, чтобы запрос выглядел как
+  // из preview. changeOrigin: Host подменяем на адрес апстрима.
+  const headers: Record<string, string | string[] | undefined> = {
+    ...req.headers,
+  };
+  for (const key of Object.keys(headers)) {
+    const lower = key.toLowerCase();
+    if (
+      lower.startsWith('x-vercel-') ||
+      lower.startsWith('x-forwarded-') ||
+      lower === 'forwarded' ||
+      lower === 'x-real-ip' ||
+      lower === 'connection'
+    ) {
+      delete headers[key];
+    }
+  }
+  headers.host = target.host;
+
   const proxyReq = https.request(
     {
       protocol: target.protocol,
@@ -30,8 +50,7 @@ export default function handler(req: IncomingMessage, res: ServerResponse) {
       port: target.port || 443,
       method: req.method,
       path,
-      // changeOrigin: подменяем Host на адрес апстрима (как в vite-прокси).
-      headers: { ...req.headers, host: target.host },
+      headers,
       agent,
     },
     (proxyRes) => {
