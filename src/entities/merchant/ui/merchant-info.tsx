@@ -22,14 +22,14 @@ export const MerchantInfo: FC = () => {
             className="size-9 rounded-full bg-gray-100 shrink-0"
             imgClassName="w-full h-full object-cover"
           />
-          <Typography.Headline5 className="truncate leading-none">
+          <Typography variant="headline3" className="truncate leading-none">
             {data?.name}
-          </Typography.Headline5>
+          </Typography>
         </Stack>
         {/* TODO: Переделать под новый дизайн и убрать slice */}
-        <Typography.Body1>
+        <Typography variant="body1">
           {data?.address?.split(', ').slice(1).join()}
-        </Typography.Body1>
+        </Typography>
       </Stack>
       <Chip label={`~${data?.timeToPrepare} минут`} icon={<Clock />} />
     </Stack>

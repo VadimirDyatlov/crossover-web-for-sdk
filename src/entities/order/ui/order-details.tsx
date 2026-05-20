@@ -22,24 +22,24 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
             className="w-18 h-18 rounded-full border border-[#E5E7EB]"
             imgClassName="w-full h-full object-cover"
           />
-          <Typography.Headline4 className="text-[20px]">
+          <Typography variant="headline1">
             {selectedOrder?.merchantInfo.name}
-          </Typography.Headline4>
+          </Typography>
         </Stack>
         <Stack align="center">
-          <Typography.Headline4 className="text-[48px]">
+          <Typography variant="headline4">
             {`${selectedOrder?.totalAmount.toLocaleString('ru-RU')} ₽`}
-          </Typography.Headline4>
+          </Typography>
         </Stack>
         <Stack
           align="center"
           spacing="xs"
           className="p-[11px] m-[0_48px] rounded-[20px] bg-[rgb(246,246,248)]"
         >
-          <Typography.Body2Small>Код подтверждения</Typography.Body2Small>
-          <Typography.Headline3>
+          <Typography variant="body1Small">Код подтверждения</Typography>
+          <Typography variant="headline1">
             {selectedOrder?.verificationCode}
-          </Typography.Headline3>
+          </Typography>
         </Stack>
         {children}
       </Stack>
@@ -48,12 +48,12 @@ export const OrderDetails: FC<OrderDetailsProps> = (props) => {
         className="p-4 m-4 mb-20 rounded-[16px] bg-[rgb(246,246,248)]"
       >
         <Stack direction="row" justify="between">
-          <Typography.Body2Small>Дата и время</Typography.Body2Small>
-          <Typography.Body2Small>{selectedOrder?.orderTime}</Typography.Body2Small>
+          <Typography variant="body1Small">Дата и время</Typography>
+          <Typography variant="body1Small">{selectedOrder?.orderTime}</Typography>
         </Stack>
         <Stack direction="row" justify="between">
-          <Typography.Body2Small>Готов к выдаче</Typography.Body2Small>
-          <Typography.Body2Small>11:00</Typography.Body2Small>
+          <Typography variant="body1Small">Готов к выдаче</Typography>
+          <Typography variant="body1Small">11:00</Typography>
         </Stack>
       </Stack>
     </Stack>

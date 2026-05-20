@@ -21,13 +21,13 @@ export const OrderCard: FC<OrderCardProps> = ({ order, onClick }) => {
     >
       <Stack direction="row" justify="between">
         <Stack direction="row" spacing="xs">
-          <Typography.Body5Secondary>
+          <Typography variant="body1Secondary">
             {formatOrderTime(orderTime)}
-          </Typography.Body5Secondary>
-          <Typography.Body5Secondary>{`• ${status}`}</Typography.Body5Secondary>
+          </Typography>
+          <Typography variant="body1Secondary">{`• ${status}`}</Typography>
         </Stack>
         {/* TODO: Переделать под новый дизайн и убрать slice */}
-        <Typography.Body5Secondary>{orderId.slice(10)}</Typography.Body5Secondary>
+        <Typography variant="body1Secondary">{orderId.slice(10)}</Typography>
       </Stack>
       <Stack spacing="md">
         <Stack direction="row" justify="between">
@@ -39,17 +39,17 @@ export const OrderCard: FC<OrderCardProps> = ({ order, onClick }) => {
               imgClassName="object-cover w-full h-full"
             />
             <Stack className="gap-0.5">
-              <Typography.Headline4>{merchantInfo.name}</Typography.Headline4>
-              <Typography.Body2Small>{merchantInfo.address}</Typography.Body2Small>
+              <Typography variant="headline2">{merchantInfo.name}</Typography>
+              <Typography variant="body1Small">{merchantInfo.address}</Typography>
             </Stack>
           </Stack>
-          <Typography.Headline4 className="whitespace-nowrap">
+          <Typography variant="headline2" className="whitespace-nowrap">
             {`${totalAmount.toLocaleString('ru-RU')} ₽`}
-          </Typography.Headline4>
+          </Typography>
         </Stack>
         <Stack align="center" className="gap-1 p-2 rounded-[16px] bg-white">
-          <Typography.Body2Small>Код подтверждения</Typography.Body2Small>
-          <Typography.Headline3>{verificationCode}</Typography.Headline3>
+          <Typography variant="body1Small">Код подтверждения</Typography>
+          <Typography variant="headline1">{verificationCode}</Typography>
         </Stack>
       </Stack>
     </Stack>

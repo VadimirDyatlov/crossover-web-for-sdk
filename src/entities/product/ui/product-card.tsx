@@ -23,8 +23,8 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
         {children}
       </Box>
       <Stack className="p-[8px]">
-        <Typography.Headline4>{`${product.price.toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
-        <Typography.Body2Small>{product.name}</Typography.Body2Small>
+        <Typography variant="headline2">{`${product.price.toLocaleString('ru-RU')} ₽`}</Typography>
+        <Typography variant="body1Small">{product.name}</Typography>
       </Stack>
     </Stack>
   );

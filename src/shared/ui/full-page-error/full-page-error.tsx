@@ -61,10 +61,10 @@ export const FullPageError: FC<FullPageErrorProps> = (props) => {
           </div>
         )}
         <Stack align="center" className="gap-[12px]">
-          <Typography.Headline4 className="text-[24px] ">
+          <Typography variant="headline2" className="text-[24px] ">
             {title}
-          </Typography.Headline4>
-          {description && <Typography.Body1>{description}</Typography.Body1>}
+          </Typography>
+          {description && <Typography variant="body1">{description}</Typography>}
         </Stack>
       </Stack>
       {onBack && (

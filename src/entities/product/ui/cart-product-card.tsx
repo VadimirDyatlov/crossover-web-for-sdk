@@ -35,11 +35,11 @@ export const CartProductCard: FC<CartProductCardProps> = (props) => {
       />
       <Stack className="relative w-full">
         <Stack className="mt-[4px]">
-          <Typography.Body2Small>{name}</Typography.Body2Small>
-          <Typography.Body2Small>{weight}</Typography.Body2Small>
+          <Typography variant="body1Small">{name}</Typography>
+          <Typography variant="body1Small">{weight}</Typography>
         </Stack>
         <Stack direction="row" align="center" justify="between">
-          <Typography.Headline4>{`${product.price.toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
+          <Typography variant="headline2">{`${product.price.toLocaleString('ru-RU')} ₽`}</Typography>
           {children}
         </Stack>
       </Stack>

@@ -19,7 +19,7 @@ export const CatalogHeader: FC = () => {
           <CloseIcon />
         </Button>
         <Button variant="ghost" className="!p-2" onClick={openMyOrders}>
-          <Typography.Body1>Мои заказы</Typography.Body1>
+          <Typography variant="body1">Мои заказы</Typography>
           <Basket />
         </Button>
       </Stack>

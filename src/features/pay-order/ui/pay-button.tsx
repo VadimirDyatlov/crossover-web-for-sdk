@@ -26,9 +26,9 @@ export const PayButton: FC = () => {
         className={cn('w-full h-[60px] rounded-[20px]', 'pointer-events-auto')}
       >
         {/* TODO: PriceInfo это сущность */}
-        <Typography.Headline4>
+        <Typography variant="headline2">
           {`К оплате ${totalPrice.toLocaleString('ru-RU')} ₽`}
-        </Typography.Headline4>
+        </Typography>
       </Button>
     </Stack>
   );

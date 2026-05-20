@@ -20,9 +20,11 @@ export const InlineError: FC<InlineErrorProps> = (props) => {
   return (
     <Stack align="center" justify="center" spacing="md" className="p-4 pt-8">
       <Stack align="center" spacing="sm">
-        <Typography.Headline4 className="text-[24px] ">{title}</Typography.Headline4>
+        <Typography variant="headline2" className="text-[24px] ">
+          {title}
+        </Typography>
         <Stack className="px-[21px] text-center">
-          {description && <Typography.Body1>{description}</Typography.Body1>}
+          {description && <Typography variant="body1">{description}</Typography>}
         </Stack>
       </Stack>
       <Button variant="primary" className="rounded-[32px] px-4" onClick={onRetry}>

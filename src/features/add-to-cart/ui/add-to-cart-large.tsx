@@ -53,20 +53,21 @@ export const AddToCartLarge: FC<AddToCartLargeProps> = (props) => {
       >
         {isExpanded ? (
           <>
-            <Typography.Body1
+            <Typography
               key={count}
-              className="text-[17px] will-change-transform animate-fade-in-down"
+              variant="body2"
+              className="will-change-transform animate-fade-in-down"
             >
               {count}
-            </Typography.Body1>
-            <Typography.Body1 className="text-[17px]">
+            </Typography>
+            <Typography variant="body2">
               {` × ${product.price.toLocaleString('ru-RU')} ₽`}
-            </Typography.Body1>
+            </Typography>
           </>
         ) : (
-          <Typography.Body1 className="text-[17px] font-semibold animate-fade-in">
+          <Typography variant="headline2" className="font-semibold animate-fade-in">
             {`${product.price.toLocaleString('ru-RU')} ₽`}
-          </Typography.Body1>
+          </Typography>
         )}
       </Stack>
       <Button

@@ -19,13 +19,12 @@ export const OrderProductCard: FC<OrderProductCardProps> = (props) => {
       />
       <Stack className="w-full">
         <Stack className="mt-[4px]">
-          <Typography.Body2Small>{productName}</Typography.Body2Small>
-          <Typography.Body2Small>{weight}</Typography.Body2Small>
+          <Typography variant="body1Small">{productName}</Typography>
+          <Typography variant="body1Small">{weight}</Typography>
         </Stack>
         <Stack direction="row" align="center" justify="between">
-          <Typography.Body2Small>{`${quantity}шт. × ${costPrice}`}</Typography.Body2Small>
-
-          <Typography.Headline4>{`${(costPrice * quantity).toLocaleString('ru-RU')} ₽`}</Typography.Headline4>
+          <Typography variant="body1Small">{`${quantity}шт. × ${costPrice}`}</Typography>
+          <Typography variant="headline2">{`${(costPrice * quantity).toLocaleString('ru-RU')} ₽`}</Typography>
         </Stack>
       </Stack>
     </Stack>
