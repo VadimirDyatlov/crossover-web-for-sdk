@@ -6,17 +6,22 @@ const API_TARGET =
   process.env.API_TARGET ?? 'https://ift.gate1.spaymentsplus.ru';
 
 // Аналог `secure: false` из vite.config (server.proxy): IFT-шлюз отдаёт
-// недоверенный сертификат. Vercel-rewrites валидируют TLS строго и падают
-// в 502 на handshake — поэтому проксируем вручную и отключаем проверку cert.
+// недоверенный сертификат. Vercel-rewrites на внешний URL валидируют TLS строго
+// и падают в 502 — поэтому проксируем сами и отключаем проверку cert.
 const agent = new https.Agent({ rejectUnauthorized: false });
 
-// Catch-all serverless-функция: ловит весь /api/* (заменяет rewrite в vercel.json).
+// Сюда rewrite заворачивает весь /api/* (см. vercel.json). Исходный путь
+// приходит в query-параметре `__upstream`, остальные query сохраняются.
 export default function handler(req: IncomingMessage, res: ServerResponse) {
   const target = new URL(API_TARGET);
 
-  // req.url приходит как `/api/crossover/v1/...?x=y`. Срезаем префикс `/api`,
-  // которого нет в апстриме — так же, как rewrite в vite (path.replace(/^\/api/, '')).
-  const path = (req.url ?? '').replace(/^\/api/, '') || '/';
+  // Парсим входящий URL (база-заглушка, нужен только для разбора query).
+  const incoming = new URL(req.url ?? '/', 'http://localhost');
+  const upstreamPath = incoming.searchParams.get('__upstream') ?? '';
+  incoming.searchParams.delete('__upstream');
+
+  const query = incoming.searchParams.toString();
+  const path = `/${upstreamPath}${query ? `?${query}` : ''}`;
 
   const proxyReq = https.request(
     {
